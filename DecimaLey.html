@@ -1,9 +1,9 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Efecto Zeigarnik Â· tareas incompletas</title>
+    <title>Efecto Zeigarnik · tareas incompletas</title>
     <style>
         * {
             margin: 0;
@@ -293,7 +293,7 @@
             color: white;
             margin-left: 0.5rem;
         }
-        
+
         /* botón de regreso al inicio */
         .back-button {
             position: fixed;
@@ -337,132 +337,130 @@
 <div class="zeigarnik-card">
     <!-- ENCABEZADO EFECTO ZEIGARNIK -->
     <div class="header-zeig">
-        <h1>ðŸ§  Efecto Zeigarnik</h1>
-        <p>â€œLas personas recuerdan mejor las tareas incompletas o interrumpidas que las completadas.â€</p>
+        <h1>🧠 Efecto Zeigarnik</h1>
+        <p>“Las personas recuerdan mejor las tareas incompletas o interrumpidas que las completadas.”</p>
         <div class="sub-zeig">
-            <span>ðŸ—ºï¸ mapas saturados de iconos</span>
-            <span>âš¡ tensiÃ³n por tareas pendientes</span>
+            <span>🗺️ mapas saturados de iconos</span>
+            <span>⚡ tensión por tareas pendientes</span>
         </div>
     </div>
 
     <div class="row">
         <!-- IZQUIERDA: mapa COMPLETADO (sin tareas pendientes, no hay efecto) -->
         <div class="panel left-panel">
-            <h2>ðŸ”» TODO COMPLETADO <span class="badge">sin tensiÃ³n</span></h2>
+            <h2>🔻 TODO COMPLETADO <span class="badge">sin tensión</span></h2>
             <div class="map-container">
                 <div style="color:#c0daf0; margin-bottom: 0.8rem; display:flex; justify-content:space-between;">
-                    <span>ðŸ—ºï¸ Ciudad Central</span>
-                    <span>âœ… 12/12 tareas</span>
+                    <span>🗺️ Ciudad Central</span>
+                    <span>✅ 12/12 tareas</span>
                 </div>
                 <div class="map-grid">
                     <!-- todas las celdas con icono completado (check) -->
-                    <div class="map-cell"><div class="task-icon icon-completed">âœ…</div></div>
-                    <div class="map-cell"><div class="task-icon icon-completed">âœ…</div></div>
-                    <div class="map-cell"><div class="task-icon icon-completed">âœ…</div></div>
-                    <div class="map-cell"><div class="task-icon icon-completed">âœ…</div></div>
-                    <div class="map-cell"><div class="task-icon icon-completed">âœ…</div></div>
-                    <div class="map-cell"><div class="task-icon icon-completed">âœ…</div></div>
-                    <div class="map-cell"><div class="task-icon icon-completed">âœ…</div></div>
-                    <div class="map-cell"><div class="task-icon icon-completed">âœ…</div></div>
-                    <div class="map-cell"><div class="task-icon icon-completed">âœ…</div></div>
-                    <div class="map-cell"><div class="task-icon icon-completed">âœ…</div></div>
-                    <div class="map-cell"><div class="task-icon icon-completed">âœ…</div></div>
-                    <div class="map-cell"><div class="task-icon icon-completed">âœ…</div></div>
-                    <div class="map-cell"><div class="task-icon icon-completed">âœ…</div></div>
-                    <div class="map-cell"><div class="task-icon icon-completed">âœ…</div></div>
-                    <div class="map-cell"><div class="task-icon icon-completed">âœ…</div></div>
+                    <div class="map-cell"><div class="task-icon icon-completed">✅</div></div>
+                    <div class="map-cell"><div class="task-icon icon-completed">✅</div></div>
+                    <div class="map-cell"><div class="task-icon icon-completed">✅</div></div>
+                    <div class="map-cell"><div class="task-icon icon-completed">✅</div></div>
+                    <div class="map-cell"><div class="task-icon icon-completed">✅</div></div>
+                    <div class="map-cell"><div class="task-icon icon-completed">✅</div></div>
+                    <div class="map-cell"><div class="task-icon icon-completed">✅</div></div>
+                    <div class="map-cell"><div class="task-icon icon-completed">✅</div></div>
+                    <div class="map-cell"><div class="task-icon icon-completed">✅</div></div>
+                    <div class="map-cell"><div class="task-icon icon-completed">✅</div></div>
+                    <div class="map-cell"><div class="task-icon icon-completed">✅</div></div>
+                    <div class="map-cell"><div class="task-icon icon-completed">✅</div></div>
+                    <div class="map-cell"><div class="task-icon icon-completed">✅</div></div>
+                    <div class="map-cell"><div class="task-icon icon-completed">✅</div></div>
+                    <div class="map-cell"><div class="task-icon icon-completed">✅</div></div>
                 </div>
                 <div class="empty-message">
-                    ðŸ§˜ Todo completado. El jugador no siente necesidad de volver. No hay tareas que "atormenten" la memoria.
+                    🧘 Todo completado. El jugador no siente necesidad de volver. No hay tareas que "atormenten" la memoria.
                 </div>
             </div>
             <div class="explain-footer">
-                âŒ Zeigarnik ausente: al no haber tareas pendientes, el cerebro las olvida rÃ¡pidamente. No hay "gancho" psicolÃ³gico.
+                ❌ Zeigarnik ausente: al no haber tareas pendientes, el cerebro las olvida rápidamente. No hay "gancho" psicológico.
             </div>
         </div>
 
         <!-- DERECHA: mapa SATURADO de iconos (muchas tareas incompletas) -->
         <div class="panel right-panel">
-            <h2>âœ… SATURADO DE ICONOS <span class="badge">15 tareas pendientes</span></h2>
+            <h2>✅ SATURADO DE ICONOS <span class="badge">15 tareas pendientes</span></h2>
             <div class="map-container">
                 <div style="color:#f0e2b0; margin-bottom: 0.8rem; display:flex; justify-content:space-between;">
-                    <span>ðŸ—ºï¸ Distrito Norte <span style="font-size:0.8rem; background:#ac4e4e; padding:0.2rem 0.8rem; border-radius:30px;">Â¡12 iconos!</span></span>
-                    <span>â³ 3/15 completadas</span>
+                    <span>🗺️ Distrito Norte <span style="font-size:0.8rem; background:#ac4e4e; padding:0.2rem 0.8rem; border-radius:30px;">¡12 iconos!</span></span>
+                    <span>⏳ 3/15 completadas</span>
                 </div>
                 <div class="map-grid">
                     <!-- celdas con varios tipos de tareas pendientes, algunas completadas -->
-                    <div class="map-cell"><div class="task-icon task-pending">ðŸ“¦</div></div>
-                    <div class="map-cell"><div class="task-icon task-pending">âš”ï¸</div></div>
-                    <div class="map-cell"><div class="task-icon task-pending">â“</div></div>
-                    <div class="map-cell"><div class="task-icon task-pending">ðŸ’Ž</div></div>
-                    <div class="map-cell"><div class="task-icon task-completed">âœ…</div></div>
-                    <div class="map-cell"><div class="task-icon task-pending">ðŸ“œ</div></div>
-                    <div class="map-cell"><div class="task-icon task-pending">ðŸ—ï¸</div></div>
-                    <div class="map-cell"><div class="task-icon task-pending">âš¡</div></div>
-                    <div class="map-cell"><div class="task-icon task-pending">ðŸª¶</div></div>
-                    <div class="map-cell"><div class="task-icon task-completed">âœ…</div></div>
-                    <div class="map-cell"><div class="task-icon task-pending">ðŸ†</div></div>
-                    <div class="map-cell"><div class="task-icon task-pending">ðŸ”®</div></div>
-                    <div class="map-cell"><div class="task-icon task-pending">ðŸ•¯ï¸</div></div>
-                    <div class="map-cell"><div class="task-icon task-pending">ðŸ‰</div></div>
-                    <div class="map-cell"><div class="task-icon task-completed">âœ…</div></div>
+                    <div class="map-cell"><div class="task-icon task-pending">📦</div></div>
+                    <div class="map-cell"><div class="task-icon task-pending">⚔️</div></div>
+                    <div class="map-cell"><div class="task-icon task-pending">❓</div></div>
+                    <div class="map-cell"><div class="task-icon task-pending">💎</div></div>
+                    <div class="map-cell"><div class="task-icon task-completed">✅</div></div>
+                    <div class="map-cell"><div class="task-icon task-pending">📜</div></div>
+                    <div class="map-cell"><div class="task-icon task-pending">🗝️</div></div>
+                    <div class="map-cell"><div class="task-icon task-pending">⚡</div></div>
+                    <div class="map-cell"><div class="task-icon task-pending">🪶</div></div>
+                    <div class="map-cell"><div class="task-icon task-completed">✅</div></div>
+                    <div class="map-cell"><div class="task-icon task-pending">🏆</div></div>
+                    <div class="map-cell"><div class="task-icon task-pending">🔮</div></div>
+                    <div class="map-cell"><div class="task-icon task-pending">🕯️</div></div>
+                    <div class="map-cell"><div class="task-icon task-pending">🐉</div></div>
+                    <div class="map-cell"><div class="task-icon task-completed">✅</div></div>
                 </div>
                 <div class="zeigarnik-stats">
-                    ðŸ§  Â¡12 tareas incompletas! El cerebro las mantiene activas en la memoria. Cada icono es un recordatorio de "pendiente". La tensiÃ³n solo se alivia al completarlas.
+                    🧠 ¡12 tareas incompletas! El cerebro las mantiene activas en la memoria. Cada icono es un recordatorio de "pendiente". La tensión solo se alivia al completarlas.
                 </div>
                 <div style="display: flex; gap: 0.5rem; flex-wrap: wrap; margin-top: 0.8rem; justify-content: center;">
-                    <span style="background:#c87932; padding:0.3rem 1rem; border-radius:30px;">ðŸ“¦ cofres: 4</span>
-                    <span style="background:#b54848; padding:0.3rem 1rem; border-radius:30px;">âš”ï¸ enemigos: 3</span>
-                    <span style="background:#6b4f9b; padding:0.3rem 1rem; border-radius:30px;">â“ misterios: 5</span>
+                    <span style="background:#c87932; padding:0.3rem 1rem; border-radius:30px;">📦 cofres: 4</span>
+                    <span style="background:#b54848; padding:0.3rem 1rem; border-radius:30px;">⚔️ enemigos: 3</span>
+                    <span style="background:#6b4f9b; padding:0.3rem 1rem; border-radius:30px;">❓ misterios: 5</span>
                 </div>
             </div>
             <div class="explain-footer">
-                âœ¨ Zeigarnik activado: la saturaciÃ³n de iconos mantiene la sensaciÃ³n de "tarea pendiente". El jugador siente alivio al completar cada uno y sigue jugando.
+                ✨ Zeigarnik activado: la saturación de iconos mantiene la sensación de "tarea pendiente". El jugador siente alivio al completar cada uno y sigue jugando.
             </div>
         </div>
     </div>
 
-    <!-- BLOQUE EXPLICATIVO: CÃ“MO LO USAN ASSASSIN'S CREED / GTA -->
+    <!-- BLOQUE EXPLICATIVO: CÓMO LO USAN ASSASSIN'S CREED / GTA -->
     <div style="display: flex; flex-wrap: wrap; gap: 2rem; margin: 2.5rem 0 1rem; background: #112337; border-radius: 2.5rem; padding: 2rem 1.8rem; border: 1px solid #ffd28f40;">
         <div style="flex:1; min-width:200px;">
-            <h3 style="color:#fcc886;">ðŸ—ºï¸ Mapas saturados</h3>
+            <h3 style="color:#fcc886;">🗺️ Mapas saturados</h3>
             <p style="color:#c9def5;">Assassin's Creed, GTA, Far Cry: decenas de iconos en el mapa. Cada uno es una tarea incompleta que tu cerebro quiere borrar.</p>
         </div>
         <div style="flex:1; min-width:200px;">
-            <h3 style="color:#abe0b3;">ðŸ§  TensiÃ³n â†’ alivio</h3>
-            <p style="color:#c9def5;">Completar una tarea libera dopamina. El ciclo "pendiente â†’ completado" engancha al jugador.</p>
+            <h3 style="color:#abe0b3;">🧠 Tensión → alivio</h3>
+            <p style="color:#c9def5;">Completar una tarea libera dopamina. El ciclo "pendiente → completado" engancha al jugador.</p>
         </div>
         <div style="flex:1; min-width:200px; border-left: 2px solid #5d7ea3; padding-left:1.5rem;">
-            <h3 style="color:#f5e0a3;">âš¡ Ejemplo</h3>
-            <p style="color:#c9def5;">Ver un cofre sin abrir en el mapa genera incomodidad. Abrirlo produce alivio. Zeigarnik en acciÃ³n.</p>
+            <h3 style="color:#f5e0a3;">⚡ Ejemplo</h3>
+            <p style="color:#c9def5;">Ver un cofre sin abrir en el mapa genera incomodidad. Abrirlo produce alivio. Zeigarnik en acción.</p>
         </div>
     </div>
 
-    <!-- SIMULACIÃ“N DE PENSAMIENTO -->
+    <!-- SIMULACIÓN DE PENSAMIENTO -->
     <div style="background: #0e253a; border-radius: 2rem; padding: 1.5rem; margin: 1.5rem 0; border: 2px solid #8aa0c0;">
         <div style="display: flex; flex-wrap: wrap; gap: 2rem; align-items: center; justify-content: center; text-align: center;">
             <div style="background:#2c405b; border-radius: 60px; padding:0.8rem 1.8rem; color:#dddddd;">
-                <span style="font-weight:bold;">â¬…ï¸ IZQUIERDA:</span> "Ya no hay nada que hacer aquÃ­." (olvido)
+                <span style="font-weight:bold;">⬅️ IZQUIERDA:</span> "Ya no hay nada que hacer aquí." (olvido)
             </div>
             <div style="background:#4f7851; border-radius: 60px; padding:0.8rem 1.8rem; color:#fcf9cf;">
-                <span style="font-weight:bold;">âž¡ï¸ DERECHA:</span> "Tengo que volver a por esos cofres..." (Zeigarnik)
+                <span style="font-weight:bold;">➡️ DERECHA:</span> "Tengo que volver a por esos cofres..." (Zeigarnik)
             </div>
         </div>
         <div style="color:#cfe2ff; margin-top:1rem; text-align:center; font-size:1.1rem;">
-            ðŸ§  El mapa saturado mantiene el juego "vivo" en la mente del jugador incluso cuando no estÃ¡ jugando.
+            🧠 El mapa saturado mantiene el juego "vivo" en la mente del jugador incluso cuando no está jugando.
         </div>
     </div>
 
     <!-- FOOTER -->
     <div class="footer-note">
         <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 2rem; margin-bottom: 0.8rem;">
-            <span style="background:#263d59; padding:0.3rem 1.2rem; border-radius:40px;">â¬…ï¸ izquierda: tareas completadas (sin efecto)</span>
-            <span style="background:#1b4e38; padding:0.3rem 1.2rem; border-radius:40px;">âž¡ï¸ derecha: tareas incompletas â†’ Zeigarnik</span>
+            <span style="background:#263d59; padding:0.3rem 1.2rem; border-radius:40px;">⬅️ izquierda: tareas completadas (sin efecto)</span>
+            <span style="background:#1b4e38; padding:0.3rem 1.2rem; border-radius:40px;">➡️ derecha: tareas incompletas → Zeigarnik</span>
         </div>
-        <p style="margin-top: 1.2rem;">ðŸŽ® Efecto Zeigarnik en videojuegos: saturar el mapa con iconos de tareas pendientes genera tensiÃ³n psicolÃ³gica que se alivia al completarlas, manteniendo al jugador enganchado.</p>
+        <p style="margin-top: 1.2rem;">🎮 Efecto Zeigarnik en videojuegos: saturar el mapa con iconos de tareas pendientes genera tensión psicológica que se alivia al completarlas, manteniendo al jugador enganchado.</p>
     </div>
 </div>
 </body>
 </html>
-
-
