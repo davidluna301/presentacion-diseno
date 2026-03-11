@@ -271,65 +271,275 @@
             margin: 1.5rem 0 0.5rem;
             flex-wrap: wrap;
         }
+    
+        /* ===== SIDEBAR ESTÁTICA ===== */
+        body {
+            display: flex;
+            flex-direction: row;
+            gap: 0;
+        }
 
-        /* botÃ³n de regreso al inicio */
-        .back-button {
-            position: fixed;
-            bottom: 40px;
-            right: 40px;
-            width: 60px;
-            height: 60px;
+        .sidebar-static {
+            width: 90px;
+            background: linear-gradient(180deg, #1a1a2e 0%, #16213e 100%);
+            border-right: 2px solid #00d4ff;
+            padding: 20px 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 12px;
+            position: relative;
+            flex-shrink: 0;
+            overflow-y: auto;
+            max-height: 100vh;
+        }
+
+        .sidebar-static a {
+            width: 50px;
+            height: 50px;
             border-radius: 50%;
-            background: linear-gradient(130deg, #f7e05e, #b1a6ff);
-            color: #1b1e2b;
-            border: none;
-            cursor: pointer;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 1.5rem;
             text-decoration: none;
-            box-shadow: 0 8px 20px rgba(247, 224, 94, 0.4);
+            font-weight: bold;
+            font-size: 1.2rem;
             transition: all 0.3s ease;
-            z-index: 1000;
+            border: 2px solid transparent;
         }
 
-        .back-button:hover {
+        .sidebar-static a.home {
+            background: linear-gradient(135deg, #ffdd00 0%, #ff9900 100%);
+            color: #1a1a2e;
+            box-shadow: 0 0 15px rgba(255, 221, 0, 0.4);
+        }
+
+        .sidebar-static a.home:hover {
             transform: scale(1.15);
-            box-shadow: 0 12px 30px rgba(247, 224, 94, 0.6);
+            box-shadow: 0 0 25px rgba(255, 221, 0, 0.8);
+        }
+
+        .sidebar-static a:not(.home):not(.tools) {
+            background: linear-gradient(135deg, #00d4ff 0%, #0099cc 100%);
+            color: #fff;
+            box-shadow: 0 0 10px rgba(0, 212, 255, 0.3);
+        }
+
+        .sidebar-static a:not(.home):not(.tools):hover {
+            transform: scale(1.2);
+            background: linear-gradient(135deg, #00ffaa 0%, #00cc88 100%);
+            box-shadow: 0 0 20px rgba(0, 255, 170, 0.6);
+        }
+
+        .sidebar-static a.tools {
+            background: linear-gradient(135deg, #00ff88 0%, #00d4ff 100%);
+            color: #1a1a2e;
+            box-shadow: 0 0 15px rgba(0, 255, 136, 0.4);
+            border-top: 2px solid #00d4ff;
+            margin-top: 15px;
+            padding-top: 15px;
+        }
+
+        .sidebar-static a.tools:hover {
+            transform: scale(1.15);
+            box-shadow: 0 0 25px rgba(0, 255, 136, 0.8);
+        }
+
+        .main-content {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: calc(100% - 90px);
+            overflow-y: auto;
+        }
+
+        @media (max-width: 768px) {
+            .sidebar-static {
+                width: 70px;
+            }
+            .sidebar-static a {
+                width: 45px;
+                height: 45px;
+                font-size: 1rem;
+            }
+            .main-content {
+                width: calc(100% - 70px);
+            }
         }
 
         @media (max-width: 600px) {
-            .back-button {
-                width: 50px;
-                height: 50px;
-                bottom: 30px;
-                right: 30px;
-                font-size: 1.2rem;
+            body {
+                flex-direction: column;
+            }
+            .sidebar-static {
+                width: 100%;
+                height: 80px;
+                flex-direction: row;
+                border-right: none;
+                border-bottom: 2px solid #00d4ff;
+                padding: 0 20px;
+                overflow-x: auto;
+                overflow-y: hidden;
+            }
+            .main-content {
+                width: 100%;
+                height: auto;
+            }
+        }
+    
+        /* ===== SIDEBAR ESTÃTICA ===== */
+        body {
+            display: flex;
+            flex-direction: row;
+            gap: 0;
+        }
+
+        .sidebar-static {
+            width: 90px;
+            background: linear-gradient(180deg, #1a1a2e 0%, #16213e 100%);
+            border-right: 2px solid #00d4ff;
+            padding: 20px 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 12px;
+            position: relative;
+            flex-shrink: 0;
+            overflow-y: auto;
+            max-height: 100vh;
+        }
+
+        .sidebar-static a {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+
+        .sidebar-static a.home {
+            background: linear-gradient(135deg, #ffdd00 0%, #ff9900 100%);
+            color: #1a1a2e;
+            box-shadow: 0 0 15px rgba(255, 221, 0, 0.4);
+        }
+
+        .sidebar-static a.home:hover {
+            transform: scale(1.15);
+            box-shadow: 0 0 25px rgba(255, 221, 0, 0.8);
+        }
+
+        .sidebar-static a:not(.home):not(.tools) {
+            background: linear-gradient(135deg, #00d4ff 0%, #0099cc 100%);
+            color: #fff;
+            box-shadow: 0 0 10px rgba(0, 212, 255, 0.3);
+        }
+
+        .sidebar-static a:not(.home):not(.tools):hover {
+            transform: scale(1.2);
+            background: linear-gradient(135deg, #00ffaa 0%, #00cc88 100%);
+            box-shadow: 0 0 20px rgba(0, 255, 170, 0.6);
+        }
+
+        .sidebar-static a.tools {
+            background: linear-gradient(135deg, #00ff88 0%, #00d4ff 100%);
+            color: #1a1a2e;
+            box-shadow: 0 0 15px rgba(0, 255, 136, 0.4);
+            border-top: 2px solid #00d4ff;
+            margin-top: 15px;
+            padding-top: 15px;
+        }
+
+        .sidebar-static a.tools:hover {
+            transform: scale(1.15);
+            box-shadow: 0 0 25px rgba(0, 255, 136, 0.8);
+        }
+
+        .main-content {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: calc(100% - 90px);
+            overflow-y: auto;
+        }
+
+        @media (max-width: 768px) {
+            .sidebar-static {
+                width: 70px;
+            }
+            .sidebar-static a {
+                width: 45px;
+                height: 45px;
+                font-size: 1rem;
+            }
+            .main-content {
+                width: calc(100% - 70px);
+            }
+        }
+
+        @media (max-width: 600px) {
+            body {
+                flex-direction: column;
+            }
+            .sidebar-static {
+                width: 100%;
+                height: 80px;
+                flex-direction: row;
+                border-right: none;
+                border-bottom: 2px solid #00d4ff;
+                padding: 0 20px;
+                overflow-x: auto;
+                overflow-y: hidden;
+            }
+            .main-content {
+                width: 100%;
+                height: auto;
             }
         }
     </style>
 </head>
 <body>
-<a href="index.html" class="back-button">
-    <!-- Menú Lateral Flotante -->
-    <nav class="sidebar-menu">
-        <a href="index.html" class="home" title="Inicio"></a>
-        <a href="PrimeraLey.html" title="Ley 1">1</a>
-        <a href="SegundaLey.html" title="Ley 2">2</a>
-        <a href="terceraLey.html" title="Ley 3">3</a>
-        <a href="CuartaLey.html" title="Ley 4">4</a>
-        <a href="QuintaLey.html" title="Ley 5">5</a>
-        <a href="SextaLey.html" title="Ley 6">6</a>
-        <a href="SeptimaLey.html" title="Ley 7">7</a>
-        <a href="OctavaLey.html" title="Ley 8">8</a>
-        <a href="NovenaLey.html" title="Ley 9">9</a>
-        <a href="DecimaLey.html" title="Ley 10"></a>
-        <a href="OnceLey.html" title="Ley 11">11</a>
-        <a href="DoceLey.html" title="Ley 12">12</a>
-        <a href="herramientas.html" class="tools" title="Herramientas"></a>
-    </nav>
-â†</a>
+<aside class="sidebar-static">
+    <a href="index.html" class="home" title="Inicio">ðŸ </a>
+    <a href="PrimeraLey.html" title="Ley de PrÃ¤gnanz">1ï¸âƒ£</a>
+    <a href="SegundaLey.html" title="Ley de Hick">2ï¸âƒ£</a>
+    <a href="terceraLey.html" title="Ley de Tesler">3ï¸âƒ£</a>
+    <a href="CuartaLey.html" title="Ley de Proximidad">4ï¸âƒ£</a>
+    <a href="QuintaLey.html" title="Efecto Serial">5ï¸âƒ£</a>
+    <a href="SextaLey.html" title="Ley de Fitts">6ï¸âƒ£</a>
+    <a href="SeptimaLey.html" title="Ley de Parkinson">7ï¸âƒ£</a>
+    <a href="OctavaLey.html" title="Efecto Von Restorff">8ï¸âƒ£</a>
+    <a href="NovenaLey.html" title="Principio Pareto">9ï¸âƒ£</a>
+    <a href="DecimaLey.html" title="Efecto Zeigarnik">ðŸ”Ÿ</a>
+    <a href="OnceLey.html" title="Ley de Miller">1ï¸âƒ£1ï¸âƒ£</a>
+    <a href="DoceLey.html" title="Ley de Jakob">1ï¸âƒ£2ï¸âƒ£</a>
+    <a href="herramientas.html" class="tools" title="Herramientas">ðŸ› ï¸</a>
+</aside>
+    <div class="main-content">
+<aside class="sidebar-static">
+    <a href="index.html" class="home" title="Inicio"></a>
+    <a href="PrimeraLey.html" title="Ley de Prägnanz">1</a>
+    <a href="SegundaLey.html" title="Ley de Hick">2</a>
+    <a href="terceraLey.html" title="Ley de Tesler">3</a>
+    <a href="CuartaLey.html" title="Ley de Proximidad">4</a>
+    <a href="QuintaLey.html" title="Efecto Serial">5</a>
+    <a href="SextaLey.html" title="Ley de Fitts">6</a>
+    <a href="SeptimaLey.html" title="Ley de Parkinson">7</a>
+    <a href="OctavaLey.html" title="Efecto Von Restorff">8</a>
+    <a href="NovenaLey.html" title="Principio Pareto">9</a>
+    <a href="DecimaLey.html" title="Efecto Zeigarnik"></a>
+    <a href="OnceLey.html" title="Ley de Miller">11</a>
+    <a href="DoceLey.html" title="Ley de Jakob">12</a>
+    <a href="herramientas.html" class="tools" title="Herramientas"></a>
+</aside>
+    <div class="main-content">
 <div class="vonrestorff-card">
     <!-- ENCABEZADO: VON RESTORFF -->
     <div class="header-von">
@@ -480,5 +690,8 @@
         <p style="margin-top: 1.2rem;">ðŸŽ® Efecto Von Restorff en videojuegos: resaltar elementos importantes (llaves, cofres, recursos) con colores brillantes o destellos mejora drÃ¡sticamente la memorabilidad y localizaciÃ³n.</p>
     </div>
 </div>
+    </div>
+    </div>
 </body>
 </html>
+
