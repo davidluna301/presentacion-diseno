@@ -200,9 +200,113 @@
                 padding: 20px;
             }
         }
+
+        /* Menú lateral flotante */
+        .sidebar-menu {
+            position: fixed;
+            left: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(0, 212, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 2px solid #00d4ff;
+            border-radius: 20px;
+            padding: 20px 10px;
+            width: 70px;
+            max-height: 80vh;
+            z-index: 999;
+            box-shadow: 0 8px 32px rgba(0, 212, 255, 0.2);
+            overflow-y: auto;
+            scrollbar-width: thin;
+            scrollbar-color: #00d4ff rgba(0, 212, 255, 0.1);
+        }
+
+        .sidebar-menu::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        .sidebar-menu::-webkit-scrollbar-track {
+            background: rgba(0, 212, 255, 0.1);
+            border-radius: 10px;
+        }
+
+        .sidebar-menu::-webkit-scrollbar-thumb {
+            background: #00d4ff;
+            border-radius: 10px;
+        }
+
+        .sidebar-menu a {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            width: 50px;
+            height: 50px;
+            margin: 8px auto;
+            background: linear-gradient(135deg, #00d4ff, #00ff88);
+            color: #000;
+            text-decoration: none;
+            border-radius: 50%;
+            font-weight: bold;
+            font-size: 0.7em;
+            text-align: center;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0, 212, 255, 0.3);
+            cursor: pointer;
+        }
+
+        .sidebar-menu a:hover {
+            transform: scale(1.2);
+            background: linear-gradient(135deg, #ffdd00, #ff00ff);
+            color: #1a1a2e;
+            box-shadow: 0 6px 20px rgba(255, 221, 0, 0.5);
+        }
+
+        .sidebar-menu a.home {
+            background: linear-gradient(135deg, #ffdd00, #ff9900);
+            margin-bottom: 15px;
+        }
+
+        .sidebar-menu a.tools {
+            background: linear-gradient(135deg, #00ff88, #00d4ff);
+            margin-top: 15px;
+            border-top: 2px solid #00d4ff;
+            padding-top: 10px;
+        }
+
+        @media (max-width: 768px) {
+            .sidebar-menu {
+                left: 10px;
+                width: 60px;
+            }
+
+            .sidebar-menu a {
+                width: 45px;
+                height: 45px;
+                font-size: 0.65em;
+            }
+        }
     </style>
 </head>
 <body>
+    <!-- Menú Lateral Flotante -->
+    <nav class="sidebar-menu">
+        <a href="index.html" class="home" title="Inicio">🏠</a>
+        <a href="PrimeraLey.html" title="Ley 1">1️⃣</a>
+        <a href="SegundaLey.html" title="Ley 2">2️⃣</a>
+        <a href="terceraLey.html" title="Ley 3">3️⃣</a>
+        <a href="CuartaLey.html" title="Ley 4">4️⃣</a>
+        <a href="QuintaLey.html" title="Ley 5">5️⃣</a>
+        <a href="SextaLey.html" title="Ley 6">6️⃣</a>
+        <a href="SeptimaLey.html" title="Ley 7">7️⃣</a>
+        <a href="OctavaLey.html" title="Ley 8">8️⃣</a>
+        <a href="NovenaLey.html" title="Ley 9">9️⃣</a>
+        <a href="DecimaLey.html" title="Ley 10">🔟</a>
+        <a href="OnceLey.html" title="Ley 11">1️⃣1️⃣</a>
+        <a href="DoceLey.html" title="Ley 12">1️⃣2️⃣</a>
+        <a href="herramientas.html" class="tools" title="Herramientas">🛠️</a>
+    </nav>
+
     <div class="container">
         <header>
             <h1 class="glow-text">⚔️ LAS LEYES DEL DISEÑO DE VIDEOJUEGOS ⚔️</h1>

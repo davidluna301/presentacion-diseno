@@ -1,9 +1,9 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Principio de Pareto · 80/20 en juegos</title>
+    <title>Principio de Pareto Â· 80/20 en juegos</title>
     <style>
         * {
             margin: 0;
@@ -135,7 +135,7 @@
             margin-left: 0.5rem;
         }
 
-        /* interfaz de energía diaria */
+        /* interfaz de energÃ­a diaria */
         .energy-ui {
             background: #1e3850;
             border-radius: 2.5rem;
@@ -227,7 +227,7 @@
             border-radius: 30px;
         }
 
-        /* panel izquierdo: muchas misiones, poca recompensa por misión */
+        /* panel izquierdo: muchas misiones, poca recompensa por misiÃ³n */
         .left-panel .mission-item {
             background: #27445f;
         }
@@ -306,7 +306,7 @@
             margin: 1rem 0;
         }
 
-        /* botón de regreso al inicio */
+        /* botÃ³n de regreso al inicio */
         .back-button {
             position: fixed;
             bottom: 40px;
@@ -345,175 +345,193 @@
     </style>
 </head>
 <body>
-<a href="index.html" class="back-button">←</a>
+<a href="index.html" class="back-button">
+    <!-- Menú Lateral Flotante -->
+    <nav class="sidebar-menu">
+        <a href="index.html" class="home" title="Inicio"></a>
+        <a href="PrimeraLey.html" title="Ley 1">1</a>
+        <a href="SegundaLey.html" title="Ley 2">2</a>
+        <a href="terceraLey.html" title="Ley 3">3</a>
+        <a href="CuartaLey.html" title="Ley 4">4</a>
+        <a href="QuintaLey.html" title="Ley 5">5</a>
+        <a href="SextaLey.html" title="Ley 6">6</a>
+        <a href="SeptimaLey.html" title="Ley 7">7</a>
+        <a href="OctavaLey.html" title="Ley 8">8</a>
+        <a href="NovenaLey.html" title="Ley 9">9</a>
+        <a href="DecimaLey.html" title="Ley 10"></a>
+        <a href="OnceLey.html" title="Ley 11">11</a>
+        <a href="DoceLey.html" title="Ley 12">12</a>
+        <a href="herramientas.html" class="tools" title="Herramientas"></a>
+    </nav>
+â†</a>
 <div class="pareto-card">
     <!-- ENCABEZADO PRINCIPIO DE PARETO -->
     <div class="header-pareto">
-        <h1>📊 Principio de Pareto (80/20)</h1>
-        <p>“Aproximadamente el 80% de los efectos provienen del 20% de las causas.”</p>
+        <h1>ðŸ“Š Principio de Pareto (80/20)</h1>
+        <p>â€œAproximadamente el 80% de los efectos provienen del 20% de las causas.â€</p>
         <div class="sub-pareto">
-            <span>🎮 energía diaria</span>
-            <span>⚡ maximizar recursos en menos tiempo</span>
+            <span>ðŸŽ® energÃ­a diaria</span>
+            <span>âš¡ maximizar recursos en menos tiempo</span>
         </div>
     </div>
 
     <div class="row">
         <!-- IZQUIERDA: SIN Pareto (misiones ineficientes, 80% tiempo da 20% recursos) -->
         <div class="panel left-panel">
-            <h2>🔻 SIN optimizar <span class="badge">80% esfuerzo → 20% valor</span></h2>
+            <h2>ðŸ”» SIN optimizar <span class="badge">80% esfuerzo â†’ 20% valor</span></h2>
             <div class="energy-ui">
                 <div class="energy-text">
-                    <span>🔋 Energía diaria: 120/120</span>
-                    <span>⏳ 15 min disponible</span>
+                    <span>ðŸ”‹ EnergÃ­a diaria: 120/120</span>
+                    <span>â³ 15 min disponible</span>
                 </div>
                 <div class="energy-bar">
                     <div class="energy-fill" style="width: 100%; background: #f5b342;"></div>
                 </div>
 
-                <div style="color:#b6ddf5; margin: 1rem 0 0.5rem;">📋 Misiones disponibles (10):</div>
+                <div style="color:#b6ddf5; margin: 1rem 0 0.5rem;">ðŸ“‹ Misiones disponibles (10):</div>
                 <div class="missions-list">
                     <!-- muchas misiones de bajo valor -->
                     <div class="mission-item">
                         <div class="mission-info">
-                            <span class="mission-icon">🌾</span>
+                            <span class="mission-icon">ðŸŒ¾</span>
                             <span class="mission-desc">Recolectar 10 hierbas</span>
                         </div>
                         <div>
-                            <span class="mission-cost">-10⚡</span>
+                            <span class="mission-cost">-10âš¡</span>
                             <span class="mission-reward reward-small">+20 exp</span>
                         </div>
                     </div>
                     <div class="mission-item">
                         <div class="mission-info">
-                            <span class="mission-icon">🪵</span>
-                            <span class="mission-desc">Cortar 5 leños</span>
+                            <span class="mission-icon">ðŸªµ</span>
+                            <span class="mission-desc">Cortar 5 leÃ±os</span>
                         </div>
                         <div>
-                            <span class="mission-cost">-8⚡</span>
+                            <span class="mission-cost">-8âš¡</span>
                             <span class="mission-reward reward-small">+15 exp</span>
                         </div>
                     </div>
                     <div class="mission-item">
                         <div class="mission-info">
-                            <span class="mission-icon">⚔️</span>
+                            <span class="mission-icon">âš”ï¸</span>
                             <span class="mission-desc">Derrotar 3 slimes</span>
                         </div>
                         <div>
-                            <span class="mission-cost">-12⚡</span>
+                            <span class="mission-cost">-12âš¡</span>
                             <span class="mission-reward reward-small">+30 exp</span>
                         </div>
                     </div>
                     <div class="mission-item">
                         <div class="mission-info">
-                            <span class="mission-icon">💧</span>
+                            <span class="mission-icon">ðŸ’§</span>
                             <span class="mission-desc">Recoger agua</span>
                         </div>
                         <div>
-                            <span class="mission-cost">-6⚡</span>
+                            <span class="mission-cost">-6âš¡</span>
                             <span class="mission-reward reward-small">+10 exp</span>
                         </div>
                     </div>
                     <div class="mission-item">
                         <div class="mission-info">
-                            <span class="mission-icon">🪨</span>
-                            <span class="mission-desc">Minerales básicos</span>
+                            <span class="mission-icon">ðŸª¨</span>
+                            <span class="mission-desc">Minerales bÃ¡sicos</span>
                         </div>
                         <div>
-                            <span class="mission-cost">-10⚡</span>
+                            <span class="mission-cost">-10âš¡</span>
                             <span class="mission-reward reward-small">+18 exp</span>
                         </div>
                     </div>
-                    <!-- ... más misiones pequeñas -->
+                    <!-- ... mÃ¡s misiones pequeÃ±as -->
                 </div>
 
                 <div class="stats-grid">
-                    <div>⚡ total: 120</div>
-                    <div>🎁 exp total: 320</div>
-                    <div>⏱️ tiempo: 14 min</div>
+                    <div>âš¡ total: 120</div>
+                    <div>ðŸŽ exp total: 320</div>
+                    <div>â±ï¸ tiempo: 14 min</div>
                 </div>
 
                 <div class="pareto-stats">
-                    ⚠️ El 80% de las misiones (8 de 10) dan solo 200 exp (62% del total). Las mejores misiones apenas superan el 20% de recompensa. Mucho tiempo invertido.
+                    âš ï¸ El 80% de las misiones (8 de 10) dan solo 200 exp (62% del total). Las mejores misiones apenas superan el 20% de recompensa. Mucho tiempo invertido.
                 </div>
             </div>
             <div class="explain-footer">
-                ❌ Pareto ignorado: el jugador gasta 80% de su energía en misiones de bajo valor. Necesita mucho tiempo para obtener recursos.
+                âŒ Pareto ignorado: el jugador gasta 80% de su energÃ­a en misiones de bajo valor. Necesita mucho tiempo para obtener recursos.
             </div>
         </div>
 
         <!-- DERECHA: CON Pareto (20% misiones dan 80% recursos) -->
         <div class="panel right-panel">
-            <h2>✅ OPTIMIZADO 80/20 <span class="badge">20% misiones → 80% recursos</span></h2>
+            <h2>âœ… OPTIMIZADO 80/20 <span class="badge">20% misiones â†’ 80% recursos</span></h2>
             <div class="energy-ui">
                 <div class="energy-text">
-                    <span>🔋 Energía diaria: 120/120</span>
-                    <span>⏳ 6 min disponible</span>
+                    <span>ðŸ”‹ EnergÃ­a diaria: 120/120</span>
+                    <span>â³ 6 min disponible</span>
                 </div>
                 <div class="energy-bar">
                     <div class="energy-fill" style="width: 100%; background: #f5b342;"></div>
                 </div>
 
-                <div style="color:#d2f0b6; margin: 1rem 0 0.5rem;">📋 Misiones destacadas (2 de 10 son óptimas):</div>
+                <div style="color:#d2f0b6; margin: 1rem 0 0.5rem;">ðŸ“‹ Misiones destacadas (2 de 10 son Ã³ptimas):</div>
                 <div class="missions-list">
-                    <!-- misión de alto valor (20% que da 80%) -->
+                    <!-- misiÃ³n de alto valor (20% que da 80%) -->
                     <div class="mission-item high-value">
                         <div class="mission-info">
-                            <span class="mission-icon">🔥</span>
-                            <span class="mission-desc">Mazmorra élite (recomendada)</span>
+                            <span class="mission-icon">ðŸ”¥</span>
+                            <span class="mission-desc">Mazmorra Ã©lite (recomendada)</span>
                         </div>
                         <div>
-                            <span class="mission-cost">-40⚡</span>
+                            <span class="mission-cost">-40âš¡</span>
                             <span class="mission-reward reward-large">+400 exp</span>
                         </div>
                     </div>
                     <div class="mission-item high-value">
                         <div class="mission-info">
-                            <span class="mission-icon">🐉</span>
+                            <span class="mission-icon">ðŸ‰</span>
                             <span class="mission-desc">Jefe diario</span>
                         </div>
                         <div>
-                            <span class="mission-cost">-50⚡</span>
+                            <span class="mission-cost">-50âš¡</span>
                             <span class="mission-reward reward-large">+550 exp</span>
                         </div>
                     </div>
-                    <!-- misiones pequeñas (relleno, opcionales) -->
+                    <!-- misiones pequeÃ±as (relleno, opcionales) -->
                     <div class="mission-item" style="opacity:0.6;">
                         <div class="mission-info">
-                            <span class="mission-icon">🌾</span>
+                            <span class="mission-icon">ðŸŒ¾</span>
                             <span class="mission-desc">Recolectar hierbas</span>
                         </div>
                         <div>
-                            <span class="mission-cost">-10⚡</span>
+                            <span class="mission-cost">-10âš¡</span>
                             <span class="mission-reward reward-small">+20 exp</span>
                         </div>
                     </div>
                     <div class="mission-item" style="opacity:0.6;">
                         <div class="mission-info">
-                            <span class="mission-icon">🪵</span>
-                            <span class="mission-desc">Cortar leños</span>
+                            <span class="mission-icon">ðŸªµ</span>
+                            <span class="mission-desc">Cortar leÃ±os</span>
                         </div>
                         <div>
-                            <span class="mission-cost">-8⚡</span>
+                            <span class="mission-cost">-8âš¡</span>
                             <span class="mission-reward reward-small">+15 exp</span>
                         </div>
                     </div>
                 </div>
 
                 <div class="stats-grid" style="background:#2a6040;">
-                    <div>⚡ usado: 90 (de 120)</div>
-                    <div>🎁 exp total: 950</div>
-                    <div>⏱️ tiempo: 5 min</div>
+                    <div>âš¡ usado: 90 (de 120)</div>
+                    <div>ðŸŽ exp total: 950</div>
+                    <div>â±ï¸ tiempo: 5 min</div>
                 </div>
 
                 <div class="pareto-highlight">
-                    ✅ ¡Solo 2 misiones (20%) consumen 90⚡ y dan 950 exp (82% de la recompensa total)! El jugador maximiza recursos en menos tiempo.
+                    âœ… Â¡Solo 2 misiones (20%) consumen 90âš¡ y dan 950 exp (82% de la recompensa total)! El jugador maximiza recursos en menos tiempo.
                 </div>
                 <div style="color:#b8f0b0; margin-top:0.5rem; font-size:0.95rem;">
-                    ⚡ Puede gastar la energía restante en misiones secundarias o desconectar.
+                    âš¡ Puede gastar la energÃ­a restante en misiones secundarias o desconectar.
                 </div>
             </div>
             <div class="explain-footer">
-                ✨ Pareto aplicado: el 20% de las misiones proporciona ~80% de los recursos. El jugador optimiza su tiempo y energía.
+                âœ¨ Pareto aplicado: el 20% de las misiones proporciona ~80% de los recursos. El jugador optimiza su tiempo y energÃ­a.
             </div>
         </div>
     </div>
@@ -521,41 +539,41 @@
     <!-- BLOQUE EXPLICATIVO 80/20 EN JUEGOS -->
     <div style="display: flex; flex-wrap: wrap; gap: 2rem; margin: 2.5rem 0 1rem; background: #112337; border-radius: 2.5rem; padding: 2rem 1.8rem; border: 1px solid #ffd28f40;">
         <div style="flex:1; min-width:200px;">
-            <h3 style="color:#fcc886;">⚡ Energía diaria</h3>
-            <p style="color:#c9def5;">Sistemas de stamina: algunas actividades dan mucho más beneficio por punto de energía.</p>
+            <h3 style="color:#fcc886;">âš¡ EnergÃ­a diaria</h3>
+            <p style="color:#c9def5;">Sistemas de stamina: algunas actividades dan mucho mÃ¡s beneficio por punto de energÃ­a.</p>
         </div>
         <div style="flex:1; min-width:200px;">
-            <h3 style="color:#abe0b3;">🎯 Identificar el 20%</h3>
-            <p style="color:#c9def5;">Mazmorras de élite, jefes diarios, misiones de facción. El jugador aprende a priorizarlas.</p>
+            <h3 style="color:#abe0b3;">ðŸŽ¯ Identificar el 20%</h3>
+            <p style="color:#c9def5;">Mazmorras de Ã©lite, jefes diarios, misiones de facciÃ³n. El jugador aprende a priorizarlas.</p>
         </div>
         <div style="flex:1; min-width:200px; border-left: 2px solid #5d7ea3; padding-left:1.5rem;">
-            <h3 style="color:#f5e0a3;">⏱️ Menos tiempo, mismos recursos</h3>
-            <p style="color:#c9def5;">Con Pareto, el jugador obtiene la mayoría de recursos en pocas acciones, liberando tiempo para exploración o descanso.</p>
+            <h3 style="color:#f5e0a3;">â±ï¸ Menos tiempo, mismos recursos</h3>
+            <p style="color:#c9def5;">Con Pareto, el jugador obtiene la mayorÃ­a de recursos en pocas acciones, liberando tiempo para exploraciÃ³n o descanso.</p>
         </div>
     </div>
 
-    <!-- COMPARACIÓN NUMÉRICA -->
+    <!-- COMPARACIÃ“N NUMÃ‰RICA -->
     <div style="background: #0e253a; border-radius: 2rem; padding: 1.5rem; margin: 1.5rem 0; border: 2px solid #8aa0c0;">
         <div style="display: flex; flex-wrap: wrap; gap: 2rem; align-items: center; justify-content: center; text-align: center;">
             <div style="background:#2c405b; border-radius: 60px; padding:0.8rem 1.8rem; color:#dddddd;">
-                <span style="font-weight:bold;">⬅️ IZQUIERDA:</span> 10 misiones → 320 exp en 14 min
+                <span style="font-weight:bold;">â¬…ï¸ IZQUIERDA:</span> 10 misiones â†’ 320 exp en 14 min
             </div>
             <div style="background:#4f7851; border-radius: 60px; padding:0.8rem 1.8rem; color:#fcf9cf;">
-                <span style="font-weight:bold;">➡️ DERECHA:</span> 2 misiones → 950 exp en 5 min (80/20)
+                <span style="font-weight:bold;">âž¡ï¸ DERECHA:</span> 2 misiones â†’ 950 exp en 5 min (80/20)
             </div>
         </div>
         <div style="color:#cfe2ff; margin-top:1rem; text-align:center;">
-            🎯 El jugador optimizado obtiene 3 veces más recursos en 1/3 del tiempo.
+            ðŸŽ¯ El jugador optimizado obtiene 3 veces mÃ¡s recursos en 1/3 del tiempo.
         </div>
     </div>
 
     <!-- FOOTER -->
     <div class="footer-note">
         <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 2rem; margin-bottom: 0.8rem;">
-            <span style="background:#263d59; padding:0.3rem 1.2rem; border-radius:40px;">⬅️ izquierda: 80% esfuerzo → 20% valor</span>
-            <span style="background:#1b4e38; padding:0.3rem 1.2rem; border-radius:40px;">➡️ derecha: 20% misiones → 80% recursos (Pareto)</span>
+            <span style="background:#263d59; padding:0.3rem 1.2rem; border-radius:40px;">â¬…ï¸ izquierda: 80% esfuerzo â†’ 20% valor</span>
+            <span style="background:#1b4e38; padding:0.3rem 1.2rem; border-radius:40px;">âž¡ï¸ derecha: 20% misiones â†’ 80% recursos (Pareto)</span>
         </div>
-        <p style="margin-top: 1.2rem;">🎮 Principio de Pareto en videojuegos: diseñar sistemas donde el jugador pueda obtener la mayoría de las recompensas invirtiendo pocas acciones clave (misiones élite, jefes diarios).</p>
+        <p style="margin-top: 1.2rem;">ðŸŽ® Principio de Pareto en videojuegos: diseÃ±ar sistemas donde el jugador pueda obtener la mayorÃ­a de las recompensas invirtiendo pocas acciones clave (misiones Ã©lite, jefes diarios).</p>
     </div>
 </div>
 </body>

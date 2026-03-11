@@ -1,9 +1,9 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ley de Proximidad · HUD en videojuegos</title>
+    <title>Ley de Proximidad Â· HUD en videojuegos</title>
     <style>
         * {
             margin: 0;
@@ -136,7 +136,7 @@
             margin-left: 0.5rem;
         }
 
-        /* área de pantalla de juego simulada */
+        /* Ã¡rea de pantalla de juego simulada */
         .game-screen {
             background: #172734;
             border-radius: 2.2rem;
@@ -149,7 +149,7 @@
             flex-direction: column;
         }
 
-        /* viewport (simula la acción) */
+        /* viewport (simula la acciÃ³n) */
         .viewport {
             flex: 1;
             background: #1f3447;
@@ -207,7 +207,7 @@
             background: #e15555;
         }
 
-        /* energía en la parte inferior derecha (separada) */
+        /* energÃ­a en la parte inferior derecha (separada) */
         .left-panel .energy-bottom-right {
             position: absolute;
             bottom: 12px;
@@ -270,7 +270,7 @@
             background: #c54f4f;
         }
 
-        /* adicional: indicador de munición arriba centro (otro elemento aislado) */
+        /* adicional: indicador de municiÃ³n arriba centro (otro elemento aislado) */
         .left-panel .ammo-top-center {
             position: absolute;
             top: 8px;
@@ -295,7 +295,7 @@
             color: #f4cfcf;
         }
 
-        /* ----- PANEL DERECHO: PROXIMIDAD (vida, energía y minimapa agrupados en la misma esquina) ----- */
+        /* ----- PANEL DERECHO: PROXIMIDAD (vida, energÃ­a y minimapa agrupados en la misma esquina) ----- */
         .right-panel .game-screen {
             background: #172b38;
         }
@@ -428,7 +428,7 @@
             font-size: 1rem;
         }
 
-        /* botón de regreso al inicio */
+        /* botÃ³n de regreso al inicio */
         .back-button {
             position: fixed;
             bottom: 40px;
@@ -467,32 +467,50 @@
     </style>
 </head>
 <body>
-<a href="index.html" class="back-button">←</a>
+<a href="index.html" class="back-button">
+    <!-- Menú Lateral Flotante -->
+    <nav class="sidebar-menu">
+        <a href="index.html" class="home" title="Inicio"></a>
+        <a href="PrimeraLey.html" title="Ley 1">1</a>
+        <a href="SegundaLey.html" title="Ley 2">2</a>
+        <a href="terceraLey.html" title="Ley 3">3</a>
+        <a href="CuartaLey.html" title="Ley 4">4</a>
+        <a href="QuintaLey.html" title="Ley 5">5</a>
+        <a href="SextaLey.html" title="Ley 6">6</a>
+        <a href="SeptimaLey.html" title="Ley 7">7</a>
+        <a href="OctavaLey.html" title="Ley 8">8</a>
+        <a href="NovenaLey.html" title="Ley 9">9</a>
+        <a href="DecimaLey.html" title="Ley 10"></a>
+        <a href="OnceLey.html" title="Ley 11">11</a>
+        <a href="DoceLey.html" title="Ley 12">12</a>
+        <a href="herramientas.html" class="tools" title="Herramientas"></a>
+    </nav>
+â†</a>
 <div class="container">
     <!-- LEY DE PROXIMIDAD -->
     <div class="header-prox">
-        <h1>🔗 Ley de Proximidad</h1>
-        <p>“Los objetos que están cerca o próximos entre sí tienden a agruparse.”</p>
+        <h1>ðŸ”— Ley de Proximidad</h1>
+        <p>â€œLos objetos que estÃ¡n cerca o prÃ³ximos entre sÃ­ tienden a agruparse.â€</p>
         <div class="sub-prox">
-            <span>🎮 vida, energía y minimapa</span>
-            <span>🗺️ agrupación en una esquina</span>
+            <span>ðŸŽ® vida, energÃ­a y minimapa</span>
+            <span>ðŸ—ºï¸ agrupaciÃ³n en una esquina</span>
         </div>
     </div>
 
     <div class="row">
         <!-- IZQUIERDA: SIN PROXIMIDAD (elementos dispersos por toda la pantalla) -->
         <div class="panel left-panel">
-            <h2>🔻 DISPERSIÓN <span class="badge">sin agrupar</span></h2>
+            <h2>ðŸ”» DISPERSIÃ“N <span class="badge">sin agrupar</span></h2>
             <div class="game-screen">
                 <div class="hud-disperso">
                     <!-- vida arriba izquierda -->
                     <div class="health-top-left">
-                        <span>❤️</span>
+                        <span>â¤ï¸</span>
                         <div class="health-bar"><div class="health-fill"></div></div>
                     </div>
-                    <!-- energía abajo derecha -->
+                    <!-- energÃ­a abajo derecha -->
                     <div class="energy-bottom-right">
-                        <span>⚡</span>
+                        <span>âš¡</span>
                         <div class="energy-bar"><div class="energy-fill"></div></div>
                     </div>
                     <!-- minimapa arriba derecha -->
@@ -505,44 +523,44 @@
                         </div>
                         <span style="font-size:0.65rem; color:#a4c2a4;">minimapa</span>
                     </div>
-                    <!-- munición arriba centro (otro elemento flotante) -->
+                    <!-- municiÃ³n arriba centro (otro elemento flotante) -->
                     <div class="ammo-top-center">
-                        🔫 24/30
+                        ðŸ”« 24/30
                     </div>
                     <!-- zona de "juego" (fondo) -->
                     <div class="viewport">
-                        ⚔️ acción
+                        âš”ï¸ acciÃ³n
                     </div>
                 </div>
                 <div class="dispersion-note">
-                    ⚠️ Vida, energía y minimapa están en tres esquinas distintas. El jugador debe mover la mirada continuamente para evaluar su estado.
+                    âš ï¸ Vida, energÃ­a y minimapa estÃ¡n en tres esquinas distintas. El jugador debe mover la mirada continuamente para evaluar su estado.
                 </div>
             </div>
             <div class="explain-footer">
-                👀 Elementos separados violan la ley de proximidad: la información vital no se asocia, aumenta el esfuerzo cognitivo.
+                ðŸ‘€ Elementos separados violan la ley de proximidad: la informaciÃ³n vital no se asocia, aumenta el esfuerzo cognitivo.
             </div>
         </div>
 
         <!-- DERECHA: PROXIMIDAD (todo agrupado en la misma esquina) -->
         <div class="panel right-panel">
-            <h2>✅ AGRUPACIÓN <span class="badge">proximidad</span></h2>
+            <h2>âœ… AGRUPACIÃ“N <span class="badge">proximidad</span></h2>
             <div class="game-screen">
                 <div class="hud-group">
-                    <!-- CLUSTER ÚNICO: vida, energía y minimapa en la misma esquina -->
+                    <!-- CLUSTER ÃšNICO: vida, energÃ­a y minimapa en la misma esquina -->
                     <div class="proximity-cluster">
                         <div class="row-stat">
-                            <span class="stat-icon">❤️</span>
+                            <span class="stat-icon">â¤ï¸</span>
                             <div class="bar-container"><div class="health-fill-prox"></div></div>
                             <span style="color:#fbb;">78%</span>
                         </div>
                         <div class="row-stat">
-                            <span class="stat-icon">⚡</span>
+                            <span class="stat-icon">âš¡</span>
                             <div class="bar-container"><div class="energy-fill-prox"></div></div>
                             <span style="color:#aae;">58%</span>
                         </div>
                         <!-- minimapa integrado en el mismo grupo (proximidad) -->
                         <div class="minimap-prox">
-                            <span class="stat-icon">🗺️</span>
+                            <span class="stat-icon">ðŸ—ºï¸</span>
                             <div class="minimap-box">
                                 <div class="minimap-pixel"></div>
                                 <div class="minimap-pixel player"></div>
@@ -559,26 +577,26 @@
                     </div>
                     <!-- fondo de juego -->
                     <div class="viewport">
-                        ⚔️ partida en curso
+                        âš”ï¸ partida en curso
                     </div>
                 </div>
                 <div class="prox-note">
-                    ✅ Vida, energía y minimapa están a menos de 50 píxeles de distancia. El cerebro los agrupa como un solo panel de estado: lectura instantánea.
+                    âœ… Vida, energÃ­a y minimapa estÃ¡n a menos de 50 pÃ­xeles de distancia. El cerebro los agrupa como un solo panel de estado: lectura instantÃ¡nea.
                 </div>
             </div>
             <div class="explain-footer">
-                🧠 Proximidad aplicada: el jugador asocia rápidamente salud, recurso y posición. Menos movimientos oculares, decisión más rápida.
+                ðŸ§  Proximidad aplicada: el jugador asocia rÃ¡pidamente salud, recurso y posiciÃ³n. Menos movimientos oculares, decisiÃ³n mÃ¡s rÃ¡pida.
             </div>
         </div>
     </div>
 
-    <!-- PIE DE PÁGINA EXPLICATIVO -->
+    <!-- PIE DE PÃGINA EXPLICATIVO -->
     <div class="footer-note">
         <div style="display: flex; flex-wrap: wrap; gap: 2rem; justify-content: center; margin-bottom: 0.5rem;">
-            <span>🔸 izquierda: vida (arriba izq), energía (abajo der), minimapa (arriba der) → dispersión</span>
-            <span>🔸 derecha: vida, energía y minimapa agrupados en la misma esquina superior izquierda</span>
+            <span>ðŸ”¸ izquierda: vida (arriba izq), energÃ­a (abajo der), minimapa (arriba der) â†’ dispersiÃ³n</span>
+            <span>ðŸ”¸ derecha: vida, energÃ­a y minimapa agrupados en la misma esquina superior izquierda</span>
         </div>
-        <p style="margin-top: 1rem;">🎮 Ley de Proximidad en HUD: cuando los elementos relacionados están cerca, se perciben como un conjunto funcional, facilitando la comprensión rápida del estado del personaje.</p>
+        <p style="margin-top: 1rem;">ðŸŽ® Ley de Proximidad en HUD: cuando los elementos relacionados estÃ¡n cerca, se perciben como un conjunto funcional, facilitando la comprensiÃ³n rÃ¡pida del estado del personaje.</p>
     </div>
 </div>
 </body>

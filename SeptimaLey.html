@@ -1,9 +1,9 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ley de Parkinson · curvas de dificultad</title>
+    <title>Ley de Parkinson Â· curvas de dificultad</title>
     <style>
         * {
             margin: 0;
@@ -196,7 +196,7 @@
             border: 3px solid #d4ed7c;
         }
 
-        /* panel izquierdo: sin obstáculos, nivel lineal (no aplica Parkinson) */
+        /* panel izquierdo: sin obstÃ¡culos, nivel lineal (no aplica Parkinson) */
         .left-panel .track {
             justify-content: space-between;
         }
@@ -216,7 +216,7 @@
             margin-top: 1rem;
         }
 
-        /* panel derecho: obstáculos, curva de dificultad (Parkinson) */
+        /* panel derecho: obstÃ¡culos, curva de dificultad (Parkinson) */
         .right-panel .track {
             flex-wrap: wrap;
             gap: 0.5rem;
@@ -291,7 +291,7 @@
             margin: 1rem 0;
         }
 
-        /* botón de regreso al inicio */
+        /* botÃ³n de regreso al inicio */
         .back-button {
             position: fixed;
             bottom: 40px;
@@ -330,73 +330,91 @@
     </style>
 </head>
 <body>
-<a href="index.html" class="back-button">←</a>
+<a href="index.html" class="back-button">
+    <!-- Menú Lateral Flotante -->
+    <nav class="sidebar-menu">
+        <a href="index.html" class="home" title="Inicio"></a>
+        <a href="PrimeraLey.html" title="Ley 1">1</a>
+        <a href="SegundaLey.html" title="Ley 2">2</a>
+        <a href="terceraLey.html" title="Ley 3">3</a>
+        <a href="CuartaLey.html" title="Ley 4">4</a>
+        <a href="QuintaLey.html" title="Ley 5">5</a>
+        <a href="SextaLey.html" title="Ley 6">6</a>
+        <a href="SeptimaLey.html" title="Ley 7">7</a>
+        <a href="OctavaLey.html" title="Ley 8">8</a>
+        <a href="NovenaLey.html" title="Ley 9">9</a>
+        <a href="DecimaLey.html" title="Ley 10"></a>
+        <a href="OnceLey.html" title="Ley 11">11</a>
+        <a href="DoceLey.html" title="Ley 12">12</a>
+        <a href="herramientas.html" class="tools" title="Herramientas"></a>
+    </nav>
+â†</a>
 <div class="parkinson-card">
     <!-- ENCABEZADO LEY DE PARKINSON -->
     <div class="header-park">
-        <h1>⏳ Ley de Parkinson</h1>
-        <p>“Cualquier tarea se infla hasta ocupar todo el tiempo disponible.”</p>
+        <h1>â³ Ley de Parkinson</h1>
+        <p>â€œCualquier tarea se infla hasta ocupar todo el tiempo disponible.â€</p>
         <div class="sub-park">
-            <span>🎮 obstáculos y curvas de dificultad</span>
-            <span>⏱️ frenar al jugador</span>
+            <span>ðŸŽ® obstÃ¡culos y curvas de dificultad</span>
+            <span>â±ï¸ frenar al jugador</span>
         </div>
     </div>
 
     <div class="row">
-        <!-- IZQUIERDA: SIN obstáculos, nivel lineal (no aprovecha Parkinson) -->
+        <!-- IZQUIERDA: SIN obstÃ¡culos, nivel lineal (no aprovecha Parkinson) -->
         <div class="panel left-panel">
-            <h2>🔻 SIN obstáculos <span class="badge">se completa rápido</span></h2>
+            <h2>ðŸ”» SIN obstÃ¡culos <span class="badge">se completa rÃ¡pido</span></h2>
             <div class="level-container">
                 <div style="display: flex; gap: 1rem; align-items: center; margin-bottom: 1.2rem;">
-                    <div class="player-icon">👾</div>
-                    <div style="color:white;">Nivel lineal · 3 minutos estimados</div>
+                    <div class="player-icon">ðŸ‘¾</div>
+                    <div style="color:white;">Nivel lineal Â· 3 minutos estimados</div>
                 </div>
                 <div class="track">
                     <span style="color:#aaa;">inicio</span>
-                    <span>➡️</span>
-                    <span>➡️</span>
-                    <span>➡️</span>
+                    <span>âž¡ï¸</span>
+                    <span>âž¡ï¸</span>
+                    <span>âž¡ï¸</span>
                     <span style="color:#aaa;">meta</span>
                 </div>
                 <div class="progress-line">
                     <div class="progress-fill" style="width: 90%;"></div>
                 </div>
                 <div class="timer-sim">
-                    <span>⏱️ tiempo real empleado: 2m 45s</span>
-                    <span>⚡ sin demora</span>
+                    <span>â±ï¸ tiempo real empleado: 2m 45s</span>
+                    <span>âš¡ sin demora</span>
                 </div>
                 <div style="background: #3a2d40; border-radius: 20px; padding: 0.8rem; color: #e0bdbd; margin-top: 0.8rem;">
-                    😴 Jugador avanza sin resistencia. Termina antes de lo previsto. No hay "inflado" de la tarea.
+                    ðŸ˜´ Jugador avanza sin resistencia. Termina antes de lo previsto. No hay "inflado" de la tarea.
                 </div>
             </div>
             <div class="explain-footer">
-                ⏩ Parkinson ignorado: la tarea se completa en menos tiempo del disponible, no hay obstáculos que expandan la duración.
+                â© Parkinson ignorado: la tarea se completa en menos tiempo del disponible, no hay obstÃ¡culos que expandan la duraciÃ³n.
             </div>
         </div>
 
-        <!-- DERECHA: CON obstáculos y curvas de dificultad (aplica Parkinson) -->
+        <!-- DERECHA: CON obstÃ¡culos y curvas de dificultad (aplica Parkinson) -->
         <div class="panel right-panel">
-            <h2>✅ CON curva de dificultad <span class="badge">obstáculos expanden el tiempo</span></h2>
+            <h2>âœ… CON curva de dificultad <span class="badge">obstÃ¡culos expanden el tiempo</span></h2>
             <div class="level-container">
                 <div style="display: flex; gap: 1rem; align-items: center; margin-bottom: 0.5rem;">
-                    <div class="player-icon">👾</div>
-                    <div style="color:white;">Nivel con obstáculos · 5 minutos disponibles</div>
+                    <div class="player-icon">ðŸ‘¾</div>
+                    <div style="color:white;">Nivel con obstÃ¡culos Â· 5 minutos disponibles</div>
                 </div>
 
-                <!-- obstáculos en el camino -->
+                <!-- obstÃ¡culos en el camino -->
                 <div class="track">
-                    <div class="obstacle">🧱 muro</div>
-                    <div class="obstacle">🕳️ pozo</div>
-                    <div class="obstacle">🐉 enemigo</div>
-                    <div class="obstacle">🧩 puzzle</div>
-                    <div class="obstacle">🌪️ trampa</div>
+                    <div class="obstacle">ðŸ§± muro</div>
+                    <div class="obstacle">ðŸ•³ï¸ pozo</div>
+                    <div class="obstacle">ðŸ‰ enemigo</div>
+                    <div class="obstacle">ðŸ§© puzzle</div>
+                    <div class="obstacle">ðŸŒªï¸ trampa</div>
                 </div>
 
                 <!-- curva de dificultad ascendente -->
                 <div class="difficulty-curve">
-                    <div class="curve-item">🔹 sección 1: enemigos básicos (poca demora)</div>
-                    <div class="curve-item">🔸 sección 2: rompecabezas + oleadas (aumenta el tiempo)</div>
-                    <div class="curve-item">🔹 sección 3: minijefe (ralentiza el avance)</div>
+                    <div class="curve-item">ðŸ”¹ secciÃ³n 1: enemigos bÃ¡sicos (poca demora)</div>
+                    <div class="curve-item">ðŸ”¸ secciÃ³n 2: rompecabezas + oleadas (aumenta el tiempo)</div>
+                    <div class="curve-item">ðŸ”¹ secciÃ³n 3: minijefe (ralentiza el avance)</div>
                 </div>
 
                 <div class="progress-line">
@@ -404,16 +422,16 @@
                 </div>
 
                 <div class="timer-sim">
-                    <span>⏱️ tiempo real: 4m 30s y sigue...</span>
-                    <span>⏳ casi agota el disponible</span>
+                    <span>â±ï¸ tiempo real: 4m 30s y sigue...</span>
+                    <span>â³ casi agota el disponible</span>
                 </div>
 
                 <div class="time-warning">
-                    🧠 Ley de Parkinson: los obstáculos y la dificultad creciente hacen que el jugador utilice casi todo el tiempo asignado. La tarea se "infla" hasta ocupar el tiempo disponible.
+                    ðŸ§  Ley de Parkinson: los obstÃ¡culos y la dificultad creciente hacen que el jugador utilice casi todo el tiempo asignado. La tarea se "infla" hasta ocupar el tiempo disponible.
                 </div>
             </div>
             <div class="explain-footer">
-                ⏳ Parkinson aplicado: la curva de dificultad (obstáculos, puzles, enemigos) expande la duración del nivel. El jugador se adapta y llena el tiempo disponible.
+                â³ Parkinson aplicado: la curva de dificultad (obstÃ¡culos, puzles, enemigos) expande la duraciÃ³n del nivel. El jugador se adapta y llena el tiempo disponible.
             </div>
         </div>
     </div>
@@ -421,26 +439,26 @@
     <!-- BLOQUE EXPLICATIVO: PARKINSON EN JUEGOS -->
     <div style="display: flex; flex-wrap: wrap; gap: 2rem; margin: 2.5rem 0 1rem; background: #112337; border-radius: 2.5rem; padding: 2rem 1.8rem; border: 1px solid #ffd28f40;">
         <div style="flex:1; min-width:220px;">
-            <h3 style="color:#fcc886;">📈 Inflado de tarea</h3>
-            <p style="color:#c9def5; margin-top:0.5rem;">Si el jugador tiene 10 minutos para un nivel, los diseñadores colocan obstáculos para que dure cerca de 10 minutos, no 3.</p>
+            <h3 style="color:#fcc886;">ðŸ“ˆ Inflado de tarea</h3>
+            <p style="color:#c9def5; margin-top:0.5rem;">Si el jugador tiene 10 minutos para un nivel, los diseÃ±adores colocan obstÃ¡culos para que dure cerca de 10 minutos, no 3.</p>
         </div>
         <div style="flex:1; min-width:220px;">
-            <h3 style="color:#abe0b3;">🎮 Curvas de dificultad</h3>
-            <p style="color:#c9def5; margin-top:0.5rem;">Enemigos más fuertes, puzles, áreas bloqueadas. Todo esto expande el tiempo de juego ajustándose al tiempo disponible.</p>
+            <h3 style="color:#abe0b3;">ðŸŽ® Curvas de dificultad</h3>
+            <p style="color:#c9def5; margin-top:0.5rem;">Enemigos mÃ¡s fuertes, puzles, Ã¡reas bloqueadas. Todo esto expande el tiempo de juego ajustÃ¡ndose al tiempo disponible.</p>
         </div>
         <div style="flex:1; min-width:180px; border-left: 2px solid #5d7ea3; padding-left:1.5rem;">
-            <h3 style="color:#f5e0a3;">⚡ Ejemplo</h3>
-            <p style="color:#c9def5;">Nivel sin obstáculos: 2 min. Con obstáculos: 8 min. El tiempo disponible (10 min) se llena con desafíos.</p>
+            <h3 style="color:#f5e0a3;">âš¡ Ejemplo</h3>
+            <p style="color:#c9def5;">Nivel sin obstÃ¡culos: 2 min. Con obstÃ¡culos: 8 min. El tiempo disponible (10 min) se llena con desafÃ­os.</p>
         </div>
     </div>
 
     <!-- FOOTER -->
     <div class="footer-note">
         <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 2rem; margin-bottom: 0.8rem;">
-            <span style="background:#263d59; padding:0.3rem 1.2rem; border-radius:40px;">⬅️ izquierda: nivel lineal, 2m 45s (no ocupa el tiempo)</span>
-            <span style="background:#1b4e38; padding:0.3rem 1.2rem; border-radius:40px;">➡️ derecha: obstáculos, 4m30s+ y sigue → tiende a llenar el tiempo</span>
+            <span style="background:#263d59; padding:0.3rem 1.2rem; border-radius:40px;">â¬…ï¸ izquierda: nivel lineal, 2m 45s (no ocupa el tiempo)</span>
+            <span style="background:#1b4e38; padding:0.3rem 1.2rem; border-radius:40px;">âž¡ï¸ derecha: obstÃ¡culos, 4m30s+ y sigue â†’ tiende a llenar el tiempo</span>
         </div>
-        <p style="margin-top: 1.2rem;">🎮 Ley de Parkinson en videojuegos: los diseñadores introducen obstáculos y curvas de dificultad para que el jugador ocupe el tiempo previsto, inflando la duración de la tarea.</p>
+        <p style="margin-top: 1.2rem;">ðŸŽ® Ley de Parkinson en videojuegos: los diseÃ±adores introducen obstÃ¡culos y curvas de dificultad para que el jugador ocupe el tiempo previsto, inflando la duraciÃ³n de la tarea.</p>
     </div>
 </div>
 </body>

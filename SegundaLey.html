@@ -1,9 +1,9 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ley de Hick · rareza y franjas de color</title>
+    <title>Ley de Hick Â· rareza y franjas de color</title>
     <style>
         * {
             margin: 0;
@@ -197,7 +197,7 @@
             color: #b8c7e7;
         }
 
-        /* ---------- PANEL IZQUIERDO: SIN JERARQUÍA CLARA (muchas alternativas confusas) ---------- */
+        /* ---------- PANEL IZQUIERDO: SIN JERARQUÃA CLARA (muchas alternativas confusas) ---------- */
         .left-panel .armory {
             background: #272e41;
         }
@@ -240,7 +240,7 @@
             filter: grayscale(0.6);
         }
 
-        /* muchos números, sintesis prioritaria */
+        /* muchos nÃºmeros, sintesis prioritaria */
         .left-panel .decision-tip {
             background: #522f2f60;
             border-left: 6px solid #c95c5c;
@@ -342,7 +342,7 @@
             font-size: 0.95rem;
         }
 
-        /* botón de regreso al inicio */
+        /* botÃ³n de regreso al inicio */
         .back-button {
             position: fixed;
             bottom: 40px;
@@ -381,138 +381,156 @@
     </style>
 </head>
 <body>
-<a href="index.html" class="back-button">←</a>
+<a href="index.html" class="back-button">
+    <!-- Menú Lateral Flotante -->
+    <nav class="sidebar-menu">
+        <a href="index.html" class="home" title="Inicio"></a>
+        <a href="PrimeraLey.html" title="Ley 1">1</a>
+        <a href="SegundaLey.html" title="Ley 2">2</a>
+        <a href="terceraLey.html" title="Ley 3">3</a>
+        <a href="CuartaLey.html" title="Ley 4">4</a>
+        <a href="QuintaLey.html" title="Ley 5">5</a>
+        <a href="SextaLey.html" title="Ley 6">6</a>
+        <a href="SeptimaLey.html" title="Ley 7">7</a>
+        <a href="OctavaLey.html" title="Ley 8">8</a>
+        <a href="NovenaLey.html" title="Ley 9">9</a>
+        <a href="DecimaLey.html" title="Ley 10"></a>
+        <a href="OnceLey.html" title="Ley 11">11</a>
+        <a href="DoceLey.html" title="Ley 12">12</a>
+        <a href="herramientas.html" class="tools" title="Herramientas"></a>
+    </nav>
+â†</a>
 <div class="container">
     <!-- LEY DE HICK + INTRO -->
     <div class="hick-header">
-        <h1>⚡ Ley de Hick ⚡</h1>
-        <p>“El tiempo que lleva tomar una decisión aumenta con el número de alternativas y su complejidad.”</p>
+        <h1>âš¡ Ley de Hick âš¡</h1>
+        <p>â€œEl tiempo que lleva tomar una decisiÃ³n aumenta con el nÃºmero de alternativas y su complejidad.â€</p>
         <div class="sub-lema">
-            <span>🎮 cómo elegir arma</span>
-            <span>⚔️ rareza & franjas de color</span>
+            <span>ðŸŽ® cÃ³mo elegir arma</span>
+            <span>âš”ï¸ rareza & franjas de color</span>
         </div>
     </div>
 
-    <!-- DOS INTERFACES: IZQUIERDA (múltiples alternativas confusas) Y DERECHA (con franjas de rareza) -->
+    <!-- DOS INTERFACES: IZQUIERDA (mÃºltiples alternativas confusas) Y DERECHA (con franjas de rareza) -->
     <div class="row">
         
-        <!-- PANEL IZQUIERDA: NÚMERO DE ALTERNATIVAS ALTO, SIN JERARQUÍA VISUAL -->
+        <!-- PANEL IZQUIERDA: NÃšMERO DE ALTERNATIVAS ALTO, SIN JERARQUÃA VISUAL -->
         <div class="panel left-panel">
-            <h2>🔻 SIN sistema de rareza <span class="badge">10+ atributos</span></h2>
+            <h2>ðŸ”» SIN sistema de rareza <span class="badge">10+ atributos</span></h2>
             <div class="armory">
                 <div style="margin-bottom: 1rem; color:#b9bedd; font-weight: 300; text-align:center; padding: 0 0 0.5rem;">
-                    ⚠️ 8 armas · cada una con 4 stats · sin prioridad visual
+                    âš ï¸ 8 armas Â· cada una con 4 stats Â· sin prioridad visual
                 </div>
                 <div class="armas-grid">
                     <!-- arma 1 -->
                     <div class="arma-item">
-                        <div class="arma-icon">🔫</div>
+                        <div class="arma-icon">ðŸ”«</div>
                         <div class="arma-info">
-                            <div class="arma-nombre">Pistola Táctiva <span class="tipo">rápida</span></div>
+                            <div class="arma-nombre">Pistola TÃ¡ctiva <span class="tipo">rÃ¡pida</span></div>
                             <div class="stats">
-                                <span class="stat dps">💥 124</span>
-                                <span class="stat accuracy">🎯 72%</span>
-                                <span class="stat range">📏 18m</span>
-                                <span class="stat">🔁 2.4s</span>
+                                <span class="stat dps">ðŸ’¥ 124</span>
+                                <span class="stat accuracy">ðŸŽ¯ 72%</span>
+                                <span class="stat range">ðŸ“ 18m</span>
+                                <span class="stat">ðŸ” 2.4s</span>
                             </div>
                         </div>
-                        <div class="extra-flavor">🔄</div>
+                        <div class="extra-flavor">ðŸ”„</div>
                     </div>
                     <!-- arma 2 -->
                     <div class="arma-item">
-                        <div class="arma-icon">🏹</div>
+                        <div class="arma-icon">ðŸ¹</div>
                         <div class="arma-info">
-                            <div class="arma-nombre">Arco compuesto <span class="tipo">precisión</span></div>
+                            <div class="arma-nombre">Arco compuesto <span class="tipo">precisiÃ³n</span></div>
                             <div class="stats">
-                                <span class="stat dps">💥 210</span>
-                                <span class="stat accuracy">🎯 94%</span>
-                                <span class="stat range">📏 42m</span>
-                                <span class="stat">🔁 3.8s</span>
+                                <span class="stat dps">ðŸ’¥ 210</span>
+                                <span class="stat accuracy">ðŸŽ¯ 94%</span>
+                                <span class="stat range">ðŸ“ 42m</span>
+                                <span class="stat">ðŸ” 3.8s</span>
                             </div>
                         </div>
-                        <div class="extra-flavor">🏹</div>
+                        <div class="extra-flavor">ðŸ¹</div>
                     </div>
                     <!-- arma 3 -->
                     <div class="arma-item">
-                        <div class="arma-icon">🔫</div>
+                        <div class="arma-icon">ðŸ”«</div>
                         <div class="arma-info">
-                            <div class="arma-nombre">Subfusil <span class="tipo">ráfaga</span></div>
+                            <div class="arma-nombre">Subfusil <span class="tipo">rÃ¡faga</span></div>
                             <div class="stats">
-                                <span class="stat dps">💥 189</span>
-                                <span class="stat accuracy">🎯 58%</span>
-                                <span class="stat range">📏 22m</span>
-                                <span class="stat">🔁 2.1s</span>
+                                <span class="stat dps">ðŸ’¥ 189</span>
+                                <span class="stat accuracy">ðŸŽ¯ 58%</span>
+                                <span class="stat range">ðŸ“ 22m</span>
+                                <span class="stat">ðŸ” 2.1s</span>
                             </div>
                         </div>
-                        <div class="extra-flavor">🌀</div>
+                        <div class="extra-flavor">ðŸŒ€</div>
                     </div>
                     <!-- arma 4 (fusil) -->
                     <div class="arma-item">
-                        <div class="arma-icon">🔫</div>
+                        <div class="arma-icon">ðŸ”«</div>
                         <div class="arma-info">
-                            <div class="arma-nombre">Fusil asalto <span class="tipo">automático</span></div>
+                            <div class="arma-nombre">Fusil asalto <span class="tipo">automÃ¡tico</span></div>
                             <div class="stats">
-                                <span class="stat dps">💥 176</span>
-                                <span class="stat accuracy">🎯 69%</span>
-                                <span class="stat range">📏 38m</span>
-                                <span class="stat">🔁 2.7s</span>
+                                <span class="stat dps">ðŸ’¥ 176</span>
+                                <span class="stat accuracy">ðŸŽ¯ 69%</span>
+                                <span class="stat range">ðŸ“ 38m</span>
+                                <span class="stat">ðŸ” 2.7s</span>
                             </div>
                         </div>
-                        <div class="extra-flavor">⚡</div>
+                        <div class="extra-flavor">âš¡</div>
                     </div>
-                    <!-- más armas mezcladas, sin código de color -->
+                    <!-- mÃ¡s armas mezcladas, sin cÃ³digo de color -->
                     <div class="arma-item">
-                        <div class="arma-icon">🔫</div>
+                        <div class="arma-icon">ðŸ”«</div>
                         <div class="arma-info">
                             <div class="arma-nombre">Francotirador <span class="tipo">lento</span></div>
                             <div class="stats">
-                                <span class="stat dps">💥 290</span>
-                                <span class="stat accuracy">🎯 97%</span>
-                                <span class="stat range">📏 65m</span>
-                                <span class="stat">🔁 4.6s</span>
+                                <span class="stat dps">ðŸ’¥ 290</span>
+                                <span class="stat accuracy">ðŸŽ¯ 97%</span>
+                                <span class="stat range">ðŸ“ 65m</span>
+                                <span class="stat">ðŸ” 4.6s</span>
                             </div>
                         </div>
-                        <div class="extra-flavor">🔭</div>
+                        <div class="extra-flavor">ðŸ”­</div>
                     </div>
                     <div class="arma-item">
-                        <div class="arma-icon">🔫</div>
+                        <div class="arma-icon">ðŸ”«</div>
                         <div class="arma-info">
                             <div class="arma-nombre">Escopeta <span class="tipo">pesada</span></div>
                             <div class="stats">
-                                <span class="stat dps">💥 270</span>
-                                <span class="stat accuracy">🎯 43%</span>
-                                <span class="stat range">📏 12m</span>
-                                <span class="stat">🔁 3.2s</span>
+                                <span class="stat dps">ðŸ’¥ 270</span>
+                                <span class="stat accuracy">ðŸŽ¯ 43%</span>
+                                <span class="stat range">ðŸ“ 12m</span>
+                                <span class="stat">ðŸ” 3.2s</span>
                             </div>
                         </div>
-                        <div class="extra-flavor">💥</div>
+                        <div class="extra-flavor">ðŸ’¥</div>
                     </div>
                 </div>
                 <div style="margin-top: 1.4rem; color: #dbb38b; font-size:0.95rem; background:#1b2133; padding: 0.5rem 1rem; border-radius: 30px; border: 1px dashed #876b4b;">
-                    ⏳ Cada arma mezcla stats sin jerarquía: usuario debe leer todo y comparar. Tiempo de decisión alto.
+                    â³ Cada arma mezcla stats sin jerarquÃ­a: usuario debe leer todo y comparar. Tiempo de decisiÃ³n alto.
                 </div>
             </div>
             <div class="explain-decision">
-                <span style="font-size:2rem;">🧐</span> 6 alternativas con 4-5 atributos cada una. Sin franjas de rareza: la elección se vuelve lenta y costosa.
+                <span style="font-size:2rem;">ðŸ§</span> 6 alternativas con 4-5 atributos cada una. Sin franjas de rareza: la elecciÃ³n se vuelve lenta y costosa.
             </div>
         </div>
         
         <!-- PANEL DERECHO: FRANJAS DE COLOR / RAREZA (sistema simplificado) -->
         <div class="panel right-panel">
-            <h2>✅ Con rareza + franjas <span class="badge">color = poder</span></h2>
+            <h2>âœ… Con rareza + franjas <span class="badge">color = poder</span></h2>
             <div class="armory">
                 <div style="display: flex; gap: 1.2rem; justify-content: center; margin-bottom: 1.4rem; flex-wrap: wrap;">
-                    <span style="background: #7f8c8d20; padding:0.3rem 1rem; border-left: 8px solid #7f8c8d;">común</span>
+                    <span style="background: #7f8c8d20; padding:0.3rem 1rem; border-left: 8px solid #7f8c8d;">comÃºn</span>
                     <span style="background: #1f374b20; padding:0.3rem 1rem; border-left: 8px solid #3c9bdc;">raro</span>
-                    <span style="background: #352b4b20; padding:0.3rem 1rem; border-left: 8px solid #b887e4;">épico</span>
+                    <span style="background: #352b4b20; padding:0.3rem 1rem; border-left: 8px solid #b887e4;">Ã©pico</span>
                     <span style="background: #4f3d2820; padding:0.3rem 1rem; border-left: 8px solid #f5b342;">legendario</span>
                 </div>
                 <div class="armas-grid">
-                    <!-- COMÚN (gris) -->
+                    <!-- COMÃšN (gris) -->
                     <div class="arma-item rarity-common">
-                        <div class="arma-icon">🔫</div>
+                        <div class="arma-icon">ðŸ”«</div>
                         <div class="arma-info">
-                            <div class="arma-nombre">Pistola común <span class="rarity-badge">común</span></div>
+                            <div class="arma-nombre">Pistola comÃºn <span class="rarity-badge">comÃºn</span></div>
                             <div class="power-indicator">
                                 <span class="power-bar"><span class="power-fill common-fill"></span></span>
                                 <span class="stat-value">142 pts</span>
@@ -521,7 +539,7 @@
                     </div>
                     <!-- RARO (azul) -->
                     <div class="arma-item rarity-rare">
-                        <div class="arma-icon">🏹</div>
+                        <div class="arma-icon">ðŸ¹</div>
                         <div class="arma-info">
                             <div class="arma-nombre">Arco de viento <span class="rarity-badge">raro</span></div>
                             <div class="power-indicator">
@@ -530,11 +548,11 @@
                             </div>
                         </div>
                     </div>
-                    <!-- ÉPICO (morado) -->
+                    <!-- Ã‰PICO (morado) -->
                     <div class="arma-item rarity-epic">
-                        <div class="arma-icon">⚔️</div>
+                        <div class="arma-icon">âš”ï¸</div>
                         <div class="arma-info">
-                            <div class="arma-nombre">Espada oscura <span class="rarity-badge">épico</span></div>
+                            <div class="arma-nombre">Espada oscura <span class="rarity-badge">Ã©pico</span></div>
                             <div class="power-indicator">
                                 <span class="power-bar"><span class="power-fill epic-fill"></span></span>
                                 <span class="stat-value">310 pts</span>
@@ -543,7 +561,7 @@
                     </div>
                     <!-- LEGENDARIO (dorado) -->
                     <div class="arma-item rarity-legendary">
-                        <div class="arma-icon">🔫</div>
+                        <div class="arma-icon">ðŸ”«</div>
                         <div class="arma-info">
                             <div class="arma-nombre">Destructor solar <span class="rarity-badge">legendario</span></div>
                             <div class="power-indicator">
@@ -552,11 +570,11 @@
                             </div>
                         </div>
                     </div>
-                    <!-- otro épico (demostración) -->
+                    <!-- otro Ã©pico (demostraciÃ³n) -->
                     <div class="arma-item rarity-epic">
-                        <div class="arma-icon">🔮</div>
+                        <div class="arma-icon">ðŸ”®</div>
                         <div class="arma-info">
-                            <div class="arma-nombre">Báculo arcano <span class="rarity-badge">épico</span></div>
+                            <div class="arma-nombre">BÃ¡culo arcano <span class="rarity-badge">Ã©pico</span></div>
                             <div class="power-indicator">
                                 <span class="power-bar"><span class="power-fill epic-fill"></span></span>
                                 <span class="stat-value">325 pts</span>
@@ -565,22 +583,22 @@
                     </div>
                 </div>
                 <div style="margin-top: 1.4rem; background: #202639; border-radius: 30px; padding: 0.8rem 1rem; border-left: 8px solid #e6b450; color: #efeecd;">
-                    ⚡ rareza mediante color (franja izquierda) + barra de poder. Decisión inmediata: legendario > épico > raro > común.
+                    âš¡ rareza mediante color (franja izquierda) + barra de poder. DecisiÃ³n inmediata: legendario > Ã©pico > raro > comÃºn.
                 </div>
             </div>
             <div class="explain-decision">
-                <span style="font-size:2rem;">⚡</span> 5 alternativas pero el color y la franja indican calidad de un vistazo. Tiempo de elección mínimo. (Ley de Hick optimizada)
+                <span style="font-size:2rem;">âš¡</span> 5 alternativas pero el color y la franja indican calidad de un vistazo. Tiempo de elecciÃ³n mÃ­nimo. (Ley de Hick optimizada)
             </div>
         </div>
     </div>
 
-    <!-- EXPLICACIÓN EXTRA SOBRE FRANJAS Y RAREZA (HICK) -->
+    <!-- EXPLICACIÃ“N EXTRA SOBRE FRANJAS Y RAREZA (HICK) -->
     <div class="footer-meta">
         <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 2rem 3rem; margin-bottom: 0.5rem;">
-            <span>🔹 izquierda: todas las armas se ven igual, mismo énfasis → decisión lenta</span>
-            <span>🔹 derecha: franja de rareza (gris, azul, morado, dorado) + barra de poder → decisión rápida</span>
+            <span>ðŸ”¹ izquierda: todas las armas se ven igual, mismo Ã©nfasis â†’ decisiÃ³n lenta</span>
+            <span>ðŸ”¹ derecha: franja de rareza (gris, azul, morado, dorado) + barra de poder â†’ decisiÃ³n rÃ¡pida</span>
         </div>
-        <p style="margin-top: 1.2rem;">🎮 Ley de Hick aplicada a videojuegos: la rareza mediante franjas de color reduce el tiempo de elección del arma. Misma cantidad de opciones pero con jerarquía visual.</p>
+        <p style="margin-top: 1.2rem;">ðŸŽ® Ley de Hick aplicada a videojuegos: la rareza mediante franjas de color reduce el tiempo de elecciÃ³n del arma. Misma cantidad de opciones pero con jerarquÃ­a visual.</p>
     </div>
 </div>
 </body>
