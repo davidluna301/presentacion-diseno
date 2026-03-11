@@ -1,9 +1,9 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Efecto Von Restorff · objetos que resaltan</title>
+    <title>Efecto Von Restorff Â· objetos que resaltan</title>
     <style>
         * {
             margin: 0;
@@ -186,7 +186,7 @@
         }
 
         .left-panel .critical-object {
-            /* ningún objeto destaca, mismo color */
+            /* ningÃºn objeto destaca, mismo color */
         }
 
         .left-panel .note-same {
@@ -219,7 +219,7 @@
         }
 
         .right-panel .glow-effect::after {
-            content: "✨";
+            content: "âœ¨";
             position: absolute;
             top: -10px;
             right: -5px;
@@ -271,121 +271,154 @@
             margin: 1.5rem 0 0.5rem;
             flex-wrap: wrap;
         }
+        /* botón de regreso al inicio */
+        .back-button {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            background: linear-gradient(130deg, #f7e05e, #b1a6ff);
+            color: #1b1e2b;
+            padding: 12px 24px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1rem;
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 8px 20px rgba(247, 224, 94, 0.3);
+            transition: all 0.3s ease;
+            z-index: 1000;
+        }
+
+        .back-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 30px rgba(247, 224, 94, 0.5);
+        }
+
+        @media (max-width: 600px) {
+            .back-button {
+                padding: 10px 20px;
+                font-size: 0.95rem;
+                top: 15px;
+                left: 15px;
+            }
+        }
     </style>
 </head>
 <body>
+<a href="index.html" class="back-button">â† Inicio</a>
 <div class="vonrestorff-card">
     <!-- ENCABEZADO: VON RESTORFF -->
     <div class="header-von">
-        <h1>🔮 Efecto Von Restorff (aislamiento)</h1>
-        <p>“Cuando hay varios objetos similares, es más probable que se recuerde el que difiere del resto.”</p>
+        <h1>ðŸ”® Efecto Von Restorff (aislamiento)</h1>
+        <p>â€œCuando hay varios objetos similares, es mÃ¡s probable que se recuerde el que difiere del resto.â€</p>
         <div class="sub-von">
-            <span>🎮 llaves, cofres, recursos</span>
-            <span>✨ colores brillantes y brillos</span>
+            <span>ðŸŽ® llaves, cofres, recursos</span>
+            <span>âœ¨ colores brillantes y brillos</span>
         </div>
     </div>
 
     <div class="row">
         <!-- IZQUIERDA: SIN contraste (objetos importantes camuflados) -->
         <div class="panel left-panel">
-            <h2>🔻 SIN contraste <span class="badge">todo igual</span></h2>
+            <h2>ðŸ”» SIN contraste <span class="badge">todo igual</span></h2>
             <div class="game-scene">
-                <div style="color:#c0daf0; margin-bottom: 0.8rem; text-align:center;">🌑 Mazmorra - objetos comunes</div>
+                <div style="color:#c0daf0; margin-bottom: 0.8rem; text-align:center;">ðŸŒ‘ Mazmorra - objetos comunes</div>
                 <div class="object-grid">
                     <div class="object-item">
-                        <span>📦</span>
+                        <span>ðŸ“¦</span>
                         <span class="object-label">caja</span>
                     </div>
                     <div class="object-item">
-                        <span>📦</span>
+                        <span>ðŸ“¦</span>
                         <span class="object-label">caja</span>
                     </div>
                     <div class="object-item">
-                        <span>🔑</span>
+                        <span>ðŸ”‘</span>
                         <span class="object-label">llave</span>
                     </div>
                     <div class="object-item">
-                        <span>📦</span>
+                        <span>ðŸ“¦</span>
                         <span class="object-label">caja</span>
                     </div>
                     <div class="object-item">
-                        <span>📦</span>
+                        <span>ðŸ“¦</span>
                         <span class="object-label">caja</span>
                     </div>
                     <div class="object-item">
-                        <span>🪙</span>
+                        <span>ðŸª™</span>
                         <span class="object-label">monedas</span>
                     </div>
                     <div class="object-item">
-                        <span>📦</span>
+                        <span>ðŸ“¦</span>
                         <span class="object-label">caja</span>
                     </div>
                     <div class="object-item">
-                        <span>📦</span>
+                        <span>ðŸ“¦</span>
                         <span class="object-label">caja</span>
                     </div>
                 </div>
                 <div class="note-same">
-                    ⚠️ La llave 🔑 tiene el mismo color y estilo que las cajas. Pasa desapercibida. El jugador debe buscar con esfuerzo.
+                    âš ï¸ La llave ðŸ”‘ tiene el mismo color y estilo que las cajas. Pasa desapercibida. El jugador debe buscar con esfuerzo.
                 </div>
                 <div style="background:#2e4155; border-radius:30px; padding:0.6rem; text-align:center; color:#b0ccee;">
-                    🧠 Dificultad para recordar: ningún elemento destaca, todos se funden.
+                    ðŸ§  Dificultad para recordar: ningÃºn elemento destaca, todos se funden.
                 </div>
             </div>
             <div class="explain-footer">
-                ❌ Von Restorff ignorado: el objeto crítico (llave) no aísla visualmente. Se pierde en la multitud de elementos similares.
+                âŒ Von Restorff ignorado: el objeto crÃ­tico (llave) no aÃ­sla visualmente. Se pierde en la multitud de elementos similares.
             </div>
         </div>
 
         <!-- DERECHA: CON contraste (objeto resaltado con color brillante + brillo) -->
         <div class="panel right-panel">
-            <h2>✅ CON contraste <span class="badge">brillo + color</span></h2>
+            <h2>âœ… CON contraste <span class="badge">brillo + color</span></h2>
             <div class="game-scene">
-                <div style="color:#e9f0b0; margin-bottom: 0.8rem; text-align:center;">✨ Mazmorra - ¡la llave brilla!</div>
+                <div style="color:#e9f0b0; margin-bottom: 0.8rem; text-align:center;">âœ¨ Mazmorra - Â¡la llave brilla!</div>
                 <div class="object-grid">
                     <div class="object-item">
-                        <span>📦</span>
+                        <span>ðŸ“¦</span>
                         <span class="object-label">caja</span>
                     </div>
                     <div class="object-item">
-                        <span>📦</span>
+                        <span>ðŸ“¦</span>
                         <span class="object-label">caja</span>
                     </div>
-                    <!-- objeto crítico: llave con estilo especial -->
+                    <!-- objeto crÃ­tico: llave con estilo especial -->
                     <div class="object-item special glow-effect">
-                        <span>🔑</span>
-                        <span class="object-label">¡LLAVE!</span>
+                        <span>ðŸ”‘</span>
+                        <span class="object-label">Â¡LLAVE!</span>
                     </div>
                     <div class="object-item">
-                        <span>📦</span>
+                        <span>ðŸ“¦</span>
                         <span class="object-label">caja</span>
                     </div>
                     <div class="object-item">
-                        <span>📦</span>
+                        <span>ðŸ“¦</span>
                         <span class="object-label">caja</span>
                     </div>
                     <div class="object-item">
-                        <span>🪙</span>
+                        <span>ðŸª™</span>
                         <span class="object-label">monedas</span>
                     </div>
                     <div class="object-item">
-                        <span>📦</span>
+                        <span>ðŸ“¦</span>
                         <span class="object-label">caja</span>
                     </div>
                     <div class="object-item">
-                        <span>📦</span>
+                        <span>ðŸ“¦</span>
                         <span class="object-label">caja</span>
                     </div>
                 </div>
                 <div class="note-contrast">
-                    ✅ La llave 🔑 tiene color dorado brillante y un destello ✨. Destaca inmediatamente del resto. El cerebro la aísla y recuerda.
+                    âœ… La llave ðŸ”‘ tiene color dorado brillante y un destello âœ¨. Destaca inmediatamente del resto. El cerebro la aÃ­sla y recuerda.
                 </div>
                 <div style="background:#3b6a4b; border-radius:30px; padding:0.6rem; text-align:center; color:#e7fec9;">
-                    🎯 Von Restorff aplicado: elemento único (color, brillo) se fija en la memoria.
+                    ðŸŽ¯ Von Restorff aplicado: elemento Ãºnico (color, brillo) se fija en la memoria.
                 </div>
             </div>
             <div class="explain-footer">
-                ✨ El efecto de aislamiento hace que la llave sea inolvidable. El jugador la localiza al instante y recuerda su ubicación.
+                âœ¨ El efecto de aislamiento hace que la llave sea inolvidable. El jugador la localiza al instante y recuerda su ubicaciÃ³n.
             </div>
         </div>
     </div>
@@ -393,35 +426,35 @@
     <!-- BLOQUE DE EJEMPLOS (cofre, recurso, etc) -->
     <div style="display: flex; flex-wrap: wrap; gap: 2rem; margin: 2.5rem 0 1rem; background: #112337; border-radius: 2.5rem; padding: 2rem 1.8rem; border: 1px solid #ffd28f40;">
         <div style="flex:1; min-width:200px;">
-            <h3 style="color:#fcc886;">🗝️ Llave brillante</h3>
+            <h3 style="color:#fcc886;">ðŸ—ï¸ Llave brillante</h3>
             <p style="color:#c9def5;">Color amarillo/brillo frente a cofres marrones. Destaca y el jugador sabe que es importante.</p>
         </div>
         <div style="flex:1; min-width:200px;">
-            <h3 style="color:#abe0b3;">💰 Cofre especial</h3>
-            <p style="color:#c9def5;">Cofre dorado entre cofres normales. Atrae la mirada y anuncia recompensa única.</p>
+            <h3 style="color:#abe0b3;">ðŸ’° Cofre especial</h3>
+            <p style="color:#c9def5;">Cofre dorado entre cofres normales. Atrae la mirada y anuncia recompensa Ãºnica.</p>
         </div>
         <div style="flex:1; min-width:200px; border-left: 2px solid #5d7ea3; padding-left:1.5rem;">
-            <h3 style="color:#f5e0a3;">⚡ Recurso raro</h3>
-            <p style="color:#c9def5;">Gema púrpura brillante entre minerales grises. El jugador la recuerda y busca más.</p>
+            <h3 style="color:#f5e0a3;">âš¡ Recurso raro</h3>
+            <p style="color:#c9def5;">Gema pÃºrpura brillante entre minerales grises. El jugador la recuerda y busca mÃ¡s.</p>
         </div>
     </div>
 
-    <!-- SIMULACIÓN DE RECUERDO (texto) -->
+    <!-- SIMULACIÃ“N DE RECUERDO (texto) -->
     <div style="background: #0e253a; border-radius: 2rem; padding: 1.5rem; margin: 1.5rem 0; border: 2px solid #8aa0c0;">
         <div style="display: flex; flex-wrap: wrap; gap: 2rem; align-items: center; justify-content: center;">
-            <div style="color: #f0e2b0; font-size: 1.2rem;">🧠 Prueba mental:</div>
-            <div style="background:#2c405b; border-radius: 60px; padding:0.5rem 1.5rem; color:#dddddd;">"¿Qué objeto recuerdas del panel izquierdo?" → probablemente ninguno</div>
-            <div style="background:#4f7851; border-radius: 60px; padding:0.5rem 1.5rem; color:#fcf9cf;">"¿Qué objeto recuerdas del panel derecho?" → ¡la llave dorada! ✨</div>
+            <div style="color: #f0e2b0; font-size: 1.2rem;">ðŸ§  Prueba mental:</div>
+            <div style="background:#2c405b; border-radius: 60px; padding:0.5rem 1.5rem; color:#dddddd;">"Â¿QuÃ© objeto recuerdas del panel izquierdo?" â†’ probablemente ninguno</div>
+            <div style="background:#4f7851; border-radius: 60px; padding:0.5rem 1.5rem; color:#fcf9cf;">"Â¿QuÃ© objeto recuerdas del panel derecho?" â†’ Â¡la llave dorada! âœ¨</div>
         </div>
     </div>
 
     <!-- FOOTER -->
     <div class="footer-note">
         <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 2rem; margin-bottom: 0.8rem;">
-            <span style="background:#263d59; padding:0.3rem 1.2rem; border-radius:40px;">⬅️ izquierda: objeto clave camuflado (mismo color)</span>
-            <span style="background:#1b4e38; padding:0.3rem 1.2rem; border-radius:40px;">➡️ derecha: objeto clave resaltado (dorado + brillo) ✨</span>
+            <span style="background:#263d59; padding:0.3rem 1.2rem; border-radius:40px;">â¬…ï¸ izquierda: objeto clave camuflado (mismo color)</span>
+            <span style="background:#1b4e38; padding:0.3rem 1.2rem; border-radius:40px;">âž¡ï¸ derecha: objeto clave resaltado (dorado + brillo) âœ¨</span>
         </div>
-        <p style="margin-top: 1.2rem;">🎮 Efecto Von Restorff en videojuegos: resaltar elementos importantes (llaves, cofres, recursos) con colores brillantes o destellos mejora drásticamente la memorabilidad y localización.</p>
+        <p style="margin-top: 1.2rem;">ðŸŽ® Efecto Von Restorff en videojuegos: resaltar elementos importantes (llaves, cofres, recursos) con colores brillantes o destellos mejora drÃ¡sticamente la memorabilidad y localizaciÃ³n.</p>
     </div>
 </div>
 </body>

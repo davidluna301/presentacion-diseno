@@ -1,9 +1,9 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ley de Jakob · convenciones estándar (WASD)</title>
+    <title>Ley de Jakob Â· convenciones estÃ¡ndar (WASD)</title>
     <style>
         * {
             margin: 0;
@@ -135,7 +135,7 @@
             margin-left: 0.5rem;
         }
 
-        /* área de juego simulada */
+        /* Ã¡rea de juego simulada */
         .game-area {
             background: #1b4a5e;
             border-radius: 2.5rem;
@@ -196,7 +196,7 @@
             font-size: 1.2rem;
         }
 
-        /* panel izquierdo: controles no estándar (viola Jakob) */
+        /* panel izquierdo: controles no estÃ¡ndar (viola Jakob) */
         .left-panel .key {
             background: #5f4a4a;
             border-color: #c09f9f;
@@ -211,7 +211,7 @@
             margin: 1rem 0;
         }
 
-        /* panel derecho: controles estándar (WASD, espacio, E) */
+        /* panel derecho: controles estÃ¡ndar (WASD, espacio, E) */
         .right-panel .key {
             background: #2f6740;
             border-color: #a0e0a0;
@@ -260,37 +260,70 @@
             margin-top: 1rem;
             justify-content: center;
         }
+        /* botón de regreso al inicio */
+        .back-button {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            background: linear-gradient(130deg, #f7e05e, #b1a6ff);
+            color: #1b1e2b;
+            padding: 12px 24px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1rem;
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 8px 20px rgba(247, 224, 94, 0.3);
+            transition: all 0.3s ease;
+            z-index: 1000;
+        }
+
+        .back-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 30px rgba(247, 224, 94, 0.5);
+        }
+
+        @media (max-width: 600px) {
+            .back-button {
+                padding: 10px 20px;
+                font-size: 0.95rem;
+                top: 15px;
+                left: 15px;
+            }
+        }
     </style>
 </head>
 <body>
+<a href="index.html" class="back-button">â† Inicio</a>
 <div class="jakob-card">
     <!-- ENCABEZADO LEY DE JAKOB -->
     <div class="header-jakob">
-        <h1>🔄 Ley de Jakob</h1>
-        <p>“Los usuarios prefieren aquellos sitios que funcionen igual que los que ya conocen.”</p>
+        <h1>ðŸ”„ Ley de Jakob</h1>
+        <p>â€œLos usuarios prefieren aquellos sitios que funcionen igual que los que ya conocen.â€</p>
         <div class="sub-jakob">
-            <span>🎮 WASD, espacio, E</span>
-            <span>⚡ convenciones estándar</span>
+            <span>ðŸŽ® WASD, espacio, E</span>
+            <span>âš¡ convenciones estÃ¡ndar</span>
         </div>
     </div>
 
     <div class="row">
-        <!-- IZQUIERDA: NO respeta Jakob (controles atípicos) -->
+        <!-- IZQUIERDA: NO respeta Jakob (controles atÃ­picos) -->
         <div class="panel left-panel">
-            <h2>🔻 CONTROLES ATÍPICOS <span class="badge">curva de aprendizaje</span></h2>
+            <h2>ðŸ”» CONTROLES ATÃPICOS <span class="badge">curva de aprendizaje</span></h2>
             <div class="game-area">
                 <div class="viewport">
-                    🎯 nivel 1
+                    ðŸŽ¯ nivel 1
                 </div>
                 <div class="controls-panel">
-                    <h3 style="color:#f0b090; margin-bottom:1rem;">⌨️ Controles (inusuales)</h3>
+                    <h3 style="color:#f0b090; margin-bottom:1rem;">âŒ¨ï¸ Controles (inusuales)</h3>
                     <div class="control-row">
                         <div class="key">R</div>
                         <span class="action-desc">Mover adelante</span>
                     </div>
                     <div class="control-row">
                         <div class="key">F</div>
-                        <span class="action-desc">Mover atrás</span>
+                        <span class="action-desc">Mover atrÃ¡s</span>
                     </div>
                     <div class="control-row">
                         <div class="key">C</div>
@@ -314,30 +347,30 @@
                     </div>
                 </div>
                 <div class="warning-note">
-                    ⚠️ El jugador debe aprender un esquema nuevo: R-F-C-V para mover, B para saltar, N para interactuar. Esto viola la Ley de Jakob y causa frustración.
+                    âš ï¸ El jugador debe aprender un esquema nuevo: R-F-C-V para mover, B para saltar, N para interactuar. Esto viola la Ley de Jakob y causa frustraciÃ³n.
                 </div>
             </div>
             <div class="explain-footer">
-                ❌ Jakob ignorado: el jugador no puede usar su conocimiento previo. Tiempo de adaptación alto y errores frecuentes.
+                âŒ Jakob ignorado: el jugador no puede usar su conocimiento previo. Tiempo de adaptaciÃ³n alto y errores frecuentes.
             </div>
         </div>
 
-        <!-- DERECHA: RESPETA Jakob (estándares: WASD, espacio, E) -->
+        <!-- DERECHA: RESPETA Jakob (estÃ¡ndares: WASD, espacio, E) -->
         <div class="panel right-panel">
-            <h2>✅ CONVENCIONES ESTÁNDAR <span class="badge">WASD · Espacio · E</span></h2>
+            <h2>âœ… CONVENCIONES ESTÃNDAR <span class="badge">WASD Â· Espacio Â· E</span></h2>
             <div class="game-area">
                 <div class="viewport">
-                    🎮 nivel 1
+                    ðŸŽ® nivel 1
                 </div>
                 <div class="controls-panel">
-                    <h3 style="color:#b0f0b0; margin-bottom:1rem;">⌨️ Controles estándar</h3>
+                    <h3 style="color:#b0f0b0; margin-bottom:1rem;">âŒ¨ï¸ Controles estÃ¡ndar</h3>
                     <div class="control-row">
                         <div class="key">W</div>
                         <span class="action-desc">Adelante</span>
                     </div>
                     <div class="control-row">
                         <div class="key">S</div>
-                        <span class="action-desc">Atrás</span>
+                        <span class="action-desc">AtrÃ¡s</span>
                     </div>
                     <div class="control-row">
                         <div class="key">A</div>
@@ -348,7 +381,7 @@
                         <span class="action-desc">Derecha</span>
                     </div>
                     <div class="control-row">
-                        <div class="key">␣</div>
+                        <div class="key">â£</div>
                         <span class="action-desc">Saltar</span>
                     </div>
                     <div class="control-row">
@@ -361,11 +394,11 @@
                     </div>
                 </div>
                 <div class="standard-note">
-                    ✅ Esquema familiar: WASD para mover, espacio para saltar, E para interactuar. El jugador puede aplicar su experiencia previa sin esfuerzo.
+                    âœ… Esquema familiar: WASD para mover, espacio para saltar, E para interactuar. El jugador puede aplicar su experiencia previa sin esfuerzo.
                 </div>
             </div>
             <div class="explain-footer">
-                ✨ Jakob aplicado: el jugador se siente como en casa. No necesita leer las instrucciones, los dedos ya saben qué hacer.
+                âœ¨ Jakob aplicado: el jugador se siente como en casa. No necesita leer las instrucciones, los dedos ya saben quÃ© hacer.
             </div>
         </div>
     </div>
@@ -373,45 +406,45 @@
     <!-- BLOQUE EXPLICATIVO: CONVENCIONES EN VIDEOJUEGOS -->
     <div style="display: flex; flex-wrap: wrap; gap: 2rem; margin: 2.5rem 0 1rem; background: #112337; border-radius: 2.5rem; padding: 2rem 1.8rem; border: 1px solid #a0e0b080;">
         <div style="flex:1; min-width:200px;">
-            <h3 style="color:#aad68a;">🎮 WASD (estándar)</h3>
+            <h3 style="color:#aad68a;">ðŸŽ® WASD (estÃ¡ndar)</h3>
             <p style="color:#c9def5;">Desde los 90, los juegos de PC usan WASD para moverse. Cualquier cambio confunde al jugador.</p>
         </div>
         <div style="flex:1; min-width:200px;">
-            <h3 style="color:#b0e6c0;">␣ Espacio = saltar</h3>
-            <p style="color:#c9def5;">Plataformas y shooters: espacio es saltar. Es una convención universal.</p>
+            <h3 style="color:#b0e6c0;">â£ Espacio = saltar</h3>
+            <p style="color:#c9def5;">Plataformas y shooters: espacio es saltar. Es una convenciÃ³n universal.</p>
         </div>
         <div style="flex:1; min-width:200px; border-left: 2px solid #6f9ac0; padding-left:1.5rem;">
-            <h3 style="color:#f5e0a3;">⚡ E para interactuar</h3>
-            <p style="color:#c9def5;">Abrir cofres, hablar con NPCs, recoger objetos. La tecla E es casi un estándar.</p>
+            <h3 style="color:#f5e0a3;">âš¡ E para interactuar</h3>
+            <p style="color:#c9def5;">Abrir cofres, hablar con NPCs, recoger objetos. La tecla E es casi un estÃ¡ndar.</p>
         </div>
     </div>
 
-    <!-- SIMULACIÓN DE REACCIÓN -->
+    <!-- SIMULACIÃ“N DE REACCIÃ“N -->
     <div style="background: #0e2d40; border-radius: 2rem; padding: 1.5rem; margin: 1.5rem 0; border: 2px solid #8ab0d0;">
         <div style="display: flex; flex-wrap: wrap; gap: 2rem; align-items: center; justify-content: center; text-align: center;">
             <div style="background:#2c405b; border-radius: 60px; padding:0.8rem 1.8rem; color:#dddddd;">
-                <span style="font-weight:bold;">⬅️ IZQUIERDA (R-F-C-V):</span> "¿Cómo salto? ¿B? ¿N?" 😫 (mira el teclado)
+                <span style="font-weight:bold;">â¬…ï¸ IZQUIERDA (R-F-C-V):</span> "Â¿CÃ³mo salto? Â¿B? Â¿N?" ðŸ˜« (mira el teclado)
             </div>
             <div style="background:#4f7851; border-radius: 60px; padding:0.8rem 1.8rem; color:#fcf9cf;">
-                <span style="font-weight:bold;">➡️ DERECHA (WASD):</span> "WASD, espacio, E. Ya sé jugar." 😎 (inmersión total)
+                <span style="font-weight:bold;">âž¡ï¸ DERECHA (WASD):</span> "WASD, espacio, E. Ya sÃ© jugar." ðŸ˜Ž (inmersiÃ³n total)
             </div>
         </div>
     </div>
 
     <!-- EJEMPLO DE CONVENCIONES EN DIFERENTES JUEGOS -->
     <div style="display: flex; flex-wrap: wrap; gap: 1.5rem; margin: 1rem 0; justify-content: center;">
-        <span style="background:#2d5270; padding:0.5rem 1.2rem; border-radius:40px;">🎮 Call of Duty: WASD + espacio + E</span>
-        <span style="background:#1b6e48; padding:0.5rem 1.2rem; border-radius:40px;">⛏️ Minecraft: WASD + espacio + E</span>
-        <span style="background:#5d4f8a; padding:0.5rem 1.2rem; border-radius:40px;">🧝 The Witcher: WASD + espacio + E</span>
+        <span style="background:#2d5270; padding:0.5rem 1.2rem; border-radius:40px;">ðŸŽ® Call of Duty: WASD + espacio + E</span>
+        <span style="background:#1b6e48; padding:0.5rem 1.2rem; border-radius:40px;">â›ï¸ Minecraft: WASD + espacio + E</span>
+        <span style="background:#5d4f8a; padding:0.5rem 1.2rem; border-radius:40px;">ðŸ§ The Witcher: WASD + espacio + E</span>
     </div>
 
     <!-- FOOTER -->
     <div class="footer-note">
         <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 2rem; margin-bottom: 0.8rem;">
-            <span style="background:#2d5270; padding:0.3rem 1.2rem; border-radius:40px;">⬅️ izquierda: R F C V B N (reinventa la rueda)</span>
-            <span style="background:#1b6e48; padding:0.3rem 1.2rem; border-radius:40px;">➡️ derecha: WASD espacio E (convenciones)</span>
+            <span style="background:#2d5270; padding:0.3rem 1.2rem; border-radius:40px;">â¬…ï¸ izquierda: R F C V B N (reinventa la rueda)</span>
+            <span style="background:#1b6e48; padding:0.3rem 1.2rem; border-radius:40px;">âž¡ï¸ derecha: WASD espacio E (convenciones)</span>
         </div>
-        <p style="margin-top: 1.2rem;">🎮 Ley de Jakob en videojuegos: usar estándares como WASD, espacio para saltar y E para interactuar permite que el jugador se concentre en la experiencia, no en los controles.</p>
+        <p style="margin-top: 1.2rem;">ðŸŽ® Ley de Jakob en videojuegos: usar estÃ¡ndares como WASD, espacio para saltar y E para interactuar permite que el jugador se concentre en la experiencia, no en los controles.</p>
     </div>
 </div>
 </body>

@@ -427,9 +427,43 @@
             padding-top: 2rem;
             font-size: 1rem;
         }
+
+        /* botón de regreso al inicio */
+        .back-button {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            background: linear-gradient(130deg, #f7e05e, #b1a6ff);
+            color: #1b1e2b;
+            padding: 12px 24px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1rem;
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 8px 20px rgba(247, 224, 94, 0.3);
+            transition: all 0.3s ease;
+            z-index: 1000;
+        }
+
+        .back-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 30px rgba(247, 224, 94, 0.5);
+        }
+
+        @media (max-width: 600px) {
+            .back-button {
+                padding: 10px 20px;
+                font-size: 0.95rem;
+                top: 15px;
+                left: 15px;
+            }
+        }
     </style>
 </head>
 <body>
+<a href="index.html" class="back-button">← Inicio</a>
 <div class="container">
     <!-- LEY DE PROXIMIDAD -->
     <div class="header-prox">

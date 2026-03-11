@@ -1,9 +1,9 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Efecto Posición Serial · menús de videojuegos</title>
+    <title>Efecto PosiciÃ³n Serial Â· menÃºs de videojuegos</title>
     <style>
         * {
             margin: 0;
@@ -135,7 +135,7 @@
             margin-left: 0.5rem;
         }
 
-        /* consola / menú estilo videojuego */
+        /* consola / menÃº estilo videojuego */
         .menu-container {
             background: #172635;
             border-radius: 2.5rem;
@@ -177,7 +177,7 @@
             color: #ffdbb5;
         }
 
-        /* para el panel izquierdo: opciones críticas en medio */
+        /* para el panel izquierdo: opciones crÃ­ticas en medio */
         .left-panel .menu-list .menu-item:nth-child(3),
         .left-panel .menu-list .menu-item:nth-child(4) {
             background: #5d4355;
@@ -188,7 +188,7 @@
 
         .left-panel .menu-list .menu-item:nth-child(3)::after,
         .left-panel .menu-list .menu-item:nth-child(4)::after {
-            content: "★ crítico";
+            content: "â˜… crÃ­tico";
             font-size: 0.8rem;
             background: #ac4e4e;
             padding: 0.2rem 0.8rem;
@@ -210,7 +210,7 @@
             color: #faffd4;
         }
 
-        /* destacar primero y último en panel derecho */
+        /* destacar primero y Ãºltimo en panel derecho */
         .right-panel .menu-list .menu-item:first-child {
             background: #3b6249;
             border-color: #e5c874;
@@ -225,7 +225,7 @@
 
         .right-panel .menu-list .menu-item:first-child::after,
         .right-panel .menu-list .menu-item:last-child::after {
-            content: "★ crítico";
+            content: "â˜… crÃ­tico";
             font-size: 0.8rem;
             background: #2d743d;
             padding: 0.2rem 0.8rem;
@@ -284,96 +284,129 @@
             border-radius: 30px;
             font-weight: 500;
         }
+        /* botón de regreso al inicio */
+        .back-button {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            background: linear-gradient(130deg, #f7e05e, #b1a6ff);
+            color: #1b1e2b;
+            padding: 12px 24px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1rem;
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 8px 20px rgba(247, 224, 94, 0.3);
+            transition: all 0.3s ease;
+            z-index: 1000;
+        }
+
+        .back-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 30px rgba(247, 224, 94, 0.5);
+        }
+
+        @media (max-width: 600px) {
+            .back-button {
+                padding: 10px 20px;
+                font-size: 0.95rem;
+                top: 15px;
+                left: 15px;
+            }
+        }
     </style>
 </head>
 <body>
+<a href="index.html" class="back-button">â† Inicio</a>
 <div class="card">
-    <!-- ENCABEZADO: EFECTO POSICIÓN SERIAL -->
+    <!-- ENCABEZADO: EFECTO POSICIÃ“N SERIAL -->
     <div class="header-serial">
-        <h1>📋 Efecto de Posición Serial</h1>
-        <p>“Los usuarios recuerdan mejor el primer y último elemento de una serie.”</p>
+        <h1>ðŸ“‹ Efecto de PosiciÃ³n Serial</h1>
+        <p>â€œLos usuarios recuerdan mejor el primer y Ãºltimo elemento de una serie.â€</p>
         <div class="sub-serial">
-            <span>🎮 'Jugar' y 'Salir' en los extremos</span>
-            <span>⬆️⬇️ primacía y recencia</span>
+            <span>ðŸŽ® 'Jugar' y 'Salir' en los extremos</span>
+            <span>â¬†ï¸â¬‡ï¸ primacÃ­a y recencia</span>
         </div>
     </div>
 
     <div class="row">
-        <!-- IZQUIERDA: NO aprovecha el efecto (elementos críticos al centro) -->
+        <!-- IZQUIERDA: NO aprovecha el efecto (elementos crÃ­ticos al centro) -->
         <div class="panel left-panel">
-            <h2>🔻 IGNORA posición serial <span class="badge">críticos al centro</span></h2>
+            <h2>ðŸ”» IGNORA posiciÃ³n serial <span class="badge">crÃ­ticos al centro</span></h2>
             <div class="menu-container">
                 <div class="menu-list">
-                    <div class="menu-item"><span>🖼️</span> Galería</div>
-                    <div class="menu-item"><span>⚙️</span> Opciones</div>
-                    <div class="menu-item critical"><span>🎮</span> JUGAR (crítico)</div>
-                    <div class="menu-item critical"><span>🏆</span> Logros</div>
-                    <div class="menu-item"><span>📦</span> Contenido</div>
-                    <div class="menu-item"><span>🚪</span> SALIR (crítico)</div>
+                    <div class="menu-item"><span>ðŸ–¼ï¸</span> GalerÃ­a</div>
+                    <div class="menu-item"><span>âš™ï¸</span> Opciones</div>
+                    <div class="menu-item critical"><span>ðŸŽ®</span> JUGAR (crÃ­tico)</div>
+                    <div class="menu-item critical"><span>ðŸ†</span> Logros</div>
+                    <div class="menu-item"><span>ðŸ“¦</span> Contenido</div>
+                    <div class="menu-item"><span>ðŸšª</span> SALIR (crÃ­tico)</div>
                 </div>
                 <div style="margin-top: 1.2rem; color:#c2b7a2; text-align:center; background:#1a263b; padding:0.5rem; border-radius:30px;">
-                    ⚠️ "Jugar" está en 3ª posición, "Salir" al final pero no destacado
+                    âš ï¸ "Jugar" estÃ¡ en 3Âª posiciÃ³n, "Salir" al final pero no destacado
                 </div>
             </div>
             <div class="memory-hint">
-                <span style="font-size:1.8rem; margin-right:0.8rem;">🧠</span> 
-                El primer elemento (Galería) y el último (Salir) tienen ventaja de recuerdo. Pero "Jugar" (posición media) se recuerda peor. La acción más importante queda diluida.
+                <span style="font-size:1.8rem; margin-right:0.8rem;">ðŸ§ </span> 
+                El primer elemento (GalerÃ­a) y el Ãºltimo (Salir) tienen ventaja de recuerdo. Pero "Jugar" (posiciÃ³n media) se recuerda peor. La acciÃ³n mÃ¡s importante queda diluida.
             </div>
             <div style="background:#362d33; border-radius:20px; padding:0.8rem; margin-top:0.8rem; border:1px solid #b3866e;">
-                ❌ Efecto serial desaprovechado: el jugador tarda más en localizar "Jugar" porque está enterrado en el centro.
+                âŒ Efecto serial desaprovechado: el jugador tarda mÃ¡s en localizar "Jugar" porque estÃ¡ enterrado en el centro.
             </div>
         </div>
 
-        <!-- DERECHA: SÍ aprovecha el efecto (críticos al principio y al final) -->
+        <!-- DERECHA: SÃ aprovecha el efecto (crÃ­ticos al principio y al final) -->
         <div class="panel right-panel">
-            <h2>✅ OPTIMIZA posición serial <span class="badge">críticos en extremos</span></h2>
+            <h2>âœ… OPTIMIZA posiciÃ³n serial <span class="badge">crÃ­ticos en extremos</span></h2>
             <div class="menu-container">
                 <div class="menu-list">
-                    <div class="menu-item critical-first"><span>🎮</span> JUGAR (crítico)</div>
-                    <div class="menu-item"><span>🏆</span> Logros</div>
-                    <div class="menu-item"><span>📦</span> Contenido</div>
-                    <div class="menu-item"><span>⚙️</span> Opciones</div>
-                    <div class="menu-item"><span>🖼️</span> Galería</div>
-                    <div class="menu-item critical-last"><span>🚪</span> SALIR (crítico)</div>
+                    <div class="menu-item critical-first"><span>ðŸŽ®</span> JUGAR (crÃ­tico)</div>
+                    <div class="menu-item"><span>ðŸ†</span> Logros</div>
+                    <div class="menu-item"><span>ðŸ“¦</span> Contenido</div>
+                    <div class="menu-item"><span>âš™ï¸</span> Opciones</div>
+                    <div class="menu-item"><span>ðŸ–¼ï¸</span> GalerÃ­a</div>
+                    <div class="menu-item critical-last"><span>ðŸšª</span> SALIR (crÃ­tico)</div>
                 </div>
                 <div style="margin-top: 1.2rem; color:#c2e0c2; text-align:center; background:#1e382b; padding:0.5rem; border-radius:30px;">
-                    ✅ "Jugar" al inicio (primacía) y "Salir" al final (recencia) maximizan el recuerdo
+                    âœ… "Jugar" al inicio (primacÃ­a) y "Salir" al final (recencia) maximizan el recuerdo
                 </div>
             </div>
             <div class="memory-hint">
-                <span style="font-size:1.8rem;">🎯</span> 
-                El primer elemento (JUGAR) se fija en la memoria a largo plazo; el último (SALIR) permanece en la memoria de trabajo. Las opciones críticas son las más recordadas.
+                <span style="font-size:1.8rem;">ðŸŽ¯</span> 
+                El primer elemento (JUGAR) se fija en la memoria a largo plazo; el Ãºltimo (SALIR) permanece en la memoria de trabajo. Las opciones crÃ­ticas son las mÃ¡s recordadas.
             </div>
             <div style="background:#1c3a2b; border-radius:20px; padding:0.8rem; margin-top:0.8rem; border:1px solid #a6d89a;">
-                ✔️ El jugador encuentra inmediatamente "Jugar" (arriba) y "Salir" (abajo). Se reduce el tiempo de navegación y la frustración.
+                âœ”ï¸ El jugador encuentra inmediatamente "Jugar" (arriba) y "Salir" (abajo). Se reduce el tiempo de navegaciÃ³n y la frustraciÃ³n.
             </div>
         </div>
     </div>
 
-    <!-- BLOQUE EXPLICATIVO ADICIONAL: EFECTO SERIAL EN ACCIÓN -->
+    <!-- BLOQUE EXPLICATIVO ADICIONAL: EFECTO SERIAL EN ACCIÃ“N -->
     <div style="margin-top: 2.5rem; display: flex; flex-wrap: wrap; gap: 2rem; justify-content: center; background: #0f1c30; border-radius: 2.5rem; padding: 2rem 1.5rem; border: 1px solid #a58c5f40;">
         <div style="flex: 1 1 250px;">
-            <h3 style="color:#f9c58b; margin-bottom:1rem;">🔹 Primacía (principio)</h3>
-            <p style="color:#cedef5;">Los jugadores recuerdan mejor la primera opción porque pasa a la memoria a largo plazo. Ideal para la acción principal: <strong>JUGAR</strong>.</p>
+            <h3 style="color:#f9c58b; margin-bottom:1rem;">ðŸ”¹ PrimacÃ­a (principio)</h3>
+            <p style="color:#cedef5;">Los jugadores recuerdan mejor la primera opciÃ³n porque pasa a la memoria a largo plazo. Ideal para la acciÃ³n principal: <strong>JUGAR</strong>.</p>
         </div>
         <div style="flex: 1 1 250px;">
-            <h3 style="color:#b3f0c3; margin-bottom:1rem;">🔸 Recencia (final)</h3>
-            <p style="color:#cedef5;">El último elemento permanece en la memoria a corto plazo. Perfecto para acciones que se ejecutan al final, como <strong>SALIR</strong> o <strong>CONFIGURACIÓN</strong>.</p>
+            <h3 style="color:#b3f0c3; margin-bottom:1rem;">ðŸ”¸ Recencia (final)</h3>
+            <p style="color:#cedef5;">El Ãºltimo elemento permanece en la memoria a corto plazo. Perfecto para acciones que se ejecutan al final, como <strong>SALIR</strong> o <strong>CONFIGURACIÃ“N</strong>.</p>
         </div>
         <div style="flex: 1 1 200px; border-left: 2px solid #5d759b; padding-left: 1.5rem;">
-            <h3 style="color:#e9ddaa;">🎮 En menús</h3>
-            <p style="color:#cedef5;">Coloca "Jugar" al inicio y "Salir" al final. Las opciones secundarias (opciones, extras) en el centro, donde el recuerdo es más débil.</p>
+            <h3 style="color:#e9ddaa;">ðŸŽ® En menÃºs</h3>
+            <p style="color:#cedef5;">Coloca "Jugar" al inicio y "Salir" al final. Las opciones secundarias (opciones, extras) en el centro, donde el recuerdo es mÃ¡s dÃ©bil.</p>
         </div>
     </div>
 
-    <!-- PIE DE PÁGINA -->
+    <!-- PIE DE PÃGINA -->
     <div class="footer-note">
         <div class="serial-note">
-            <span class="highlight-serial">⬆️ primer elemento (JUGAR) → más recordado</span>
-            <span class="highlight-serial">⬇️ último elemento (SALIR) → muy recordado</span>
-            <span class="highlight-serial">➡️ elementos centrales → recuerdo débil</span>
+            <span class="highlight-serial">â¬†ï¸ primer elemento (JUGAR) â†’ mÃ¡s recordado</span>
+            <span class="highlight-serial">â¬‡ï¸ Ãºltimo elemento (SALIR) â†’ muy recordado</span>
+            <span class="highlight-serial">âž¡ï¸ elementos centrales â†’ recuerdo dÃ©bil</span>
         </div>
-        <p style="margin-top: 1.5rem;">🎮 Efecto Posición Serial aplicado a menús de videojuegos: las opciones críticas se colocan en los extremos para asegurar que el jugador las recuerde y acceda rápidamente.</p>
+        <p style="margin-top: 1.5rem;">ðŸŽ® Efecto PosiciÃ³n Serial aplicado a menÃºs de videojuegos: las opciones crÃ­ticas se colocan en los extremos para asegurar que el jugador las recuerde y acceda rÃ¡pidamente.</p>
     </div>
 </div>
 </body>
