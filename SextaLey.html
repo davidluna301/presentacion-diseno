@@ -1,9 +1,9 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ley de Fitts Â· acciones rÃ¡pidas y menÃºs</title>
+    <title>Ley de Fitts · acciones rápidas y menús</title>
     <style>
         * {
             margin: 0;
@@ -135,7 +135,7 @@
             margin-left: 0.5rem;
         }
 
-        /* Ã¡rea de juego simulada (viewport) */
+        /* área de juego simulada (viewport) */
         .game-area {
             background: #1b2d41;
             border-radius: 2.2rem;
@@ -163,7 +163,7 @@
             margin-bottom: 1rem;
         }
 
-        /* Panel izquierdo: botÃ³n de pausa pequeÃ±o y alejado, QTE pequeÃ±o y en esquina */
+        /* Panel izquierdo: botón de pausa pequeño y alejado, QTE pequeño y en esquina */
         .left-panel .controls {
             display: flex;
             justify-content: space-between;
@@ -214,7 +214,7 @@
             margin-top: 0.2rem;
         }
 
-        /* QTE alejado del centro (esquina inferior derecha, pequeÃ±o) */
+        /* QTE alejado del centro (esquina inferior derecha, pequeño) */
         .left-panel .game-area {
             position: relative;
         }
@@ -249,7 +249,7 @@
             color: #f4d2d2;
         }
 
-        /* Panel derecho: diseÃ±o optimizado segÃºn Fitts (grande + cerca del centro/Ã¡rea natural) */
+        /* Panel derecho: diseño optimizado según Fitts (grande + cerca del centro/área natural) */
         .right-panel .game-area {
             position: relative;
         }
@@ -343,361 +343,106 @@
             padding-top: 2rem;
             font-size: 1rem;
         }
-    
-        /* ===== SIDEBAR ESTÁTICA ===== */
-        body {
-            display: flex;
-            flex-direction: row;
-            gap: 0;
-        }
-
-        .sidebar-static {
-            width: 90px;
-            background: linear-gradient(180deg, #1a1a2e 0%, #16213e 100%);
-            border-right: 2px solid #00d4ff;
-            padding: 20px 0;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 12px;
-            position: relative;
-            flex-shrink: 0;
-            overflow-y: auto;
-            max-height: 100vh;
-        }
-
-        .sidebar-static a {
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-decoration: none;
-            font-weight: bold;
-            font-size: 1.2rem;
-            transition: all 0.3s ease;
-            border: 2px solid transparent;
-        }
-
-        .sidebar-static a.home {
-            background: linear-gradient(135deg, #ffdd00 0%, #ff9900 100%);
-            color: #1a1a2e;
-            box-shadow: 0 0 15px rgba(255, 221, 0, 0.4);
-        }
-
-        .sidebar-static a.home:hover {
-            transform: scale(1.15);
-            box-shadow: 0 0 25px rgba(255, 221, 0, 0.8);
-        }
-
-        .sidebar-static a:not(.home):not(.tools) {
-            background: linear-gradient(135deg, #00d4ff 0%, #0099cc 100%);
-            color: #fff;
-            box-shadow: 0 0 10px rgba(0, 212, 255, 0.3);
-        }
-
-        .sidebar-static a:not(.home):not(.tools):hover {
-            transform: scale(1.2);
-            background: linear-gradient(135deg, #00ffaa 0%, #00cc88 100%);
-            box-shadow: 0 0 20px rgba(0, 255, 170, 0.6);
-        }
-
-        .sidebar-static a.tools {
-            background: linear-gradient(135deg, #00ff88 0%, #00d4ff 100%);
-            color: #1a1a2e;
-            box-shadow: 0 0 15px rgba(0, 255, 136, 0.4);
-            border-top: 2px solid #00d4ff;
-            margin-top: 15px;
-            padding-top: 15px;
-        }
-
-        .sidebar-static a.tools:hover {
-            transform: scale(1.15);
-            box-shadow: 0 0 25px rgba(0, 255, 136, 0.8);
-        }
-
-        .main-content {
-            flex: 1;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: calc(100% - 90px);
-            overflow-y: auto;
-        }
-
-        @media (max-width: 768px) {
-            .sidebar-static {
-                width: 70px;
-            }
-            .sidebar-static a {
-                width: 45px;
-                height: 45px;
-                font-size: 1rem;
-            }
-            .main-content {
-                width: calc(100% - 70px);
-            }
-        }
-
-        @media (max-width: 600px) {
-            body {
-                flex-direction: column;
-            }
-            .sidebar-static {
-                width: 100%;
-                height: 80px;
-                flex-direction: row;
-                border-right: none;
-                border-bottom: 2px solid #00d4ff;
-                padding: 0 20px;
-                overflow-x: auto;
-                overflow-y: hidden;
-            }
-            .main-content {
-                width: 100%;
-                height: auto;
-            }
-        }
-    
-        /* ===== SIDEBAR ESTÃTICA ===== */
-        body {
-            display: flex;
-            flex-direction: row;
-            gap: 0;
-        }
-
-        .sidebar-static {
-            width: 90px;
-            background: linear-gradient(180deg, #1a1a2e 0%, #16213e 100%);
-            border-right: 2px solid #00d4ff;
-            padding: 20px 0;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 12px;
-            position: relative;
-            flex-shrink: 0;
-            overflow-y: auto;
-            max-height: 100vh;
-        }
-
-        .sidebar-static a {
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-decoration: none;
-            font-weight: bold;
-            font-size: 1.2rem;
-            transition: all 0.3s ease;
-            border: 2px solid transparent;
-        }
-
-        .sidebar-static a.home {
-            background: linear-gradient(135deg, #ffdd00 0%, #ff9900 100%);
-            color: #1a1a2e;
-            box-shadow: 0 0 15px rgba(255, 221, 0, 0.4);
-        }
-
-        .sidebar-static a.home:hover {
-            transform: scale(1.15);
-            box-shadow: 0 0 25px rgba(255, 221, 0, 0.8);
-        }
-
-        .sidebar-static a:not(.home):not(.tools) {
-            background: linear-gradient(135deg, #00d4ff 0%, #0099cc 100%);
-            color: #fff;
-            box-shadow: 0 0 10px rgba(0, 212, 255, 0.3);
-        }
-
-        .sidebar-static a:not(.home):not(.tools):hover {
-            transform: scale(1.2);
-            background: linear-gradient(135deg, #00ffaa 0%, #00cc88 100%);
-            box-shadow: 0 0 20px rgba(0, 255, 170, 0.6);
-        }
-
-        .sidebar-static a.tools {
-            background: linear-gradient(135deg, #00ff88 0%, #00d4ff 100%);
-            color: #1a1a2e;
-            box-shadow: 0 0 15px rgba(0, 255, 136, 0.4);
-            border-top: 2px solid #00d4ff;
-            margin-top: 15px;
-            padding-top: 15px;
-        }
-
-        .sidebar-static a.tools:hover {
-            transform: scale(1.15);
-            box-shadow: 0 0 25px rgba(0, 255, 136, 0.8);
-        }
-
-        .main-content {
-            flex: 1;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: calc(100% - 90px);
-            overflow-y: auto;
-        }
-
-        @media (max-width: 768px) {
-            .sidebar-static {
-                width: 70px;
-            }
-            .sidebar-static a {
-                width: 45px;
-                height: 45px;
-                font-size: 1rem;
-            }
-            .main-content {
-                width: calc(100% - 70px);
-            }
-        }
-
-        @media (max-width: 600px) {
-            body {
-                flex-direction: column;
-            }
-            .sidebar-static {
-                width: 100%;
-                height: 80px;
-                flex-direction: row;
-                border-right: none;
-                border-bottom: 2px solid #00d4ff;
-                padding: 0 20px;
-                overflow-x: auto;
-                overflow-y: hidden;
-            }
-            .main-content {
-                width: 100%;
-                height: auto;
-            }
-        }
     </style>
 </head>
 <body>
-<aside class="sidebar-static">
-    <a href="index.html" class="home" title="Inicio">ðŸ </a>
-    <a href="PrimeraLey.html" title="Ley de PrÃ¤gnanz">1ï¸âƒ£</a>
-    <a href="SegundaLey.html" title="Ley de Hick">2ï¸âƒ£</a>
-    <a href="terceraLey.html" title="Ley de Tesler">3ï¸âƒ£</a>
-    <a href="CuartaLey.html" title="Ley de Proximidad">4ï¸âƒ£</a>
-    <a href="QuintaLey.html" title="Efecto Serial">5ï¸âƒ£</a>
-    <a href="SextaLey.html" title="Ley de Fitts">6ï¸âƒ£</a>
-    <a href="SeptimaLey.html" title="Ley de Parkinson">7ï¸âƒ£</a>
-    <a href="OctavaLey.html" title="Efecto Von Restorff">8ï¸âƒ£</a>
-    <a href="NovenaLey.html" title="Principio Pareto">9ï¸âƒ£</a>
-    <a href="DecimaLey.html" title="Efecto Zeigarnik">ðŸ”Ÿ</a>
-    <a href="OnceLey.html" title="Ley de Miller">1ï¸âƒ£1ï¸âƒ£</a>
-    <a href="DoceLey.html" title="Ley de Jakob">1ï¸âƒ£2ï¸âƒ£</a>
-    <a href="herramientas.html" class="tools" title="Herramientas">ðŸ› ï¸</a>
-</aside>
-<div class="main-content">
 <div class="fitts-card">
     <!-- ENCABEZADO LEY DE FITTS -->
     <div class="header-fitts">
-        <h1>ðŸ–±ï¸ Ley de Fitts</h1>
-        <p>â€œEl tiempo para alcanzar un objetivo depende de la distancia y el tamaÃ±o del objeto.â€</p>
+        <h1>🖱️ Ley de Fitts</h1>
+        <p>“El tiempo para alcanzar un objetivo depende de la distancia y el tamaño del objeto.”</p>
         <div class="sub-fitts">
-            <span>ðŸŽ® menÃºs de pausa, botones QTE</span>
-            <span>âš¡ grandes y cerca</span>
+            <span>🎮 menús de pausa, botones QTE</span>
+            <span>⚡ grandes y cerca</span>
         </div>
     </div>
 
     <div class="row">
-        <!-- IZQUIERDA: VIOLA FITTS (botÃ³n pequeÃ±o, alejado) -->
+        <!-- IZQUIERDA: VIOLA FITTS (botón pequeño, alejado) -->
         <div class="panel left-panel">
-            <h2>ðŸ”» Dificulta acceso <span class="badge">lejos + pequeÃ±o</span></h2>
+            <h2>🔻 Dificulta acceso <span class="badge">lejos + pequeño</span></h2>
             <div class="game-area">
                 <div class="viewport">
-                    âš”ï¸ acciÃ³n en curso
+                    ⚔️ acción en curso
                 </div>
                 <!-- pausa diminuta en esquina superior izquierda -->
                 <div class="pause-corner">
-                    <div class="pause-btn">â¸ï¸ pausa</div>
+                    <div class="pause-btn">⏸️ pausa</div>
                     <div class="distancia-marca">a 280px del centro</div>
                 </div>
-                <!-- QTE pequeÃ±o en esquina inferior derecha -->
+                <!-- QTE pequeño en esquina inferior derecha -->
                 <div class="qte-corner">
                     <div class="qte-btn">F</div>
                     <div class="distancia-marca">QTE 40px</div>
                 </div>
                 <!-- cursor imaginario (punto de partida) -->
                 <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 12px; height: 12px; background: white; border-radius: 50%; box-shadow:0 0 15px cyan;"></div>
-                <div style="position: absolute; top: 48%; left: 48%; color: white; font-size:0.7rem;">ðŸ‘† centro mirada</div>
+                <div style="position: absolute; top: 48%; left: 48%; color: white; font-size:0.7rem;">👆 centro mirada</div>
             </div>
             <div class="fitts-warning">
-                âš ï¸ BotÃ³n de pausa (pequeÃ±o, en esquina alejada) y QTE diminuto en esquina opuesta. El jugador tarda mÃ¡s en alcanzarlos: violaciÃ³n de Fitts.
+                ⚠️ Botón de pausa (pequeño, en esquina alejada) y QTE diminuto en esquina opuesta. El jugador tarda más en alcanzarlos: violación de Fitts.
             </div>
             <div class="explain-footer">
-                ðŸ“ Distancia grande + tamaÃ±o pequeÃ±o = tiempo de reacciÃ³n alto. En QTE esto puede provocar fallos.
+                📏 Distancia grande + tamaño pequeño = tiempo de reacción alto. En QTE esto puede provocar fallos.
             </div>
         </div>
 
-        <!-- DERECHA: OPTIMIZA FITTS (grande + cerca del centro/Ã¡rea natural) -->
+        <!-- DERECHA: OPTIMIZA FITTS (grande + cerca del centro/área natural) -->
         <div class="panel right-panel">
-            <h2>âœ… Acceso rÃ¡pido <span class="badge">grande + cerca</span></h2>
+            <h2>✅ Acceso rápido <span class="badge">grande + cerca</span></h2>
             <div class="game-area">
                 <div class="viewport">
-                    âš”ï¸ combate fluido
+                    ⚔️ combate fluido
                 </div>
-                <!-- elementos grandes y de fÃ¡cil acceso (cerca del centro) -->
+                <!-- elementos grandes y de fácil acceso (cerca del centro) -->
                 <div class="optimized-group">
                     <div class="pause-large">
-                        <span>â¸ï¸</span> PAUSA
+                        <span>⏸️</span> PAUSA
                     </div>
                     <div class="qte-large">
-                        <span>âš¡</span> Â¡F! <span style="font-size:1.2rem;">(golpe)</span>
+                        <span>⚡</span> ¡F! <span style="font-size:1.2rem;">(golpe)</span>
                     </div>
                 </div>
                 <div class="leyenda-acceso">
-                    <span>âœ… a 80px del centro</span>
-                    <span>ðŸ“ botones â‰¥ 120px de ancho</span>
+                    <span>✅ a 80px del centro</span>
+                    <span>📏 botones ≥ 120px de ancho</span>
                 </div>
                 <!-- punto de partida central -->
                 <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 14px; height: 14px; background: #ffd966; border-radius: 50%; box-shadow:0 0 20px gold;"></div>
             </div>
             <div class="fitts-success">
-                âœ”ï¸ Pausa y QTE son grandes y estÃ¡n cerca del centro visual. El movimiento del cursor/joystick es mÃ­nimo y el objetivo fÃ¡cil de golpear. Tiempo de reacciÃ³n reducido.
+                ✔️ Pausa y QTE son grandes y están cerca del centro visual. El movimiento del cursor/joystick es mínimo y el objetivo fácil de golpear. Tiempo de reacción reducido.
             </div>
             <div class="explain-footer">
-                âš¡ Fitts optimizado: botones de gran tamaÃ±o + posiciÃ³n cercana al punto de partida. Perfecto para QTE y acciones frecuentes.
+                ⚡ Fitts optimizado: botones de gran tamaño + posición cercana al punto de partida. Perfecto para QTE y acciones frecuentes.
             </div>
         </div>
     </div>
 
-    <!-- EXPLICACIÃ“N INTERACTIVA (Fitts en detalle) -->
+    <!-- EXPLICACIÓN INTERACTIVA (Fitts en detalle) -->
     <div style="display: flex; flex-wrap: wrap; gap: 2rem; margin: 2.5rem 0 1rem; background: #112337; border-radius: 2.5rem; padding: 2rem 1.8rem; border: 1px solid #ffd28f40;">
         <div style="flex:1; min-width:220px;">
-            <h3 style="color:#fcc886;">ðŸ“ FÃ³rmula conceptual</h3>
-            <p style="color:#c9def5; margin-top:0.5rem;">Tiempo = a + b Â· logâ‚‚(distancia / tamaÃ±o + 1).<br> <strong>MÃ¡s distancia = mÃ¡s tiempo. MÃ¡s tamaÃ±o = menos tiempo.</strong></p>
+            <h3 style="color:#fcc886;">📐 Fórmula conceptual</h3>
+            <p style="color:#c9def5; margin-top:0.5rem;">Tiempo = a + b · log₂(distancia / tamaño + 1).<br> <strong>Más distancia = más tiempo. Más tamaño = menos tiempo.</strong></p>
         </div>
         <div style="flex:1; min-width:220px;">
-            <h3 style="color:#abe0b3;">ðŸŽ® En videojuegos</h3>
-            <p style="color:#c9def5; margin-top:0.5rem;">Botones de pausa, habilidades rÃ¡pidas, QTE, menÃºs radiales. Siempre deben ser grandes y estar cerca del Ã¡rea de enfoque.</p>
+            <h3 style="color:#abe0b3;">🎮 En videojuegos</h3>
+            <p style="color:#c9def5; margin-top:0.5rem;">Botones de pausa, habilidades rápidas, QTE, menús radiales. Siempre deben ser grandes y estar cerca del área de enfoque.</p>
         </div>
         <div style="flex:1; min-width:180px; border-left: 2px solid #5d7ea3; padding-left:1.5rem;">
-            <h3 style="color:#f5e0a3;">âš¡ Ejemplo</h3>
-            <p style="color:#c9def5;">QTE en esquina opuesta de la pantalla (como izquierda) vs. QTE grande cerca del centro. La diferencia en reacciÃ³n puede ser de milisegundos cruciales.</p>
+            <h3 style="color:#f5e0a3;">⚡ Ejemplo</h3>
+            <p style="color:#c9def5;">QTE en esquina opuesta de la pantalla (como izquierda) vs. QTE grande cerca del centro. La diferencia en reacción puede ser de milisegundos cruciales.</p>
         </div>
     </div>
 
     <!-- FOOTER -->
     <div class="footer-note">
         <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 2rem; margin-bottom: 0.8rem;">
-            <span style="background:#263d59; padding:0.3rem 1.2rem; border-radius:40px;">â¬…ï¸ izquierda: botÃ³n pausa 40px a 280px de distancia</span>
-            <span style="background:#1b4e38; padding:0.3rem 1.2rem; border-radius:40px;">âž¡ï¸ derecha: botÃ³n pausa 120px a 80px de distancia</span>
+            <span style="background:#263d59; padding:0.3rem 1.2rem; border-radius:40px;">⬅️ izquierda: botón pausa 40px a 280px de distancia</span>
+            <span style="background:#1b4e38; padding:0.3rem 1.2rem; border-radius:40px;">➡️ derecha: botón pausa 120px a 80px de distancia</span>
         </div>
-        <p style="margin-top: 1.2rem;">ðŸŽ® Ley de Fitts aplicada a interfaces de juego: acciones crÃ­ticas (pausa, QTE) deben ser grandes y estar cerca del centro de la acciÃ³n para minimizar el tiempo de reacciÃ³n.</p>
+        <p style="margin-top: 1.2rem;">🎮 Ley de Fitts aplicada a interfaces de juego: acciones críticas (pausa, QTE) deben ser grandes y estar cerca del centro de la acción para minimizar el tiempo de reacción.</p>
     </div>
 </div>
-    </div>
-    </div>
 </body>
 </html>
-
-
-
-

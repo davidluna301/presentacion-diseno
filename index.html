@@ -1,9 +1,9 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Las Leyes del DiseÃ±o de Videojuegos</title>
+    <title>Las Leyes del Diseño de Videojuegos</title>
     <style>
         * {
             margin: 0;
@@ -20,7 +20,7 @@
             overflow-x: hidden;
         }
 
-        /* AnimaciÃ³n de fondo */
+        /* Animación de fondo */
         @keyframes float {
             0%, 100% { transform: translateY(0px); }
             50% { transform: translateY(20px); }
@@ -173,7 +173,7 @@
             margin: 10px 0;
         }
 
-        /* Efectos de neÃ³n en el fondo */
+        /* Efectos de neón en el fondo */
         @keyframes glow {
             0%, 100% { text-shadow: 0 0 10px #00d4ff, 0 0 20px #00d4ff; }
             50% { text-shadow: 0 0 20px #00d4ff, 0 0 40px #00d4ff; }
@@ -200,274 +200,25 @@
                 padding: 20px;
             }
         }
-    
-        /* ===== SIDEBAR ESTÁTICA ===== */
-        body {
-            display: flex;
-            flex-direction: row;
-            gap: 0;
-        }
-
-        .sidebar-static {
-            width: 90px;
-            background: linear-gradient(180deg, #1a1a2e 0%, #16213e 100%);
-            border-right: 2px solid #00d4ff;
-            padding: 20px 0;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 12px;
-            position: relative;
-            flex-shrink: 0;
-            overflow-y: auto;
-            max-height: 100vh;
-        }
-
-        .sidebar-static a {
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-decoration: none;
-            font-weight: bold;
-            font-size: 1.2rem;
-            transition: all 0.3s ease;
-            border: 2px solid transparent;
-        }
-
-        .sidebar-static a.home {
-            background: linear-gradient(135deg, #ffdd00 0%, #ff9900 100%);
-            color: #1a1a2e;
-            box-shadow: 0 0 15px rgba(255, 221, 0, 0.4);
-        }
-
-        .sidebar-static a.home:hover {
-            transform: scale(1.15);
-            box-shadow: 0 0 25px rgba(255, 221, 0, 0.8);
-        }
-
-        .sidebar-static a:not(.home):not(.tools) {
-            background: linear-gradient(135deg, #00d4ff 0%, #0099cc 100%);
-            color: #fff;
-            box-shadow: 0 0 10px rgba(0, 212, 255, 0.3);
-        }
-
-        .sidebar-static a:not(.home):not(.tools):hover {
-            transform: scale(1.2);
-            background: linear-gradient(135deg, #00ffaa 0%, #00cc88 100%);
-            box-shadow: 0 0 20px rgba(0, 255, 170, 0.6);
-        }
-
-        .sidebar-static a.tools {
-            background: linear-gradient(135deg, #00ff88 0%, #00d4ff 100%);
-            color: #1a1a2e;
-            box-shadow: 0 0 15px rgba(0, 255, 136, 0.4);
-            border-top: 2px solid #00d4ff;
-            margin-top: 15px;
-            padding-top: 15px;
-        }
-
-        .sidebar-static a.tools:hover {
-            transform: scale(1.15);
-            box-shadow: 0 0 25px rgba(0, 255, 136, 0.8);
-        }
-
-        .main-content {
-            flex: 1;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: calc(100% - 90px);
-            overflow-y: auto;
-        }
-
-        @media (max-width: 768px) {
-            .sidebar-static {
-                width: 70px;
-            }
-            .sidebar-static a {
-                width: 45px;
-                height: 45px;
-                font-size: 1rem;
-            }
-            .main-content {
-                width: calc(100% - 70px);
-            }
-        }
-
-        @media (max-width: 600px) {
-            body {
-                flex-direction: column;
-            }
-            .sidebar-static {
-                width: 100%;
-                height: 80px;
-                flex-direction: row;
-                border-right: none;
-                border-bottom: 2px solid #00d4ff;
-                padding: 0 20px;
-                overflow-x: auto;
-                overflow-y: hidden;
-            }
-            .main-content {
-                width: 100%;
-                height: auto;
-            }
-        }
-    
-        /* ===== SIDEBAR ESTÃTICA ===== */
-        body {
-            display: flex;
-            flex-direction: row;
-            gap: 0;
-        }
-
-        .sidebar-static {
-            width: 90px;
-            background: linear-gradient(180deg, #1a1a2e 0%, #16213e 100%);
-            border-right: 2px solid #00d4ff;
-            padding: 20px 0;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 12px;
-            position: relative;
-            flex-shrink: 0;
-            overflow-y: auto;
-            max-height: 100vh;
-        }
-
-        .sidebar-static a {
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-decoration: none;
-            font-weight: bold;
-            font-size: 1.2rem;
-            transition: all 0.3s ease;
-            border: 2px solid transparent;
-        }
-
-        .sidebar-static a.home {
-            background: linear-gradient(135deg, #ffdd00 0%, #ff9900 100%);
-            color: #1a1a2e;
-            box-shadow: 0 0 15px rgba(255, 221, 0, 0.4);
-        }
-
-        .sidebar-static a.home:hover {
-            transform: scale(1.15);
-            box-shadow: 0 0 25px rgba(255, 221, 0, 0.8);
-        }
-
-        .sidebar-static a:not(.home):not(.tools) {
-            background: linear-gradient(135deg, #00d4ff 0%, #0099cc 100%);
-            color: #fff;
-            box-shadow: 0 0 10px rgba(0, 212, 255, 0.3);
-        }
-
-        .sidebar-static a:not(.home):not(.tools):hover {
-            transform: scale(1.2);
-            background: linear-gradient(135deg, #00ffaa 0%, #00cc88 100%);
-            box-shadow: 0 0 20px rgba(0, 255, 170, 0.6);
-        }
-
-        .sidebar-static a.tools {
-            background: linear-gradient(135deg, #00ff88 0%, #00d4ff 100%);
-            color: #1a1a2e;
-            box-shadow: 0 0 15px rgba(0, 255, 136, 0.4);
-            border-top: 2px solid #00d4ff;
-            margin-top: 15px;
-            padding-top: 15px;
-        }
-
-        .sidebar-static a.tools:hover {
-            transform: scale(1.15);
-            box-shadow: 0 0 25px rgba(0, 255, 136, 0.8);
-        }
-
-        .main-content {
-            flex: 1;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: calc(100% - 90px);
-            overflow-y: auto;
-        }
-
-        @media (max-width: 768px) {
-            .sidebar-static {
-                width: 70px;
-            }
-            .sidebar-static a {
-                width: 45px;
-                height: 45px;
-                font-size: 1rem;
-            }
-            .main-content {
-                width: calc(100% - 70px);
-            }
-        }
-
-        @media (max-width: 600px) {
-            body {
-                flex-direction: column;
-            }
-            .sidebar-static {
-                width: 100%;
-                height: 80px;
-                flex-direction: row;
-                border-right: none;
-                border-bottom: 2px solid #00d4ff;
-                padding: 0 20px;
-                overflow-x: auto;
-                overflow-y: hidden;
-            }
-            .main-content {
-                width: 100%;
-                height: auto;
-            }
-        }
     </style>
 </head>
 <body>
-<aside class="sidebar-static">
-    <a href="index.html" class="home" title="Inicio">ðŸ </a>
-    <a href="PrimeraLey.html" title="Ley de PrÃ¤gnanz">1ï¸âƒ£</a>
-    <a href="SegundaLey.html" title="Ley de Hick">2ï¸âƒ£</a>
-    <a href="terceraLey.html" title="Ley de Tesler">3ï¸âƒ£</a>
-    <a href="CuartaLey.html" title="Ley de Proximidad">4ï¸âƒ£</a>
-    <a href="QuintaLey.html" title="Efecto Serial">5ï¸âƒ£</a>
-    <a href="SextaLey.html" title="Ley de Fitts">6ï¸âƒ£</a>
-    <a href="SeptimaLey.html" title="Ley de Parkinson">7ï¸âƒ£</a>
-    <a href="OctavaLey.html" title="Efecto Von Restorff">8ï¸âƒ£</a>
-    <a href="NovenaLey.html" title="Principio Pareto">9ï¸âƒ£</a>
-    <a href="DecimaLey.html" title="Efecto Zeigarnik">ðŸ”Ÿ</a>
-    <a href="OnceLey.html" title="Ley de Miller">1ï¸âƒ£1ï¸âƒ£</a>
-    <a href="DoceLey.html" title="Ley de Jakob">1ï¸âƒ£2ï¸âƒ£</a>
-    <a href="herramientas.html" class="tools" title="Herramientas">ðŸ› ï¸</a>
-</aside>
-<div class="main-content">
     <div class="container">
         <header>
-            <h1 class="glow-text">âš”ï¸ LAS LEYES DEL DISEÃ‘O DE VIDEOJUEGOS âš”ï¸</h1>
+            <h1 class="glow-text">⚔️ LAS LEYES DEL DISEÑO DE VIDEOJUEGOS ⚔️</h1>
             <p class="subtitle">Explora los fundamentos del game design</p>
             <p class="author">Autor: David Alejandro Luna</p>
         </header>
 
         <div class="intro">
             <p>
-                Bienvenido a una presentaciÃ³n interactiva sobre los principios fundamentales del diseÃ±o de videojuegos. 
-                Cada una de las leyes que encontrarÃ¡s a continuaciÃ³n es esencial para crear experiencias de juego memorables 
+                Bienvenido a una presentación interactiva sobre los principios fundamentales del diseño de videojuegos. 
+                Cada una de las leyes que encontrarás a continuación es esencial para crear experiencias de juego memorables 
                 y cautivadoras que mantengan a los jugadores comprometidos y entretenidos.
             </p>
             <p>
-                Selecciona cualquiera de las leyes abajo para explorar en detalle sus conceptos, aplicaciones prÃ¡cticas 
-                y ejemplos de implementaciÃ³n en juegos exitosos.
+                Selecciona cualquiera de las leyes abajo para explorar en detalle sus conceptos, aplicaciones prácticas 
+                y ejemplos de implementación en juegos exitosos.
             </p>
         </div>
 
@@ -475,99 +226,93 @@
             <div class="law-card">
                 <div class="law-number">LEY 1</div>
                 <h3>Primera Ley</h3>
-                <p>Descubre el primer principio fundamental del diseÃ±o de videojuegos y cÃ³mo sienta las bases para todo lo demÃ¡s.</p>
-                <a href="PrimeraLey.html">Leer mÃ¡s â†’</a>
+                <p>Descubre el primer principio fundamental del diseño de videojuegos y cómo sienta las bases para todo lo demás.</p>
+                <a href="PrimeraLey.html">Leer más →</a>
             </div>
 
             <div class="law-card">
                 <div class="law-number">LEY 2</div>
                 <h3>Segunda Ley</h3>
-                <p>Explora el segundo concepto clave que todo diseÃ±ador de juegos debe dominar.</p>
-                <a href="SegundaLey.html">Leer mÃ¡s â†’</a>
+                <p>Explora el segundo concepto clave que todo diseñador de juegos debe dominar.</p>
+                <a href="SegundaLey.html">Leer más →</a>
             </div>
 
             <div class="law-card">
                 <div class="law-number">LEY 3</div>
                 <h3>Tercera Ley</h3>
-                <p>Comprende cÃ³mo este principio transforma la experiencia del jugador.</p>
-                <a href="terceraLey.html">Leer mÃ¡s â†’</a>
+                <p>Comprende cómo este principio transforma la experiencia del jugador.</p>
+                <a href="terceraLey.html">Leer más →</a>
             </div>
 
             <div class="law-card">
                 <div class="law-number">LEY 4</div>
                 <h3>Cuarta Ley</h3>
-                <p>Aprende el cuarto pilar esencial en la construcciÃ³n de juegos exitosos.</p>
-                <a href="CuartaLey.html">Leer mÃ¡s â†’</a>
+                <p>Aprende el cuarto pilar esencial en la construcción de juegos exitosos.</p>
+                <a href="CuartaLey.html">Leer más →</a>
             </div>
 
             <div class="law-card">
                 <div class="law-number">LEY 5</div>
                 <h3>Quinta Ley</h3>
-                <p>Descubre cÃ³mo este principio mejora la jugabilidad y la retenciÃ³n de jugadores.</p>
-                <a href="QuintaLey.html">Leer mÃ¡s â†’</a>
+                <p>Descubre cómo este principio mejora la jugabilidad y la retención de jugadores.</p>
+                <a href="QuintaLey.html">Leer más →</a>
             </div>
 
             <div class="law-card">
                 <div class="law-number">LEY 6</div>
                 <h3>Sexta Ley</h3>
                 <p>Explora el sexto concepto que define la calidad de un juego moderno.</p>
-                <a href="SextaLey.html">Leer mÃ¡s â†’</a>
+                <a href="SextaLey.html">Leer más →</a>
             </div>
 
             <div class="law-card">
                 <div class="law-number">LEY 7</div>
-                <h3>SÃ©ptima Ley</h3>
-                <p>Entiende cÃ³mo este principio crea experiencias inmersivas.</p>
-                <a href="SeptimaLey.html">Leer mÃ¡s â†’</a>
+                <h3>Séptima Ley</h3>
+                <p>Entiende cómo este principio crea experiencias inmersivas.</p>
+                <a href="SeptimaLey.html">Leer más →</a>
             </div>
 
             <div class="law-card">
                 <div class="law-number">LEY 8</div>
                 <h3>Octava Ley</h3>
-                <p>Domina el octavo pilar para equilibrar desafÃ­o y diversiÃ³n.</p>
-                <a href="OctavaLey.html">Leer mÃ¡s â†’</a>
+                <p>Domina el octavo pilar para equilibrar desafío y diversión.</p>
+                <a href="OctavaLey.html">Leer más →</a>
             </div>
 
             <div class="law-card">
                 <div class="law-number">LEY 9</div>
                 <h3>Novena Ley</h3>
-                <p>Aprende cÃ³mo este concepto impacta en el engagement del jugador.</p>
-                <a href="NovenaLey.html">Leer mÃ¡s â†’</a>
+                <p>Aprende cómo este concepto impacta en el engagement del jugador.</p>
+                <a href="NovenaLey.html">Leer más →</a>
             </div>
 
             <div class="law-card">
                 <div class="law-number">LEY 10</div>
-                <h3>DÃ©cima Ley</h3>
-                <p>Descubre el dÃ©cimo principio que completa los fundamentos del game design.</p>
-                <a href="DecimaLey.html">Leer mÃ¡s â†’</a>
+                <h3>Décima Ley</h3>
+                <p>Descubre el décimo principio que completa los fundamentos del game design.</p>
+                <a href="DecimaLey.html">Leer más →</a>
             </div>
 
             <div class="law-card">
                 <div class="law-number">LEY 11</div>
-                <h3>UndÃ©cima Ley</h3>
-                <p>Explora cÃ³mo este principio avanzado eleva tus diseÃ±os al siguiente nivel.</p>
-                <a href="OnceLey.html">Leer mÃ¡s â†’</a>
+                <h3>Undécima Ley</h3>
+                <p>Explora cómo este principio avanzado eleva tus diseños al siguiente nivel.</p>
+                <a href="OnceLey.html">Leer más →</a>
             </div>
 
             <div class="law-card">
                 <div class="law-number">LEY 12</div>
-                <h3>DuodÃ©cima Ley</h3>
+                <h3>Duodécima Ley</h3>
                 <p>Domina el principio final que corona tu conocimiento del game design.</p>
-                <a href="DoceLey.html">Leer mÃ¡s â†’</a>
+                <a href="DoceLey.html">Leer más →</a>
             </div>
         </div>
 
         <footer>
-            <p>ðŸŽ® Las Leyes del DiseÃ±o de Videojuegos ðŸŽ®</p>
+            <p>🎮 Las Leyes del Diseño de Videojuegos 🎮</p>
             <p>Autor: <strong>David Alejandro Luna</strong></p>
-            <p>Â© 2026 - Fundamentos del Game Design</p>
+            <p>© 2026 - Fundamentos del Game Design</p>
         </footer>
-    </div>
-    </div>
     </div>
 </body>
 </html>
-
-
-
-

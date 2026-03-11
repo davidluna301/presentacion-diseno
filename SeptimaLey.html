@@ -1,9 +1,9 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ley de Parkinson Â· curvas de dificultad</title>
+    <title>Ley de Parkinson · curvas de dificultad</title>
     <style>
         * {
             margin: 0;
@@ -196,7 +196,7 @@
             border: 3px solid #d4ed7c;
         }
 
-        /* panel izquierdo: sin obstÃ¡culos, nivel lineal (no aplica Parkinson) */
+        /* panel izquierdo: sin obstáculos, nivel lineal (no aplica Parkinson) */
         .left-panel .track {
             justify-content: space-between;
         }
@@ -216,7 +216,7 @@
             margin-top: 1rem;
         }
 
-        /* panel derecho: obstÃ¡culos, curva de dificultad (Parkinson) */
+        /* panel derecho: obstáculos, curva de dificultad (Parkinson) */
         .right-panel .track {
             flex-wrap: wrap;
             gap: 0.5rem;
@@ -290,324 +290,75 @@
             color: #cddcee;
             margin: 1rem 0;
         }
-    
-        /* ===== SIDEBAR ESTÁTICA ===== */
-        body {
-            display: flex;
-            flex-direction: row;
-            gap: 0;
-        }
-
-        .sidebar-static {
-            width: 90px;
-            background: linear-gradient(180deg, #1a1a2e 0%, #16213e 100%);
-            border-right: 2px solid #00d4ff;
-            padding: 20px 0;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 12px;
-            position: relative;
-            flex-shrink: 0;
-            overflow-y: auto;
-            max-height: 100vh;
-        }
-
-        .sidebar-static a {
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-decoration: none;
-            font-weight: bold;
-            font-size: 1.2rem;
-            transition: all 0.3s ease;
-            border: 2px solid transparent;
-        }
-
-        .sidebar-static a.home {
-            background: linear-gradient(135deg, #ffdd00 0%, #ff9900 100%);
-            color: #1a1a2e;
-            box-shadow: 0 0 15px rgba(255, 221, 0, 0.4);
-        }
-
-        .sidebar-static a.home:hover {
-            transform: scale(1.15);
-            box-shadow: 0 0 25px rgba(255, 221, 0, 0.8);
-        }
-
-        .sidebar-static a:not(.home):not(.tools) {
-            background: linear-gradient(135deg, #00d4ff 0%, #0099cc 100%);
-            color: #fff;
-            box-shadow: 0 0 10px rgba(0, 212, 255, 0.3);
-        }
-
-        .sidebar-static a:not(.home):not(.tools):hover {
-            transform: scale(1.2);
-            background: linear-gradient(135deg, #00ffaa 0%, #00cc88 100%);
-            box-shadow: 0 0 20px rgba(0, 255, 170, 0.6);
-        }
-
-        .sidebar-static a.tools {
-            background: linear-gradient(135deg, #00ff88 0%, #00d4ff 100%);
-            color: #1a1a2e;
-            box-shadow: 0 0 15px rgba(0, 255, 136, 0.4);
-            border-top: 2px solid #00d4ff;
-            margin-top: 15px;
-            padding-top: 15px;
-        }
-
-        .sidebar-static a.tools:hover {
-            transform: scale(1.15);
-            box-shadow: 0 0 25px rgba(0, 255, 136, 0.8);
-        }
-
-        .main-content {
-            flex: 1;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: calc(100% - 90px);
-            overflow-y: auto;
-        }
-
-        @media (max-width: 768px) {
-            .sidebar-static {
-                width: 70px;
-            }
-            .sidebar-static a {
-                width: 45px;
-                height: 45px;
-                font-size: 1rem;
-            }
-            .main-content {
-                width: calc(100% - 70px);
-            }
-        }
-
-        @media (max-width: 600px) {
-            body {
-                flex-direction: column;
-            }
-            .sidebar-static {
-                width: 100%;
-                height: 80px;
-                flex-direction: row;
-                border-right: none;
-                border-bottom: 2px solid #00d4ff;
-                padding: 0 20px;
-                overflow-x: auto;
-                overflow-y: hidden;
-            }
-            .main-content {
-                width: 100%;
-                height: auto;
-            }
-        }
-    
-        /* ===== SIDEBAR ESTÃTICA ===== */
-        body {
-            display: flex;
-            flex-direction: row;
-            gap: 0;
-        }
-
-        .sidebar-static {
-            width: 90px;
-            background: linear-gradient(180deg, #1a1a2e 0%, #16213e 100%);
-            border-right: 2px solid #00d4ff;
-            padding: 20px 0;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 12px;
-            position: relative;
-            flex-shrink: 0;
-            overflow-y: auto;
-            max-height: 100vh;
-        }
-
-        .sidebar-static a {
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-decoration: none;
-            font-weight: bold;
-            font-size: 1.2rem;
-            transition: all 0.3s ease;
-            border: 2px solid transparent;
-        }
-
-        .sidebar-static a.home {
-            background: linear-gradient(135deg, #ffdd00 0%, #ff9900 100%);
-            color: #1a1a2e;
-            box-shadow: 0 0 15px rgba(255, 221, 0, 0.4);
-        }
-
-        .sidebar-static a.home:hover {
-            transform: scale(1.15);
-            box-shadow: 0 0 25px rgba(255, 221, 0, 0.8);
-        }
-
-        .sidebar-static a:not(.home):not(.tools) {
-            background: linear-gradient(135deg, #00d4ff 0%, #0099cc 100%);
-            color: #fff;
-            box-shadow: 0 0 10px rgba(0, 212, 255, 0.3);
-        }
-
-        .sidebar-static a:not(.home):not(.tools):hover {
-            transform: scale(1.2);
-            background: linear-gradient(135deg, #00ffaa 0%, #00cc88 100%);
-            box-shadow: 0 0 20px rgba(0, 255, 170, 0.6);
-        }
-
-        .sidebar-static a.tools {
-            background: linear-gradient(135deg, #00ff88 0%, #00d4ff 100%);
-            color: #1a1a2e;
-            box-shadow: 0 0 15px rgba(0, 255, 136, 0.4);
-            border-top: 2px solid #00d4ff;
-            margin-top: 15px;
-            padding-top: 15px;
-        }
-
-        .sidebar-static a.tools:hover {
-            transform: scale(1.15);
-            box-shadow: 0 0 25px rgba(0, 255, 136, 0.8);
-        }
-
-        .main-content {
-            flex: 1;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: calc(100% - 90px);
-            overflow-y: auto;
-        }
-
-        @media (max-width: 768px) {
-            .sidebar-static {
-                width: 70px;
-            }
-            .sidebar-static a {
-                width: 45px;
-                height: 45px;
-                font-size: 1rem;
-            }
-            .main-content {
-                width: calc(100% - 70px);
-            }
-        }
-
-        @media (max-width: 600px) {
-            body {
-                flex-direction: column;
-            }
-            .sidebar-static {
-                width: 100%;
-                height: 80px;
-                flex-direction: row;
-                border-right: none;
-                border-bottom: 2px solid #00d4ff;
-                padding: 0 20px;
-                overflow-x: auto;
-                overflow-y: hidden;
-            }
-            .main-content {
-                width: 100%;
-                height: auto;
-            }
-        }
     </style>
 </head>
 <body>
-<aside class="sidebar-static">
-    <a href="index.html" class="home" title="Inicio">ðŸ </a>
-    <a href="PrimeraLey.html" title="Ley de PrÃ¤gnanz">1ï¸âƒ£</a>
-    <a href="SegundaLey.html" title="Ley de Hick">2ï¸âƒ£</a>
-    <a href="terceraLey.html" title="Ley de Tesler">3ï¸âƒ£</a>
-    <a href="CuartaLey.html" title="Ley de Proximidad">4ï¸âƒ£</a>
-    <a href="QuintaLey.html" title="Efecto Serial">5ï¸âƒ£</a>
-    <a href="SextaLey.html" title="Ley de Fitts">6ï¸âƒ£</a>
-    <a href="SeptimaLey.html" title="Ley de Parkinson">7ï¸âƒ£</a>
-    <a href="OctavaLey.html" title="Efecto Von Restorff">8ï¸âƒ£</a>
-    <a href="NovenaLey.html" title="Principio Pareto">9ï¸âƒ£</a>
-    <a href="DecimaLey.html" title="Efecto Zeigarnik">ðŸ”Ÿ</a>
-    <a href="OnceLey.html" title="Ley de Miller">1ï¸âƒ£1ï¸âƒ£</a>
-    <a href="DoceLey.html" title="Ley de Jakob">1ï¸âƒ£2ï¸âƒ£</a>
-    <a href="herramientas.html" class="tools" title="Herramientas">ðŸ› ï¸</a>
-</aside>
-<div class="main-content">
 <div class="parkinson-card">
     <!-- ENCABEZADO LEY DE PARKINSON -->
     <div class="header-park">
-        <h1>â³ Ley de Parkinson</h1>
-        <p>â€œCualquier tarea se infla hasta ocupar todo el tiempo disponible.â€</p>
+        <h1>⏳ Ley de Parkinson</h1>
+        <p>“Cualquier tarea se infla hasta ocupar todo el tiempo disponible.”</p>
         <div class="sub-park">
-            <span>ðŸŽ® obstÃ¡culos y curvas de dificultad</span>
-            <span>â±ï¸ frenar al jugador</span>
+            <span>🎮 obstáculos y curvas de dificultad</span>
+            <span>⏱️ frenar al jugador</span>
         </div>
     </div>
 
     <div class="row">
-        <!-- IZQUIERDA: SIN obstÃ¡culos, nivel lineal (no aprovecha Parkinson) -->
+        <!-- IZQUIERDA: SIN obstáculos, nivel lineal (no aprovecha Parkinson) -->
         <div class="panel left-panel">
-            <h2>ðŸ”» SIN obstÃ¡culos <span class="badge">se completa rÃ¡pido</span></h2>
+            <h2>🔻 SIN obstáculos <span class="badge">se completa rápido</span></h2>
             <div class="level-container">
                 <div style="display: flex; gap: 1rem; align-items: center; margin-bottom: 1.2rem;">
-                    <div class="player-icon">ðŸ‘¾</div>
-                    <div style="color:white;">Nivel lineal Â· 3 minutos estimados</div>
+                    <div class="player-icon">👾</div>
+                    <div style="color:white;">Nivel lineal · 3 minutos estimados</div>
                 </div>
                 <div class="track">
                     <span style="color:#aaa;">inicio</span>
-                    <span>âž¡ï¸</span>
-                    <span>âž¡ï¸</span>
-                    <span>âž¡ï¸</span>
+                    <span>➡️</span>
+                    <span>➡️</span>
+                    <span>➡️</span>
                     <span style="color:#aaa;">meta</span>
                 </div>
                 <div class="progress-line">
                     <div class="progress-fill" style="width: 90%;"></div>
                 </div>
                 <div class="timer-sim">
-                    <span>â±ï¸ tiempo real empleado: 2m 45s</span>
-                    <span>âš¡ sin demora</span>
+                    <span>⏱️ tiempo real empleado: 2m 45s</span>
+                    <span>⚡ sin demora</span>
                 </div>
                 <div style="background: #3a2d40; border-radius: 20px; padding: 0.8rem; color: #e0bdbd; margin-top: 0.8rem;">
-                    ðŸ˜´ Jugador avanza sin resistencia. Termina antes de lo previsto. No hay "inflado" de la tarea.
+                    😴 Jugador avanza sin resistencia. Termina antes de lo previsto. No hay "inflado" de la tarea.
                 </div>
             </div>
             <div class="explain-footer">
-                â© Parkinson ignorado: la tarea se completa en menos tiempo del disponible, no hay obstÃ¡culos que expandan la duraciÃ³n.
+                ⏩ Parkinson ignorado: la tarea se completa en menos tiempo del disponible, no hay obstáculos que expandan la duración.
             </div>
         </div>
 
-        <!-- DERECHA: CON obstÃ¡culos y curvas de dificultad (aplica Parkinson) -->
+        <!-- DERECHA: CON obstáculos y curvas de dificultad (aplica Parkinson) -->
         <div class="panel right-panel">
-            <h2>âœ… CON curva de dificultad <span class="badge">obstÃ¡culos expanden el tiempo</span></h2>
+            <h2>✅ CON curva de dificultad <span class="badge">obstáculos expanden el tiempo</span></h2>
             <div class="level-container">
                 <div style="display: flex; gap: 1rem; align-items: center; margin-bottom: 0.5rem;">
-                    <div class="player-icon">ðŸ‘¾</div>
-                    <div style="color:white;">Nivel con obstÃ¡culos Â· 5 minutos disponibles</div>
+                    <div class="player-icon">👾</div>
+                    <div style="color:white;">Nivel con obstáculos · 5 minutos disponibles</div>
                 </div>
 
-                <!-- obstÃ¡culos en el camino -->
+                <!-- obstáculos en el camino -->
                 <div class="track">
-                    <div class="obstacle">ðŸ§± muro</div>
-                    <div class="obstacle">ðŸ•³ï¸ pozo</div>
-                    <div class="obstacle">ðŸ‰ enemigo</div>
-                    <div class="obstacle">ðŸ§© puzzle</div>
-                    <div class="obstacle">ðŸŒªï¸ trampa</div>
+                    <div class="obstacle">🧱 muro</div>
+                    <div class="obstacle">🕳️ pozo</div>
+                    <div class="obstacle">🐉 enemigo</div>
+                    <div class="obstacle">🧩 puzzle</div>
+                    <div class="obstacle">🌪️ trampa</div>
                 </div>
 
                 <!-- curva de dificultad ascendente -->
                 <div class="difficulty-curve">
-                    <div class="curve-item">ðŸ”¹ secciÃ³n 1: enemigos bÃ¡sicos (poca demora)</div>
-                    <div class="curve-item">ðŸ”¸ secciÃ³n 2: rompecabezas + oleadas (aumenta el tiempo)</div>
-                    <div class="curve-item">ðŸ”¹ secciÃ³n 3: minijefe (ralentiza el avance)</div>
+                    <div class="curve-item">🔹 sección 1: enemigos básicos (poca demora)</div>
+                    <div class="curve-item">🔸 sección 2: rompecabezas + oleadas (aumenta el tiempo)</div>
+                    <div class="curve-item">🔹 sección 3: minijefe (ralentiza el avance)</div>
                 </div>
 
                 <div class="progress-line">
@@ -615,16 +366,16 @@
                 </div>
 
                 <div class="timer-sim">
-                    <span>â±ï¸ tiempo real: 4m 30s y sigue...</span>
-                    <span>â³ casi agota el disponible</span>
+                    <span>⏱️ tiempo real: 4m 30s y sigue...</span>
+                    <span>⏳ casi agota el disponible</span>
                 </div>
 
                 <div class="time-warning">
-                    ðŸ§  Ley de Parkinson: los obstÃ¡culos y la dificultad creciente hacen que el jugador utilice casi todo el tiempo asignado. La tarea se "infla" hasta ocupar el tiempo disponible.
+                    🧠 Ley de Parkinson: los obstáculos y la dificultad creciente hacen que el jugador utilice casi todo el tiempo asignado. La tarea se "infla" hasta ocupar el tiempo disponible.
                 </div>
             </div>
             <div class="explain-footer">
-                â³ Parkinson aplicado: la curva de dificultad (obstÃ¡culos, puzles, enemigos) expande la duraciÃ³n del nivel. El jugador se adapta y llena el tiempo disponible.
+                ⏳ Parkinson aplicado: la curva de dificultad (obstáculos, puzles, enemigos) expande la duración del nivel. El jugador se adapta y llena el tiempo disponible.
             </div>
         </div>
     </div>
@@ -632,33 +383,27 @@
     <!-- BLOQUE EXPLICATIVO: PARKINSON EN JUEGOS -->
     <div style="display: flex; flex-wrap: wrap; gap: 2rem; margin: 2.5rem 0 1rem; background: #112337; border-radius: 2.5rem; padding: 2rem 1.8rem; border: 1px solid #ffd28f40;">
         <div style="flex:1; min-width:220px;">
-            <h3 style="color:#fcc886;">ðŸ“ˆ Inflado de tarea</h3>
-            <p style="color:#c9def5; margin-top:0.5rem;">Si el jugador tiene 10 minutos para un nivel, los diseÃ±adores colocan obstÃ¡culos para que dure cerca de 10 minutos, no 3.</p>
+            <h3 style="color:#fcc886;">📈 Inflado de tarea</h3>
+            <p style="color:#c9def5; margin-top:0.5rem;">Si el jugador tiene 10 minutos para un nivel, los diseñadores colocan obstáculos para que dure cerca de 10 minutos, no 3.</p>
         </div>
         <div style="flex:1; min-width:220px;">
-            <h3 style="color:#abe0b3;">ðŸŽ® Curvas de dificultad</h3>
-            <p style="color:#c9def5; margin-top:0.5rem;">Enemigos mÃ¡s fuertes, puzles, Ã¡reas bloqueadas. Todo esto expande el tiempo de juego ajustÃ¡ndose al tiempo disponible.</p>
+            <h3 style="color:#abe0b3;">🎮 Curvas de dificultad</h3>
+            <p style="color:#c9def5; margin-top:0.5rem;">Enemigos más fuertes, puzles, áreas bloqueadas. Todo esto expande el tiempo de juego ajustándose al tiempo disponible.</p>
         </div>
         <div style="flex:1; min-width:180px; border-left: 2px solid #5d7ea3; padding-left:1.5rem;">
-            <h3 style="color:#f5e0a3;">âš¡ Ejemplo</h3>
-            <p style="color:#c9def5;">Nivel sin obstÃ¡culos: 2 min. Con obstÃ¡culos: 8 min. El tiempo disponible (10 min) se llena con desafÃ­os.</p>
+            <h3 style="color:#f5e0a3;">⚡ Ejemplo</h3>
+            <p style="color:#c9def5;">Nivel sin obstáculos: 2 min. Con obstáculos: 8 min. El tiempo disponible (10 min) se llena con desafíos.</p>
         </div>
     </div>
 
     <!-- FOOTER -->
     <div class="footer-note">
         <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 2rem; margin-bottom: 0.8rem;">
-            <span style="background:#263d59; padding:0.3rem 1.2rem; border-radius:40px;">â¬…ï¸ izquierda: nivel lineal, 2m 45s (no ocupa el tiempo)</span>
-            <span style="background:#1b4e38; padding:0.3rem 1.2rem; border-radius:40px;">âž¡ï¸ derecha: obstÃ¡culos, 4m30s+ y sigue â†’ tiende a llenar el tiempo</span>
+            <span style="background:#263d59; padding:0.3rem 1.2rem; border-radius:40px;">⬅️ izquierda: nivel lineal, 2m 45s (no ocupa el tiempo)</span>
+            <span style="background:#1b4e38; padding:0.3rem 1.2rem; border-radius:40px;">➡️ derecha: obstáculos, 4m30s+ y sigue → tiende a llenar el tiempo</span>
         </div>
-        <p style="margin-top: 1.2rem;">ðŸŽ® Ley de Parkinson en videojuegos: los diseÃ±adores introducen obstÃ¡culos y curvas de dificultad para que el jugador ocupe el tiempo previsto, inflando la duraciÃ³n de la tarea.</p>
+        <p style="margin-top: 1.2rem;">🎮 Ley de Parkinson en videojuegos: los diseñadores introducen obstáculos y curvas de dificultad para que el jugador ocupe el tiempo previsto, inflando la duración de la tarea.</p>
     </div>
 </div>
-    </div>
-    </div>
 </body>
 </html>
-
-
-
-
