@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Efecto Zeigarnik · tareas incompletas</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #1e2a3a;
+            background: radial-gradient(circle at 80% 30%, #2b405a, #0f1b2b);
+            font-family: 'Inter', 'Segoe UI', system-ui, sans-serif;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem 1rem;
+        }
+
+        .zeigarnik-card {
+            max-width: 1350px;
+            width: 100%;
+            background: rgba(14, 24, 40, 0.88);
+            backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px);
+            border: 1px solid rgba(255, 200, 80, 0.18);
+            border-radius: 3rem;
+            padding: 2.5rem 2rem;
+            box-shadow: 0 40px 70px -25px #000, 0 0 0 1px rgba(255, 210, 70, 0.15) inset;
+        }
+
+        .header-zeig {
+            text-align: center;
+            margin-bottom: 3.5rem;
+        }
+
+        .header-zeig h1 {
+            font-size: 3.4rem;
+            font-weight: 700;
+            background: linear-gradient(145deg, #ffd966, #f6b26b, #b2d9d0);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            letter-spacing: -0.02em;
+            margin-bottom: 0.8rem;
+        }
+
+        .header-zeig p {
+            color: #d9e6ff;
+            font-size: 1.4rem;
+            max-width: 950px;
+            margin: 0 auto;
+            background: #0d1b32b3;
+            padding: 0.8rem 2rem;
+            border-radius: 60px;
+            border: 1px solid #9cb8e6;
+            line-height: 1.5;
+        }
+
+        .sub-zeig {
+            margin-top: 1rem;
+            font-size: 1.25rem;
+            color: #f2e5b3;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .sub-zeig span {
+            background: #2e4a70;
+            padding: 0.3rem 1.6rem;
+            border-radius: 40px;
+            border: 1px solid #e2e7a7;
+        }
+
+        .row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            justify-content: center;
+        }
+
+        .panel {
+            flex: 1 1 420px;
+            min-width: 360px;
+            background: #10243d;
+            border-radius: 2.8rem;
+            padding: 2.2rem 1.8rem 2.4rem;
+            border: 1px solid rgba(230, 180, 100, 0.3);
+            transition: 0.2s;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .panel:hover {
+            transform: translateY(-6px);
+            border-color: #f5d893;
+            box-shadow: 0 25px 45px -15px black;
+        }
+
+        .panel h2 {
+            font-size: 2.3rem;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            padding-bottom: 1rem;
+            margin-bottom: 2rem;
+            border-bottom: 3px solid;
+        }
+
+        .left-panel h2 {
+            color: #f5b08c;
+            border-image: linear-gradient(90deg, #dd7a5c, #584d70) 1;
+        }
+
+        .right-panel h2 {
+            color: #c7f0b4;
+            border-image: linear-gradient(90deg, #68ca7c, #266349) 1;
+        }
+
+        .badge {
+            background: #202a42;
+            padding: 0.2rem 1rem;
+            border-radius: 60px;
+            font-size: 0.95rem;
+            border: 1px solid currentColor;
+            margin-left: 0.5rem;
+        }
+
+        /* mapa simulado */
+        .map-container {
+            background: #1b3a4f;
+            border-radius: 2.5rem;
+            padding: 2rem 1.5rem;
+            border: 3px solid #3f6b94;
+            box-shadow: inset 0 0 20px #03111d;
+            margin-bottom: 1.5rem;
+            position: relative;
+        }
+
+        .map-grid {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 0.8rem;
+            aspect-ratio: 1/0.7;
+            background: #2b5070;
+            border-radius: 2rem;
+            padding: 1.5rem;
+            border: 2px solid #5b8bb0;
+        }
+
+        .map-cell {
+            background: #3e6a8f;
+            border-radius: 1.2rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.6rem;
+            min-height: 60px;
+            border: 2px solid #7ca9cf;
+            box-shadow: 0 5px 0 #1e405b;
+        }
+
+        /* iconos de tareas */
+        .task-icon {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 1rem;
+        }
+
+        .icon-collect {
+            background: #d4a54e;
+            color: #3f2b0e;
+        }
+
+        .icon-fight {
+            background: #c96b6b;
+            color: #2f0f0f;
+        }
+
+        .icon-mystery {
+            background: #9b7bcb;
+            color: #1e1133;
+        }
+
+        .icon-completed {
+            background: #5a9e6e;
+            color: #14381d;
+            opacity: 0.5;
+            filter: grayscale(0.4);
+            text-decoration: line-through 2px #3339;
+        }
+
+        .completed-mark {
+            font-size: 1.8rem;
+        }
+
+        /* panel izquierdo: mapa sin tareas pendientes (todo completado) */
+        .left-panel .map-cell .task-icon {
+            background: #4a7b60;
+            color: #a1d8b0;
+            font-size: 1.4rem;
+        }
+
+        .left-panel .empty-message {
+            background: #424f6b;
+            border-left: 8px solid #c07a7a;
+            padding: 1rem;
+            border-radius: 1.2rem;
+            color: #f2cfcf;
+            margin: 1rem 0;
+        }
+
+        /* panel derecho: mapa saturado de iconos (tareas pendientes) */
+        .right-panel .map-grid {
+            gap: 0.6rem;
+        }
+
+        .right-panel .task-pending {
+            background: #d9a524;
+            color: #2d1f06;
+            font-weight: bold;
+            box-shadow: 0 0 15px #f5c84e;
+            animation: soft-pulse 2s infinite;
+        }
+
+        @keyframes soft-pulse {
+            0% { box-shadow: 0 0 10px #f9d25c; }
+            50% { box-shadow: 0 0 20px #fce384; }
+            100% { box-shadow: 0 0 10px #f9d25c; }
+        }
+
+        .right-panel .task-completed {
+            background: #3d7353;
+            color: #b1e3b1;
+            opacity: 0.7;
+            filter: grayscale(0.5);
+        }
+
+        .right-panel .zeigarnik-stats {
+            background: #2d5a44;
+            border-left: 8px solid #edd46c;
+            padding: 1rem;
+            border-radius: 1.2rem;
+            color: #fbffe2;
+            margin: 1rem 0;
+        }
+
+        .explain-footer {
+            margin-top: 1.8rem;
+            padding: 1rem 1.5rem;
+            border-radius: 30px;
+            background: #0f2133;
+            border-left: 8px solid;
+            font-size: 1.05rem;
+        }
+
+        .left-panel .explain-footer {
+            border-left-color: #cd7a6a;
+            background: #2d212b;
+        }
+
+        .right-panel .explain-footer {
+            border-left-color: #80d492;
+            background: #1a312a;
+        }
+
+        .footer-note {
+            margin-top: 3rem;
+            color: #829bc8;
+            text-align: center;
+            border-top: 1px solid #384f70;
+            padding-top: 2rem;
+            font-size: 1rem;
+        }
+
+        .counter-badge {
+            background: #c55a4a;
+            border-radius: 30px;
+            padding: 0.2rem 1rem;
+            font-size: 0.9rem;
+            color: white;
+            margin-left: 0.5rem;
+        }
+    </style>
+</head>
+<body>
+<div class="zeigarnik-card">
+    <!-- ENCABEZADO EFECTO ZEIGARNIK -->
+    <div class="header-zeig">
+        <h1>🧠 Efecto Zeigarnik</h1>
+        <p>“Las personas recuerdan mejor las tareas incompletas o interrumpidas que las completadas.”</p>
+        <div class="sub-zeig">
+            <span>🗺️ mapas saturados de iconos</span>
+            <span>⚡ tensión por tareas pendientes</span>
+        </div>
+    </div>
+
+    <div class="row">
+        <!-- IZQUIERDA: mapa COMPLETADO (sin tareas pendientes, no hay efecto) -->
+        <div class="panel left-panel">
+            <h2>🔻 TODO COMPLETADO <span class="badge">sin tensión</span></h2>
+            <div class="map-container">
+                <div style="color:#c0daf0; margin-bottom: 0.8rem; display:flex; justify-content:space-between;">
+                    <span>🗺️ Ciudad Central</span>
+                    <span>✅ 12/12 tareas</span>
+                </div>
+                <div class="map-grid">
+                    <!-- todas las celdas con icono completado (check) -->
+                    <div class="map-cell"><div class="task-icon icon-completed">✅</div></div>
+                    <div class="map-cell"><div class="task-icon icon-completed">✅</div></div>
+                    <div class="map-cell"><div class="task-icon icon-completed">✅</div></div>
+                    <div class="map-cell"><div class="task-icon icon-completed">✅</div></div>
+                    <div class="map-cell"><div class="task-icon icon-completed">✅</div></div>
+                    <div class="map-cell"><div class="task-icon icon-completed">✅</div></div>
+                    <div class="map-cell"><div class="task-icon icon-completed">✅</div></div>
+                    <div class="map-cell"><div class="task-icon icon-completed">✅</div></div>
+                    <div class="map-cell"><div class="task-icon icon-completed">✅</div></div>
+                    <div class="map-cell"><div class="task-icon icon-completed">✅</div></div>
+                    <div class="map-cell"><div class="task-icon icon-completed">✅</div></div>
+                    <div class="map-cell"><div class="task-icon icon-completed">✅</div></div>
+                    <div class="map-cell"><div class="task-icon icon-completed">✅</div></div>
+                    <div class="map-cell"><div class="task-icon icon-completed">✅</div></div>
+                    <div class="map-cell"><div class="task-icon icon-completed">✅</div></div>
+                </div>
+                <div class="empty-message">
+                    🧘 Todo completado. El jugador no siente necesidad de volver. No hay tareas que "atormenten" la memoria.
+                </div>
+            </div>
+            <div class="explain-footer">
+                ❌ Zeigarnik ausente: al no haber tareas pendientes, el cerebro las olvida rápidamente. No hay "gancho" psicológico.
+            </div>
+        </div>
+
+        <!-- DERECHA: mapa SATURADO de iconos (muchas tareas incompletas) -->
+        <div class="panel right-panel">
+            <h2>✅ SATURADO DE ICONOS <span class="badge">15 tareas pendientes</span></h2>
+            <div class="map-container">
+                <div style="color:#f0e2b0; margin-bottom: 0.8rem; display:flex; justify-content:space-between;">
+                    <span>🗺️ Distrito Norte <span style="font-size:0.8rem; background:#ac4e4e; padding:0.2rem 0.8rem; border-radius:30px;">¡12 iconos!</span></span>
+                    <span>⏳ 3/15 completadas</span>
+                </div>
+                <div class="map-grid">
+                    <!-- celdas con varios tipos de tareas pendientes, algunas completadas -->
+                    <div class="map-cell"><div class="task-icon task-pending">📦</div></div>
+                    <div class="map-cell"><div class="task-icon task-pending">⚔️</div></div>
+                    <div class="map-cell"><div class="task-icon task-pending">❓</div></div>
+                    <div class="map-cell"><div class="task-icon task-pending">💎</div></div>
+                    <div class="map-cell"><div class="task-icon task-completed">✅</div></div>
+                    <div class="map-cell"><div class="task-icon task-pending">📜</div></div>
+                    <div class="map-cell"><div class="task-icon task-pending">🗝️</div></div>
+                    <div class="map-cell"><div class="task-icon task-pending">⚡</div></div>
+                    <div class="map-cell"><div class="task-icon task-pending">🪶</div></div>
+                    <div class="map-cell"><div class="task-icon task-completed">✅</div></div>
+                    <div class="map-cell"><div class="task-icon task-pending">🏆</div></div>
+                    <div class="map-cell"><div class="task-icon task-pending">🔮</div></div>
+                    <div class="map-cell"><div class="task-icon task-pending">🕯️</div></div>
+                    <div class="map-cell"><div class="task-icon task-pending">🐉</div></div>
+                    <div class="map-cell"><div class="task-icon task-completed">✅</div></div>
+                </div>
+                <div class="zeigarnik-stats">
+                    🧠 ¡12 tareas incompletas! El cerebro las mantiene activas en la memoria. Cada icono es un recordatorio de "pendiente". La tensión solo se alivia al completarlas.
+                </div>
+                <div style="display: flex; gap: 0.5rem; flex-wrap: wrap; margin-top: 0.8rem; justify-content: center;">
+                    <span style="background:#c87932; padding:0.3rem 1rem; border-radius:30px;">📦 cofres: 4</span>
+                    <span style="background:#b54848; padding:0.3rem 1rem; border-radius:30px;">⚔️ enemigos: 3</span>
+                    <span style="background:#6b4f9b; padding:0.3rem 1rem; border-radius:30px;">❓ misterios: 5</span>
+                </div>
+            </div>
+            <div class="explain-footer">
+                ✨ Zeigarnik activado: la saturación de iconos mantiene la sensación de "tarea pendiente". El jugador siente alivio al completar cada uno y sigue jugando.
+            </div>
+        </div>
+    </div>
+
+    <!-- BLOQUE EXPLICATIVO: CÓMO LO USAN ASSASSIN'S CREED / GTA -->
+    <div style="display: flex; flex-wrap: wrap; gap: 2rem; margin: 2.5rem 0 1rem; background: #112337; border-radius: 2.5rem; padding: 2rem 1.8rem; border: 1px solid #ffd28f40;">
+        <div style="flex:1; min-width:200px;">
+            <h3 style="color:#fcc886;">🗺️ Mapas saturados</h3>
+            <p style="color:#c9def5;">Assassin's Creed, GTA, Far Cry: decenas de iconos en el mapa. Cada uno es una tarea incompleta que tu cerebro quiere borrar.</p>
+        </div>
+        <div style="flex:1; min-width:200px;">
+            <h3 style="color:#abe0b3;">🧠 Tensión → alivio</h3>
+            <p style="color:#c9def5;">Completar una tarea libera dopamina. El ciclo "pendiente → completado" engancha al jugador.</p>
+        </div>
+        <div style="flex:1; min-width:200px; border-left: 2px solid #5d7ea3; padding-left:1.5rem;">
+            <h3 style="color:#f5e0a3;">⚡ Ejemplo</h3>
+            <p style="color:#c9def5;">Ver un cofre sin abrir en el mapa genera incomodidad. Abrirlo produce alivio. Zeigarnik en acción.</p>
+        </div>
+    </div>
+
+    <!-- SIMULACIÓN DE PENSAMIENTO -->
+    <div style="background: #0e253a; border-radius: 2rem; padding: 1.5rem; margin: 1.5rem 0; border: 2px solid #8aa0c0;">
+        <div style="display: flex; flex-wrap: wrap; gap: 2rem; align-items: center; justify-content: center; text-align: center;">
+            <div style="background:#2c405b; border-radius: 60px; padding:0.8rem 1.8rem; color:#dddddd;">
+                <span style="font-weight:bold;">⬅️ IZQUIERDA:</span> "Ya no hay nada que hacer aquí." (olvido)
+            </div>
+            <div style="background:#4f7851; border-radius: 60px; padding:0.8rem 1.8rem; color:#fcf9cf;">
+                <span style="font-weight:bold;">➡️ DERECHA:</span> "Tengo que volver a por esos cofres..." (Zeigarnik)
+            </div>
+        </div>
+        <div style="color:#cfe2ff; margin-top:1rem; text-align:center; font-size:1.1rem;">
+            🧠 El mapa saturado mantiene el juego "vivo" en la mente del jugador incluso cuando no está jugando.
+        </div>
+    </div>
+
+    <!-- FOOTER -->
+    <div class="footer-note">
+        <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 2rem; margin-bottom: 0.8rem;">
+            <span style="background:#263d59; padding:0.3rem 1.2rem; border-radius:40px;">⬅️ izquierda: tareas completadas (sin efecto)</span>
+            <span style="background:#1b4e38; padding:0.3rem 1.2rem; border-radius:40px;">➡️ derecha: tareas incompletas → Zeigarnik</span>
+        </div>
+        <p style="margin-top: 1.2rem;">🎮 Efecto Zeigarnik en videojuegos: saturar el mapa con iconos de tareas pendientes genera tensión psicológica que se alivia al completarlas, manteniendo al jugador enganchado.</p>
+    </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Efecto Posición Serial · menús de videojuegos</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #1b1f2f;
+            background: radial-gradient(circle at 20% 40%, #2f3b58, #121725);
+            font-family: 'Inter', 'Segoe UI', system-ui, sans-serif;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem 1rem;
+        }
+
+        .card {
+            max-width: 1300px;
+            width: 100%;
+            background: rgba(16, 22, 35, 0.85);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(220, 190, 120, 0.2);
+            border-radius: 3rem;
+            padding: 2.5rem 2rem;
+            box-shadow: 0 35px 60px -20px #000, 0 0 0 1px rgba(255, 220, 130, 0.2) inset;
+        }
+
+        .header-serial {
+            text-align: center;
+            margin-bottom: 3.5rem;
+        }
+
+        .header-serial h1 {
+            font-size: 3.3rem;
+            font-weight: 700;
+            background: linear-gradient(145deg, #fdbb7a, #dac88c, #9fd6c3);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            letter-spacing: -0.02em;
+            margin-bottom: 0.8rem;
+        }
+
+        .header-serial p {
+            color: #d0def5;
+            font-size: 1.4rem;
+            max-width: 850px;
+            margin: 0 auto;
+            background: #0d1b30b3;
+            padding: 0.8rem 2rem;
+            border-radius: 60px;
+            border: 1px solid #8fadd4;
+            line-height: 1.5;
+        }
+
+        .sub-serial {
+            margin-top: 1rem;
+            font-size: 1.2rem;
+            color: #e0dbb2;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .sub-serial span {
+            background: #263e5a;
+            padding: 0.3rem 1.5rem;
+            border-radius: 40px;
+            border: 1px solid #c0cd87;
+        }
+
+        .row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            justify-content: center;
+        }
+
+        .panel {
+            flex: 1 1 400px;
+            min-width: 340px;
+            background: #101d2f;
+            border-radius: 2.8rem;
+            padding: 2.2rem 1.8rem 2.4rem;
+            border: 1px solid rgba(230, 200, 120, 0.2);
+            transition: 0.2s;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .panel:hover {
+            transform: translateY(-6px);
+            border-color: #ecc88a;
+            box-shadow: 0 25px 40px -12px black;
+        }
+
+        .panel h2 {
+            font-size: 2.2rem;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            padding-bottom: 1rem;
+            margin-bottom: 2rem;
+            border-bottom: 3px solid;
+        }
+
+        .left-panel h2 {
+            color: #f5b28e;
+            border-image: linear-gradient(90deg, #e47a5c, #5e5470) 1;
+        }
+
+        .right-panel h2 {
+            color: #b3efb3;
+            border-image: linear-gradient(90deg, #6dc77a, #2d684b) 1;
+        }
+
+        .badge {
+            background: #1e253b;
+            padding: 0.2rem 1rem;
+            border-radius: 50px;
+            font-size: 0.95rem;
+            border: 1px solid currentColor;
+            margin-left: 0.5rem;
+        }
+
+        /* consola / menú estilo videojuego */
+        .menu-container {
+            background: #172635;
+            border-radius: 2.5rem;
+            padding: 2rem 1.5rem;
+            border: 3px solid #4c6085;
+            box-shadow: inset 0 0 20px #03080f;
+            margin-bottom: 1.5rem;
+        }
+
+        .menu-list {
+            display: flex;
+            flex-direction: column;
+            gap: 0.8rem;
+        }
+
+        .menu-item {
+            background: #1f3147;
+            border: 2px solid #50658f;
+            border-radius: 60px;
+            padding: 1rem 1.8rem;
+            font-size: 1.6rem;
+            font-weight: 600;
+            color: #e6e9f0;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            transition: 0.1s;
+            box-shadow: 0 6px 0 #0d1725;
+            cursor: default;
+        }
+
+        .menu-item span {
+            font-size: 2rem;
+        }
+
+        .left-panel .menu-item.critical {
+            background: #4e4052;
+            border-color: #b48f7a;
+            color: #ffdbb5;
+        }
+
+        /* para el panel izquierdo: opciones críticas en medio */
+        .left-panel .menu-list .menu-item:nth-child(3),
+        .left-panel .menu-list .menu-item:nth-child(4) {
+            background: #5d4355;
+            border-color: #cf9f81;
+            color: #ffe2b3;
+            position: relative;
+        }
+
+        .left-panel .menu-list .menu-item:nth-child(3)::after,
+        .left-panel .menu-list .menu-item:nth-child(4)::after {
+            content: "★ crítico";
+            font-size: 0.8rem;
+            background: #ac4e4e;
+            padding: 0.2rem 0.8rem;
+            border-radius: 30px;
+            position: absolute;
+            right: 20px;
+            color: white;
+        }
+
+        .right-panel .menu-item.critical-first {
+            background: #3d684b;
+            border-color: #c0b16b;
+            color: #faffd4;
+        }
+
+        .right-panel .menu-item.critical-last {
+            background: #3d684b;
+            border-color: #c0b16b;
+            color: #faffd4;
+        }
+
+        /* destacar primero y último en panel derecho */
+        .right-panel .menu-list .menu-item:first-child {
+            background: #3b6249;
+            border-color: #e5c874;
+            box-shadow: 0 0 15px #c7b06b;
+        }
+
+        .right-panel .menu-list .menu-item:last-child {
+            background: #3b6249;
+            border-color: #e5c874;
+            box-shadow: 0 0 15px #c7b06b;
+        }
+
+        .right-panel .menu-list .menu-item:first-child::after,
+        .right-panel .menu-list .menu-item:last-child::after {
+            content: "★ crítico";
+            font-size: 0.8rem;
+            background: #2d743d;
+            padding: 0.2rem 0.8rem;
+            border-radius: 30px;
+            position: absolute;
+            right: 20px;
+            color: white;
+            font-weight: 400;
+        }
+
+        .right-panel .menu-item {
+            position: relative;
+        }
+
+        .memory-hint {
+            margin-top: 1.8rem;
+            padding: 1rem 1.5rem;
+            border-radius: 30px;
+            background: #0b1d30;
+            border-left: 8px solid;
+            font-size: 1.05rem;
+        }
+
+        .left-panel .memory-hint {
+            border-left-color: #d47b6b;
+            background: #2b1f29;
+        }
+
+        .right-panel .memory-hint {
+            border-left-color: #7acf8c;
+            background: #1d3128;
+        }
+
+        .serial-note {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+            margin: 1rem 0 0.5rem;
+            color: #c2cfdd;
+            font-size: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .footer-note {
+            margin-top: 3rem;
+            color: #8095bc;
+            text-align: center;
+            border-top: 1px solid #384763;
+            padding-top: 2rem;
+            font-size: 1rem;
+        }
+
+        .highlight-serial {
+            background: #213547;
+            padding: 0.4rem 1rem;
+            border-radius: 30px;
+            font-weight: 500;
+        }
+    </style>
+</head>
+<body>
+<div class="card">
+    <!-- ENCABEZADO: EFECTO POSICIÓN SERIAL -->
+    <div class="header-serial">
+        <h1>📋 Efecto de Posición Serial</h1>
+        <p>“Los usuarios recuerdan mejor el primer y último elemento de una serie.”</p>
+        <div class="sub-serial">
+            <span>🎮 'Jugar' y 'Salir' en los extremos</span>
+            <span>⬆️⬇️ primacía y recencia</span>
+        </div>
+    </div>
+
+    <div class="row">
+        <!-- IZQUIERDA: NO aprovecha el efecto (elementos críticos al centro) -->
+        <div class="panel left-panel">
+            <h2>🔻 IGNORA posición serial <span class="badge">críticos al centro</span></h2>
+            <div class="menu-container">
+                <div class="menu-list">
+                    <div class="menu-item"><span>🖼️</span> Galería</div>
+                    <div class="menu-item"><span>⚙️</span> Opciones</div>
+                    <div class="menu-item critical"><span>🎮</span> JUGAR (crítico)</div>
+                    <div class="menu-item critical"><span>🏆</span> Logros</div>
+                    <div class="menu-item"><span>📦</span> Contenido</div>
+                    <div class="menu-item"><span>🚪</span> SALIR (crítico)</div>
+                </div>
+                <div style="margin-top: 1.2rem; color:#c2b7a2; text-align:center; background:#1a263b; padding:0.5rem; border-radius:30px;">
+                    ⚠️ "Jugar" está en 3ª posición, "Salir" al final pero no destacado
+                </div>
+            </div>
+            <div class="memory-hint">
+                <span style="font-size:1.8rem; margin-right:0.8rem;">🧠</span> 
+                El primer elemento (Galería) y el último (Salir) tienen ventaja de recuerdo. Pero "Jugar" (posición media) se recuerda peor. La acción más importante queda diluida.
+            </div>
+            <div style="background:#362d33; border-radius:20px; padding:0.8rem; margin-top:0.8rem; border:1px solid #b3866e;">
+                ❌ Efecto serial desaprovechado: el jugador tarda más en localizar "Jugar" porque está enterrado en el centro.
+            </div>
+        </div>
+
+        <!-- DERECHA: SÍ aprovecha el efecto (críticos al principio y al final) -->
+        <div class="panel right-panel">
+            <h2>✅ OPTIMIZA posición serial <span class="badge">críticos en extremos</span></h2>
+            <div class="menu-container">
+                <div class="menu-list">
+                    <div class="menu-item critical-first"><span>🎮</span> JUGAR (crítico)</div>
+                    <div class="menu-item"><span>🏆</span> Logros</div>
+                    <div class="menu-item"><span>📦</span> Contenido</div>
+                    <div class="menu-item"><span>⚙️</span> Opciones</div>
+                    <div class="menu-item"><span>🖼️</span> Galería</div>
+                    <div class="menu-item critical-last"><span>🚪</span> SALIR (crítico)</div>
+                </div>
+                <div style="margin-top: 1.2rem; color:#c2e0c2; text-align:center; background:#1e382b; padding:0.5rem; border-radius:30px;">
+                    ✅ "Jugar" al inicio (primacía) y "Salir" al final (recencia) maximizan el recuerdo
+                </div>
+            </div>
+            <div class="memory-hint">
+                <span style="font-size:1.8rem;">🎯</span> 
+                El primer elemento (JUGAR) se fija en la memoria a largo plazo; el último (SALIR) permanece en la memoria de trabajo. Las opciones críticas son las más recordadas.
+            </div>
+            <div style="background:#1c3a2b; border-radius:20px; padding:0.8rem; margin-top:0.8rem; border:1px solid #a6d89a;">
+                ✔️ El jugador encuentra inmediatamente "Jugar" (arriba) y "Salir" (abajo). Se reduce el tiempo de navegación y la frustración.
+            </div>
+        </div>
+    </div>
+
+    <!-- BLOQUE EXPLICATIVO ADICIONAL: EFECTO SERIAL EN ACCIÓN -->
+    <div style="margin-top: 2.5rem; display: flex; flex-wrap: wrap; gap: 2rem; justify-content: center; background: #0f1c30; border-radius: 2.5rem; padding: 2rem 1.5rem; border: 1px solid #a58c5f40;">
+        <div style="flex: 1 1 250px;">
+            <h3 style="color:#f9c58b; margin-bottom:1rem;">🔹 Primacía (principio)</h3>
+            <p style="color:#cedef5;">Los jugadores recuerdan mejor la primera opción porque pasa a la memoria a largo plazo. Ideal para la acción principal: <strong>JUGAR</strong>.</p>
+        </div>
+        <div style="flex: 1 1 250px;">
+            <h3 style="color:#b3f0c3; margin-bottom:1rem;">🔸 Recencia (final)</h3>
+            <p style="color:#cedef5;">El último elemento permanece en la memoria a corto plazo. Perfecto para acciones que se ejecutan al final, como <strong>SALIR</strong> o <strong>CONFIGURACIÓN</strong>.</p>
+        </div>
+        <div style="flex: 1 1 200px; border-left: 2px solid #5d759b; padding-left: 1.5rem;">
+            <h3 style="color:#e9ddaa;">🎮 En menús</h3>
+            <p style="color:#cedef5;">Coloca "Jugar" al inicio y "Salir" al final. Las opciones secundarias (opciones, extras) en el centro, donde el recuerdo es más débil.</p>
+        </div>
+    </div>
+
+    <!-- PIE DE PÁGINA -->
+    <div class="footer-note">
+        <div class="serial-note">
+            <span class="highlight-serial">⬆️ primer elemento (JUGAR) → más recordado</span>
+            <span class="highlight-serial">⬇️ último elemento (SALIR) → muy recordado</span>
+            <span class="highlight-serial">➡️ elementos centrales → recuerdo débil</span>
+        </div>
+        <p style="margin-top: 1.5rem;">🎮 Efecto Posición Serial aplicado a menús de videojuegos: las opciones críticas se colocan en los extremos para asegurar que el jugador las recuerde y acceda rápidamente.</p>
+    </div>
+</div>
+</body>
+</html>

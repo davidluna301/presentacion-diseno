@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ley de Tesler · Tutoriales integrados</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #151e2a;
+            background: radial-gradient(circle at 20% 30%, #253545, #0f1722);
+            font-family: 'Inter', 'Segoe UI', system-ui, sans-serif;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem 1rem;
+        }
+
+        .tesler-card {
+            max-width: 1300px;
+            width: 100%;
+            background: rgba(12, 19, 30, 0.8);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(200, 220, 255, 0.12);
+            border-radius: 3rem;
+            padding: 2.5rem 2rem;
+            box-shadow: 0 35px 60px -20px #000000, 0 0 0 1px rgba(255, 245, 170, 0.1) inset;
+        }
+
+        .header-tesler {
+            text-align: center;
+            margin-bottom: 3.5rem;
+        }
+
+        .header-tesler h1 {
+            font-size: 3.4rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, #b0cbff, #a0e5cf, #fedb82);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            letter-spacing: -0.02em;
+            text-shadow: 0 4px 12px rgba(0,0,0,0.6);
+            margin-bottom: 0.8rem;
+        }
+
+        .header-tesler p {
+            color: #bfd2f0;
+            font-size: 1.4rem;
+            max-width: 900px;
+            margin: 0 auto;
+            background: #0d1624b3;
+            padding: 0.8rem 2rem;
+            border-radius: 60px;
+            border: 1px solid #5688d7;
+            backdrop-filter: blur(4px);
+            line-height: 1.5;
+            font-weight: 350;
+        }
+
+        .sub-tesler {
+            margin-top: 0.8rem;
+            font-size: 1.25rem;
+            color: #c9d8b6;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.6rem;
+            flex-wrap: wrap;
+        }
+
+        .sub-tesler span {
+            background: #1f3145;
+            padding: 0.3rem 1.5rem;
+            border-radius: 40px;
+            border: 1px solid #9eab7e;
+        }
+
+        .row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            justify-content: center;
+        }
+
+        .panel {
+            flex: 1 1 400px;
+            min-width: 340px;
+            background: #101b29;
+            border-radius: 2.8rem;
+            padding: 2.2rem 1.8rem 2.4rem;
+            border: 1px solid rgba(120, 180, 255, 0.15);
+            transition: 0.2s;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .panel:hover {
+            transform: translateY(-6px);
+            border-color: rgba(250, 220, 120, 0.5);
+            box-shadow: 0 28px 35px -12px black;
+        }
+
+        .panel h2 {
+            font-size: 2.2rem;
+            font-weight: 550;
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            padding-bottom: 1rem;
+            margin-bottom: 2rem;
+            border-bottom: 3px solid;
+        }
+
+        .left-panel h2 {
+            color: #ffae9e;
+            border-image: linear-gradient(90deg, #f4816b, #404b69) 1;
+        }
+
+        .right-panel h2 {
+            color: #b2efb2;
+            border-image: linear-gradient(90deg, #68c98b, #2c5f4a) 1;
+        }
+
+        .badge {
+            background: #00000050;
+            padding: 0.2rem 1rem;
+            border-radius: 60px;
+            font-size: 1rem;
+            border: 1px solid currentColor;
+            margin-left: 0.5rem;
+        }
+
+        /* caja del "juego" */
+        .game-box {
+            background: #172433;
+            border-radius: 2.2rem;
+            padding: 1.8rem 1.5rem 2rem;
+            border: 2px solid #2f4660;
+            box-shadow: inset 0 3px 15px #010814;
+            margin-bottom: 1.8rem;
+        }
+
+        .tutorial-area {
+            background: #0d1a26;
+            border-radius: 1.6rem;
+            padding: 1.2rem;
+            border: 1px solid #3c6290;
+        }
+
+        /* ESTILO IZQUIERDO: tutorial externo, pesado, muchas pantallas (NO respeta Tesler) */
+        .left-panel .tutorial-step {
+            background: #1e3147;
+            border-radius: 1.8rem;
+            padding: 1rem;
+            margin-bottom: 1.2rem;
+            border-left: 8px solid #e07868;
+            color: #eae2d7;
+        }
+
+        .left-panel .step-number {
+            display: inline-block;
+            background: #904e3e;
+            color: white;
+            font-weight: bold;
+            padding: 0.2rem 1.2rem;
+            border-radius: 30px;
+            margin-bottom: 0.5rem;
+            font-size: 0.9rem;
+        }
+
+        .left-panel .tutorial-text {
+            font-size: 1rem;
+            margin: 0.5rem 0 1rem;
+            color: #bccae0;
+        }
+
+        .left-panel .input-sim {
+            background: #263a51;
+            padding: 0.7rem 1rem;
+            border-radius: 40px;
+            border: 2px dashed #ab8e5a;
+            color: #e9dbbd;
+            font-family: monospace;
+            margin-top: 0.5rem;
+        }
+
+        .left-panel .gameplay-preview {
+            margin-top: 1.5rem;
+            background: #192d40;
+            padding: 1rem;
+            border-radius: 1.5rem;
+            opacity: 0.7;
+            filter: grayscale(0.3);
+            border: 1px solid #62819c;
+        }
+
+        .warning-meta {
+            background: #432e2e;
+            border-left: 8px solid #cf5a5a;
+            padding: 1rem;
+            border-radius: 1.5rem;
+            margin-top: 1rem;
+            color: #f4cfcf;
+        }
+
+        /* ESTILO DERECHO: enseñanza integrada en la jugabilidad (Tesler aplicado) */
+        .right-panel .integrated-demo {
+            background: #132638;
+            border-radius: 1.8rem;
+            padding: 1rem 1rem 1.5rem;
+            border: 2px solid #599a7a;
+        }
+
+        .game-hud {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            background: #0f1d2c;
+            border-radius: 3rem;
+            padding: 1rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .health-mana {
+            display: flex;
+            gap: 0.5rem;
+            background: #162e42;
+            padding: 0.3rem 1rem;
+            border-radius: 30px;
+            align-items: center;
+        }
+
+        .bar {
+            width: 80px;
+            height: 12px;
+            background: #2f405b;
+            border-radius: 20px;
+            overflow: hidden;
+        }
+
+        .bar-fill {
+            height: 100%;
+            width: 75%;
+            background: linear-gradient(90deg, #87c7a0, #b4e87c);
+        }
+
+        .mana-fill {
+            width: 40%;
+            background: #71b2e6;
+        }
+
+        .xp-fill {
+            width: 30%;
+            background: #e4b570;
+        }
+
+        .action-buttons {
+            display: flex;
+            gap: 0.5rem;
+            margin: 1rem 0;
+            flex-wrap: wrap;
+        }
+
+        .skill-btn {
+            background: #223c55;
+            border: 2px solid #3b6d8f;
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 40px;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            box-shadow: 0 5px 0 #0e1f2b;
+            transition: 0.08s linear;
+            cursor: default;
+        }
+
+        .skill-btn:active {
+            transform: translateY(4px);
+            box-shadow: 0 1px 0 #0e1f2b;
+        }
+
+        .tooltip-hint {
+            background: #2b4753;
+            border-radius: 30px;
+            padding: 0.3rem 1.2rem;
+            font-size: 0.9rem;
+            color: #b7f5cf;
+            border: 1px solid #78b9a2;
+            margin: 0.5rem 0;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+        }
+
+        .enemy-area {
+            background: #1b3045;
+            border-radius: 2rem;
+            padding: 1rem;
+            margin-top: 1.2rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border: 1px solid #528a7a;
+        }
+
+        .enemy {
+            background: #572e2e;
+            padding: 0.4rem 1.2rem;
+            border-radius: 30px;
+            border: 2px solid #b77676;
+            color: #fcc;
+        }
+
+        .hint-bubble {
+            background: #316145;
+            border-radius: 24px 24px 24px 4px;
+            padding: 0.5rem 1.2rem;
+            color: #eaffdd;
+            max-width: 220px;
+            font-size: 0.95rem;
+            border: 1px solid #98d1a8;
+        }
+
+        .explain-footer {
+            margin-top: 1.8rem;
+            padding: 1rem 1.5rem;
+            background: #0c1f2f;
+            border-radius: 30px;
+            font-size: 1.05rem;
+            border-left: 8px solid;
+        }
+
+        .left-panel .explain-footer {
+            border-left-color: #d47b6b;
+            background: #2b1d1d;
+        }
+
+        .right-panel .explain-footer {
+            border-left-color: #76c38f;
+            background: #1c3127;
+        }
+
+        .footer-note {
+            margin-top: 3.2rem;
+            color: #7689a8;
+            text-align: center;
+            border-top: 1px solid #2e3c52;
+            padding-top: 2rem;
+            font-size: 1rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="tesler-card">
+        <!-- ENCABEZADO LEY DE TESLER -->
+        <div class="header-tesler">
+            <h1>🧪 Ley de Tesler (Conservación de la Complejidad)</h1>
+            <p>“Para cualquier sistema existe una cierta cantidad de complejidad que no se puede reducir.”</p>
+            <div class="sub-tesler">
+                <span>🎮 tutoriales integrados</span>
+                <span>🌀 minimizar instrucciones aisladas</span>
+            </div>
+        </div>
+
+        <div class="row">
+            <!-- PANEL IZQUIERDO: NO respeta Tesler -> tutorial externo pesado -->
+            <div class="panel left-panel">
+                <h2>📖 Tutorial tradicional <span class="badge">complejidad explícita</span></h2>
+                <div class="game-box">
+                    <div class="tutorial-area">
+                        <div class="tutorial-step">
+                            <span class="step-number">PASO 1/6</span>
+                            <div class="tutorial-text">🔹 Mueve el personaje con <strong>WASD</strong>. Observa la barra de vida arriba a la izquierda.</div>
+                            <div class="input-sim">⏎ Presiona W para avanzar (simulado)</div>
+                        </div>
+                        <div class="tutorial-step">
+                            <span class="step-number">PASO 2/6</span>
+                            <div class="tutorial-text">🔹 Para atacar, haz clic izquierdo sobre el enemigo. Recuerda que el daño depende de tu arma.</div>
+                            <div class="input-sim">🖱️ Clic en enemigo (simulado)</div>
+                        </div>
+                        <div class="tutorial-step">
+                            <span class="step-number">PASO 3/6</span>
+                            <div class="tutorial-text">🔹 Usa <strong>Q</strong> y <strong>E</strong> para cambiar armas. El inventario tiene ranuras.</div>
+                            <div class="input-sim">⌨️ Q / E (cambio de arma)</div>
+                        </div>
+                        <div class="tutorial-step">
+                            <span class="step-number">PASO 4/6</span>
+                            <div class="tutorial-text">🔹 Los enemigos sueltan esferas de salud. Pasa por encima para recogerlas.</div>
+                        </div>
+                        <div class="tutorial-step">
+                            <span class="step-number">PASO 5/6</span>
+                            <div class="tutorial-text">🔹 Habilidad especial: presiona <strong>R</strong> cuando la barra de furia esté llena.</div>
+                        </div>
+                        <div class="tutorial-step">
+                            <span class="step-number">PASO 6/6</span>
+                            <div class="tutorial-text">🔹 Ahora completa el primer nivel. (instrucciones en pantalla)</div>
+                        </div>
+                    </div>
+                    <!-- pequeña previsualización del juego "real" (pero opacada) -->
+                    <div class="gameplay-preview">
+                        <div style="display:flex; gap: 1rem; align-items:center; justify-content:center;">
+                            <span>❤️‍🩹 vida: ▰▰▰▰▰▰▰▰▰▰</span>
+                            <span>⚔️ enemigo</span>
+                        </div>
+                        <div style="color: #aac7db; padding: 0.5rem; text-align:center;">
+                            [ juego pausado hasta completar tutorial ]
+                        </div>
+                    </div>
+                    <div class="warning-meta">
+                        ⚠️ 6 pasos + pared de texto + juego detenido. El usuario debe memorizar antes de jugar. Complejidad NO reducida, se traslada al jugador.
+                    </div>
+                </div>
+                <div class="explain-footer">
+                    🧠 Ley de Tesler violada: la complejidad sigue ahí, en un manual externo. El aprendizaje es rígido y desconectado de la acción.
+                </div>
+            </div>
+
+            <!-- PANEL DERECHO: SÍ aplica Tesler -> enseñanza integrada en el "gameplay" -->
+            <div class="panel right-panel">
+                <h2>🌀 Tutorial integrado <span class="badge">complejidad absorbida</span></h2>
+                <div class="game-box">
+                    <div class="integrated-demo">
+                        <!-- hud simulado -->
+                        <div class="game-hud">
+                            <div class="health-mana">
+                                <span>❤️</span>
+                                <div class="bar"><div class="bar-fill"></div></div>
+                            </div>
+                            <div class="health-mana">
+                                <span>🔵</span>
+                                <div class="bar"><div class="bar-fill mana-fill"></div></div>
+                            </div>
+                            <div class="health-mana">
+                                <span>✨</span>
+                                <div class="bar"><div class="bar-fill xp-fill"></div></div>
+                            </div>
+                        </div>
+
+                        <!-- habilidades con tooltips contextuales (se explica en la acción) -->
+                        <div class="action-buttons">
+                            <div class="skill-btn">⚔️ Golpe <span style="font-size:0.8rem;">[botón izquierdo]</span></div>
+                            <div class="skill-btn">🛡️ Bloqueo [Q]</div>
+                            <div class="skill-btn">🌀 Torbellino [E]</div>
+                        </div>
+
+                        <!-- pequeño mensaje contextual (integra la enseñanza) -->
+                        <div class="tooltip-hint">
+                            <span>✨</span> ¡Primer enemigo! Prueba <strong>clic izquierdo</strong> para atacar. (daño 12)
+                        </div>
+
+                        <!-- encuentro con enemigo + burbuja de ayuda contextual -->
+                        <div class="enemy-area">
+                            <div class="enemy">👾 Enemigo básico</div>
+                            <div class="hint-bubble">
+                                💬 Tus golpes reducen su vida. Cuando brille en rojo, usa <strong>E</strong> para rematarlo.
+                            </div>
+                        </div>
+
+                        <!-- otro hint tras matar enemigo (integrado) -->
+                        <div style="margin-top: 1rem; display: flex; justify-content: space-between;">
+                            <div class="tooltip-hint" style="background:#2c5440;">
+                ⚡ Has recogido un orbe de salud (barra se recupera sola)
+                            </div>
+                            <div class="tooltip-hint" style="background:#4e4359;">
+                                🧪 Siguiente: enemigo fuerte. Usa Q para bloquear.
+                            </div>
+                        </div>
+
+                        <div style="margin-top: 1.2rem; color:#aad6b5; font-size:0.95rem; background:#1a3a33; padding:0.6rem 1.2rem; border-radius: 40px; border:1px solid #70af8a;">
+                            ▶️ La enseñanza aparece cuando se necesita: botones con etiquetas, consejos breves sobre enemigos. El juego no se detiene.
+                        </div>
+                    </div>
+                    <div style="margin-top: 1.5rem; background: #1d342e; border-radius: 1.8rem; padding:1rem; border-left: 8px solid #7ac48a;">
+                        ✅ La complejidad inevitable (saber atacar, bloquear, habilidad) se transfiere a la interfaz y al contexto. El jugador aprende haciendo, no leyendo.
+                    </div>
+                </div>
+                <div class="explain-footer">
+                    🕹️ Tesler aplicado: la complejidad se conserva pero se desplaza al diseño del juego (tips contextuales, señales visuales). Tutorial minimalista y orgánico.
+                </div>
+            </div>
+        </div>
+
+        <!-- PIE CON REFLEXIÓN FINAL -->
+        <div class="footer-note">
+            <div style="display: flex; flex-wrap: wrap; gap: 1.5rem 2.5rem; justify-content: center; margin-bottom: 0.8rem;">
+                <span>🔹 izquierda: la complejidad recae en instrucciones previas (tutorial de 6 pasos)</span>
+                <span>🔹 derecha: misma complejidad, pero integrada en HUD, tooltips y contexto</span>
+            </div>
+            <p style="margin-top: 1rem;">🎮 Ley de Tesler: no se elimina la complejidad, sino que se administra. En el diseño de videojuegos, los tutoriales integrados desplazan la carga cognitiva hacia una experiencia fluida.</p>
+        </div>
+    </div>
+</body>
+</html>

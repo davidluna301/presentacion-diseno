@@ -1,0 +1,549 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ley de Hick · rareza y franjas de color</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #12141c;
+            background-image: radial-gradient(circle at 30% 40%, #2a2e42 0%, #0b0d14 90%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Inter', 'Segoe UI', system-ui, sans-serif;
+            padding: 2rem 1rem;
+        }
+
+        .container {
+            max-width: 1300px;
+            width: 100%;
+            background: rgba(18, 22, 35, 0.8);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 215, 140, 0.15);
+            border-radius: 3rem;
+            padding: 2.5rem 2rem;
+            box-shadow: 0 30px 50px -20px black, 0 0 0 1px rgba(255, 200, 100, 0.1) inset;
+        }
+
+        /* encabezado ley de Hick */
+        .hick-header {
+            text-align: center;
+            margin-bottom: 3.2rem;
+        }
+
+        .hick-header h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            background: linear-gradient(145deg, #f9b042, #e0d36b, #77cfa0);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            letter-spacing: -0.02em;
+            text-shadow: 0 4px 12px rgba(0,0,0,0.6);
+            margin-bottom: 0.75rem;
+        }
+
+        .hick-header p {
+            color: #bdc7e3;
+            font-size: 1.4rem;
+            max-width: 850px;
+            margin: 0 auto;
+            background: rgba(0, 0, 0, 0.35);
+            padding: 0.9rem 2rem;
+            border-radius: 60px;
+            border: 1px solid rgba(255, 220, 120, 0.25);
+            backdrop-filter: blur(4px);
+            line-height: 1.5;
+            font-weight: 350;
+        }
+
+        .sub-lema {
+            margin-top: 0.8rem;
+            font-size: 1.2rem;
+            color: #cdc9aa;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.6rem;
+        }
+
+        .sub-lema span {
+            background: #2f354a;
+            padding: 0.3rem 1.2rem;
+            border-radius: 40px;
+            border: 1px solid #b48c5c;
+        }
+
+        /* dos columnas */
+        .row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            justify-content: center;
+        }
+
+        .panel {
+            flex: 1 1 400px;
+            min-width: 340px;
+            background: #1a1e2d;
+            border-radius: 2.5rem;
+            padding: 2rem 1.8rem 2.3rem;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: 0.2s;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .panel:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 25px 35px -10px #000000cc;
+            border-color: rgba(255, 190, 80, 0.3);
+        }
+
+        .panel h2 {
+            font-size: 2.1rem;
+            font-weight: 550;
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            padding-bottom: 1rem;
+            margin-bottom: 2rem;
+            border-bottom: 3px solid;
+        }
+
+        .left-panel h2 {
+            color: #f99b8c;
+            border-image: linear-gradient(90deg, #fc6b5e, #543c4c) 1;
+        }
+
+        .right-panel h2 {
+            color: #a5e0b0;
+            border-image: linear-gradient(90deg, #74cf93, #3b624b) 1;
+        }
+
+        .badge {
+            background: #00000040;
+            padding: 0.2rem 1rem;
+            border-radius: 50px;
+            font-size: 0.95rem;
+            font-weight: 400;
+            border: 1px solid currentColor;
+            margin-left: 0.8rem;
+        }
+
+        /* ESTILO COMPARTido para la zona de armas */
+        .armory {
+            background: #252c3e;
+            border-radius: 2rem;
+            padding: 1.8rem 1.2rem 1.5rem;
+            border: 1px solid #404b66;
+            box-shadow: inset 0 2px 10px #0b0e14;
+        }
+
+        .armas-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 0.8rem;
+            margin: 1.2rem 0 0.8rem;
+        }
+
+        .arma-item {
+            display: flex;
+            align-items: center;
+            padding: 0.5rem 0.8rem 0.5rem 1rem;
+            background: #1d2333;
+            border-radius: 60px;
+            border: 1px solid #3f4a62;
+            transition: 0.1s;
+        }
+
+        /* icono placeholder */
+        .arma-icon {
+            font-size: 2rem;
+            width: 48px;
+            text-align: center;
+            filter: drop-shadow(0 2px 2px black);
+        }
+
+        .arma-info {
+            flex: 1;
+            margin-left: 0.8rem;
+        }
+
+        .arma-nombre {
+            font-weight: 600;
+            color: #ececec;
+            font-size: 1.2rem;
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            flex-wrap: wrap;
+        }
+
+        .tipo {
+            font-size: 0.8rem;
+            background: #2c354b;
+            padding: 0.2rem 0.8rem;
+            border-radius: 30px;
+            color: #b8c7e7;
+        }
+
+        /* ---------- PANEL IZQUIERDO: SIN JERARQUÍA CLARA (muchas alternativas confusas) ---------- */
+        .left-panel .armory {
+            background: #272e41;
+        }
+
+        .left-panel .arma-item {
+            background: #1e2538;
+            border: 1px solid #5d5370;
+        }
+
+        /* sin franjas de rareza, todo mezclado */
+        .left-panel .stats {
+            display: flex;
+            gap: 1rem;
+            margin-top: 4px;
+            font-size: 0.9rem;
+            color: #9aa9c4;
+            flex-wrap: wrap;
+        }
+
+        .left-panel .stat {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .left-panel .dps {
+            color: #f5b17b;
+        }
+        .left-panel .accuracy {
+            color: #9aceff;
+        }
+        .left-panel .range {
+            color: #c5b48c;
+        }
+
+        .left-panel .extra-flavor {
+            margin-left: auto;
+            font-size: 1.2rem;
+            opacity: 0.6;
+            filter: grayscale(0.6);
+        }
+
+        /* muchos números, sintesis prioritaria */
+        .left-panel .decision-tip {
+            background: #522f2f60;
+            border-left: 6px solid #c95c5c;
+            color: #ffcaca;
+        }
+
+        /* ---------- PANEL DERECHO: FRANJAS DE COLOR (RAREZA) ---------- */
+        .right-panel .armory {
+            background: #1b212f;
+        }
+
+        /* sistema de rareza con franjas de color */
+        .rarity-common {
+            border-left: 8px solid #7f8c8d;
+            background: linear-gradient(90deg, #282f40, #1c2232);
+        }
+        .rarity-rare {
+            border-left: 8px solid #3c9bdc;
+            background: linear-gradient(90deg, #1f374b, #1a2335);
+        }
+        .rarity-epic {
+            border-left: 8px solid #b887e4;
+            background: linear-gradient(90deg, #352b4b, #1e2338);
+        }
+        .rarity-legendary {
+            border-left: 8px solid #f5b342;
+            background: linear-gradient(90deg, #4f3d28, #212637);
+        }
+
+        .right-panel .arma-item {
+            border: 1px solid #4c5270;
+        }
+
+        .right-panel .rarity-badge {
+            font-size: 0.75rem;
+            font-weight: 600;
+            padding: 0.2rem 0.8rem;
+            border-radius: 30px;
+            background: #2c314a;
+            color: #ddd;
+            margin-left: 0.5rem;
+            border: 1px solid currentColor;
+        }
+
+        /* indicador simple de poder */
+        .power-indicator {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-top: 6px;
+        }
+
+        .power-bar {
+            height: 8px;
+            width: 100px;
+            background: #2d344a;
+            border-radius: 20px;
+            overflow: hidden;
+        }
+
+        .power-fill {
+            height: 100%;
+            width: 70%;
+            background: linear-gradient(90deg, #c9a155, #e5c687);
+            border-radius: 20px;
+        }
+
+        .power-fill.legendary-fill { width: 96%; background: #f5b342; }
+        .power-fill.epic-fill { width: 82%; background: #b887e4; }
+        .power-fill.rare-fill { width: 65%; background: #3c9bdc; }
+        .power-fill.common-fill { width: 42%; background: #7f8c8d; }
+
+        .stat-value {
+            color: #bcd0f0;
+            font-size: 0.9rem;
+        }
+
+        .explain-decision {
+            margin-top: 2rem;
+            padding: 1rem 1.2rem;
+            border-radius: 30px;
+            background: #00000030;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            font-size: 1.05rem;
+            border: 1px solid rgba(255,255,200,0.2);
+        }
+
+        .left-panel .explain-decision { background: #341f1f40; border-left: 6px solid #e16060; }
+        .right-panel .explain-decision { background: #1d312740; border-left: 6px solid #77c48b; }
+
+        .footer-meta {
+            margin-top: 3rem;
+            color: #6d7995;
+            text-align: center;
+            border-top: 1px solid #2e3447;
+            padding-top: 2rem;
+            font-size: 0.95rem;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <!-- LEY DE HICK + INTRO -->
+    <div class="hick-header">
+        <h1>⚡ Ley de Hick ⚡</h1>
+        <p>“El tiempo que lleva tomar una decisión aumenta con el número de alternativas y su complejidad.”</p>
+        <div class="sub-lema">
+            <span>🎮 cómo elegir arma</span>
+            <span>⚔️ rareza & franjas de color</span>
+        </div>
+    </div>
+
+    <!-- DOS INTERFACES: IZQUIERDA (múltiples alternativas confusas) Y DERECHA (con franjas de rareza) -->
+    <div class="row">
+        
+        <!-- PANEL IZQUIERDA: NÚMERO DE ALTERNATIVAS ALTO, SIN JERARQUÍA VISUAL -->
+        <div class="panel left-panel">
+            <h2>🔻 SIN sistema de rareza <span class="badge">10+ atributos</span></h2>
+            <div class="armory">
+                <div style="margin-bottom: 1rem; color:#b9bedd; font-weight: 300; text-align:center; padding: 0 0 0.5rem;">
+                    ⚠️ 8 armas · cada una con 4 stats · sin prioridad visual
+                </div>
+                <div class="armas-grid">
+                    <!-- arma 1 -->
+                    <div class="arma-item">
+                        <div class="arma-icon">🔫</div>
+                        <div class="arma-info">
+                            <div class="arma-nombre">Pistola Táctiva <span class="tipo">rápida</span></div>
+                            <div class="stats">
+                                <span class="stat dps">💥 124</span>
+                                <span class="stat accuracy">🎯 72%</span>
+                                <span class="stat range">📏 18m</span>
+                                <span class="stat">🔁 2.4s</span>
+                            </div>
+                        </div>
+                        <div class="extra-flavor">🔄</div>
+                    </div>
+                    <!-- arma 2 -->
+                    <div class="arma-item">
+                        <div class="arma-icon">🏹</div>
+                        <div class="arma-info">
+                            <div class="arma-nombre">Arco compuesto <span class="tipo">precisión</span></div>
+                            <div class="stats">
+                                <span class="stat dps">💥 210</span>
+                                <span class="stat accuracy">🎯 94%</span>
+                                <span class="stat range">📏 42m</span>
+                                <span class="stat">🔁 3.8s</span>
+                            </div>
+                        </div>
+                        <div class="extra-flavor">🏹</div>
+                    </div>
+                    <!-- arma 3 -->
+                    <div class="arma-item">
+                        <div class="arma-icon">🔫</div>
+                        <div class="arma-info">
+                            <div class="arma-nombre">Subfusil <span class="tipo">ráfaga</span></div>
+                            <div class="stats">
+                                <span class="stat dps">💥 189</span>
+                                <span class="stat accuracy">🎯 58%</span>
+                                <span class="stat range">📏 22m</span>
+                                <span class="stat">🔁 2.1s</span>
+                            </div>
+                        </div>
+                        <div class="extra-flavor">🌀</div>
+                    </div>
+                    <!-- arma 4 (fusil) -->
+                    <div class="arma-item">
+                        <div class="arma-icon">🔫</div>
+                        <div class="arma-info">
+                            <div class="arma-nombre">Fusil asalto <span class="tipo">automático</span></div>
+                            <div class="stats">
+                                <span class="stat dps">💥 176</span>
+                                <span class="stat accuracy">🎯 69%</span>
+                                <span class="stat range">📏 38m</span>
+                                <span class="stat">🔁 2.7s</span>
+                            </div>
+                        </div>
+                        <div class="extra-flavor">⚡</div>
+                    </div>
+                    <!-- más armas mezcladas, sin código de color -->
+                    <div class="arma-item">
+                        <div class="arma-icon">🔫</div>
+                        <div class="arma-info">
+                            <div class="arma-nombre">Francotirador <span class="tipo">lento</span></div>
+                            <div class="stats">
+                                <span class="stat dps">💥 290</span>
+                                <span class="stat accuracy">🎯 97%</span>
+                                <span class="stat range">📏 65m</span>
+                                <span class="stat">🔁 4.6s</span>
+                            </div>
+                        </div>
+                        <div class="extra-flavor">🔭</div>
+                    </div>
+                    <div class="arma-item">
+                        <div class="arma-icon">🔫</div>
+                        <div class="arma-info">
+                            <div class="arma-nombre">Escopeta <span class="tipo">pesada</span></div>
+                            <div class="stats">
+                                <span class="stat dps">💥 270</span>
+                                <span class="stat accuracy">🎯 43%</span>
+                                <span class="stat range">📏 12m</span>
+                                <span class="stat">🔁 3.2s</span>
+                            </div>
+                        </div>
+                        <div class="extra-flavor">💥</div>
+                    </div>
+                </div>
+                <div style="margin-top: 1.4rem; color: #dbb38b; font-size:0.95rem; background:#1b2133; padding: 0.5rem 1rem; border-radius: 30px; border: 1px dashed #876b4b;">
+                    ⏳ Cada arma mezcla stats sin jerarquía: usuario debe leer todo y comparar. Tiempo de decisión alto.
+                </div>
+            </div>
+            <div class="explain-decision">
+                <span style="font-size:2rem;">🧐</span> 6 alternativas con 4-5 atributos cada una. Sin franjas de rareza: la elección se vuelve lenta y costosa.
+            </div>
+        </div>
+        
+        <!-- PANEL DERECHO: FRANJAS DE COLOR / RAREZA (sistema simplificado) -->
+        <div class="panel right-panel">
+            <h2>✅ Con rareza + franjas <span class="badge">color = poder</span></h2>
+            <div class="armory">
+                <div style="display: flex; gap: 1.2rem; justify-content: center; margin-bottom: 1.4rem; flex-wrap: wrap;">
+                    <span style="background: #7f8c8d20; padding:0.3rem 1rem; border-left: 8px solid #7f8c8d;">común</span>
+                    <span style="background: #1f374b20; padding:0.3rem 1rem; border-left: 8px solid #3c9bdc;">raro</span>
+                    <span style="background: #352b4b20; padding:0.3rem 1rem; border-left: 8px solid #b887e4;">épico</span>
+                    <span style="background: #4f3d2820; padding:0.3rem 1rem; border-left: 8px solid #f5b342;">legendario</span>
+                </div>
+                <div class="armas-grid">
+                    <!-- COMÚN (gris) -->
+                    <div class="arma-item rarity-common">
+                        <div class="arma-icon">🔫</div>
+                        <div class="arma-info">
+                            <div class="arma-nombre">Pistola común <span class="rarity-badge">común</span></div>
+                            <div class="power-indicator">
+                                <span class="power-bar"><span class="power-fill common-fill"></span></span>
+                                <span class="stat-value">142 pts</span>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- RARO (azul) -->
+                    <div class="arma-item rarity-rare">
+                        <div class="arma-icon">🏹</div>
+                        <div class="arma-info">
+                            <div class="arma-nombre">Arco de viento <span class="rarity-badge">raro</span></div>
+                            <div class="power-indicator">
+                                <span class="power-bar"><span class="power-fill rare-fill"></span></span>
+                                <span class="stat-value">215 pts</span>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- ÉPICO (morado) -->
+                    <div class="arma-item rarity-epic">
+                        <div class="arma-icon">⚔️</div>
+                        <div class="arma-info">
+                            <div class="arma-nombre">Espada oscura <span class="rarity-badge">épico</span></div>
+                            <div class="power-indicator">
+                                <span class="power-bar"><span class="power-fill epic-fill"></span></span>
+                                <span class="stat-value">310 pts</span>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- LEGENDARIO (dorado) -->
+                    <div class="arma-item rarity-legendary">
+                        <div class="arma-icon">🔫</div>
+                        <div class="arma-info">
+                            <div class="arma-nombre">Destructor solar <span class="rarity-badge">legendario</span></div>
+                            <div class="power-indicator">
+                                <span class="power-bar"><span class="power-fill legendary-fill"></span></span>
+                                <span class="stat-value">502 pts</span>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- otro épico (demostración) -->
+                    <div class="arma-item rarity-epic">
+                        <div class="arma-icon">🔮</div>
+                        <div class="arma-info">
+                            <div class="arma-nombre">Báculo arcano <span class="rarity-badge">épico</span></div>
+                            <div class="power-indicator">
+                                <span class="power-bar"><span class="power-fill epic-fill"></span></span>
+                                <span class="stat-value">325 pts</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div style="margin-top: 1.4rem; background: #202639; border-radius: 30px; padding: 0.8rem 1rem; border-left: 8px solid #e6b450; color: #efeecd;">
+                    ⚡ rareza mediante color (franja izquierda) + barra de poder. Decisión inmediata: legendario > épico > raro > común.
+                </div>
+            </div>
+            <div class="explain-decision">
+                <span style="font-size:2rem;">⚡</span> 5 alternativas pero el color y la franja indican calidad de un vistazo. Tiempo de elección mínimo. (Ley de Hick optimizada)
+            </div>
+        </div>
+    </div>
+
+    <!-- EXPLICACIÓN EXTRA SOBRE FRANJAS Y RAREZA (HICK) -->
+    <div class="footer-meta">
+        <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 2rem 3rem; margin-bottom: 0.5rem;">
+            <span>🔹 izquierda: todas las armas se ven igual, mismo énfasis → decisión lenta</span>
+            <span>🔹 derecha: franja de rareza (gris, azul, morado, dorado) + barra de poder → decisión rápida</span>
+        </div>
+        <p style="margin-top: 1.2rem;">🎮 Ley de Hick aplicada a videojuegos: la rareza mediante franjas de color reduce el tiempo de elección del arma. Misma cantidad de opciones pero con jerarquía visual.</p>
+    </div>
+</div>
+</body>
+</html>

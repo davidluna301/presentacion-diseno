@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ley de Jakob · convenciones estándar (WASD)</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #202f3c;
+            background: radial-gradient(circle at 30% 50%, #325f72, #142633);
+            font-family: 'Inter', 'Segoe UI', system-ui, sans-serif;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem 1rem;
+        }
+
+        .jakob-card {
+            max-width: 1300px;
+            width: 100%;
+            background: rgba(18, 34, 48, 0.9);
+            backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px);
+            border: 1px solid rgba(120, 200, 200, 0.3);
+            border-radius: 3rem;
+            padding: 2.5rem 2rem;
+            box-shadow: 0 40px 70px -25px #000, 0 0 0 1px rgba(100, 230, 200, 0.2) inset;
+        }
+
+        .header-jakob {
+            text-align: center;
+            margin-bottom: 3.5rem;
+        }
+
+        .header-jakob h1 {
+            font-size: 3.4rem;
+            font-weight: 700;
+            background: linear-gradient(145deg, #a5e0d5, #b0e6a0, #f0d090);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            letter-spacing: -0.02em;
+            margin-bottom: 0.8rem;
+        }
+
+        .header-jakob p {
+            color: #d9f0ff;
+            font-size: 1.4rem;
+            max-width: 950px;
+            margin: 0 auto;
+            background: #0d263ab3;
+            padding: 0.8rem 2rem;
+            border-radius: 60px;
+            border: 1px solid #8fc0e6;
+            line-height: 1.5;
+        }
+
+        .sub-jakob {
+            margin-top: 1rem;
+            font-size: 1.25rem;
+            color: #e3f0b0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .sub-jakob span {
+            background: #2d5a6b;
+            padding: 0.3rem 1.6rem;
+            border-radius: 40px;
+            border: 1px solid #c2e69a;
+        }
+
+        .row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            justify-content: center;
+        }
+
+        .panel {
+            flex: 1 1 420px;
+            min-width: 360px;
+            background: #0f2b40;
+            border-radius: 2.8rem;
+            padding: 2.2rem 1.8rem 2.4rem;
+            border: 1px solid rgba(140, 200, 100, 0.3);
+            transition: 0.2s;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .panel:hover {
+            transform: translateY(-6px);
+            border-color: #b5e893;
+            box-shadow: 0 25px 45px -15px black;
+        }
+
+        .panel h2 {
+            font-size: 2.3rem;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            padding-bottom: 1rem;
+            margin-bottom: 2rem;
+            border-bottom: 3px solid;
+        }
+
+        .left-panel h2 {
+            color: #f5b08c;
+            border-image: linear-gradient(90deg, #dd7a5c, #584d70) 1;
+        }
+
+        .right-panel h2 {
+            color: #baf0b4;
+            border-image: linear-gradient(90deg, #68ca7c, #266349) 1;
+        }
+
+        .badge {
+            background: #202a42;
+            padding: 0.2rem 1rem;
+            border-radius: 60px;
+            font-size: 0.95rem;
+            border: 1px solid currentColor;
+            margin-left: 0.5rem;
+        }
+
+        /* área de juego simulada */
+        .game-area {
+            background: #1b4a5e;
+            border-radius: 2.5rem;
+            padding: 2rem 1.8rem;
+            border: 3px solid #4f98b0;
+            box-shadow: inset 0 0 20px #03202b;
+            margin-bottom: 1.5rem;
+        }
+
+        .viewport {
+            background: #2b6a82;
+            border-radius: 2rem;
+            min-height: 160px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #cbf0ff;
+            font-size: 2rem;
+            border: 3px solid #80c0d0;
+            margin-bottom: 2rem;
+        }
+
+        .controls-panel {
+            background: #154457;
+            border-radius: 2rem;
+            padding: 1.5rem;
+            border: 2px solid #5da5c0;
+        }
+
+        .control-row {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin: 1rem 0;
+            flex-wrap: wrap;
+        }
+
+        .key {
+            background: #2e3f50;
+            border-radius: 1.2rem;
+            padding: 0.8rem 1.2rem;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #f0f0f0;
+            border: 3px solid #80b0d0;
+            box-shadow: 0 5px 0 #1d3342;
+            min-width: 70px;
+            text-align: center;
+        }
+
+        .key.small {
+            font-size: 1.2rem;
+            padding: 0.5rem 1rem;
+        }
+
+        .action-desc {
+            color: #d0ecff;
+            font-size: 1.2rem;
+        }
+
+        /* panel izquierdo: controles no estándar (viola Jakob) */
+        .left-panel .key {
+            background: #5f4a4a;
+            border-color: #c09f9f;
+        }
+
+        .left-panel .warning-note {
+            background: #4f3d4a;
+            border-left: 8px solid #c07a7a;
+            padding: 1rem;
+            border-radius: 1.2rem;
+            color: #f2cfcf;
+            margin: 1rem 0;
+        }
+
+        /* panel derecho: controles estándar (WASD, espacio, E) */
+        .right-panel .key {
+            background: #2f6740;
+            border-color: #a0e0a0;
+        }
+
+        .right-panel .standard-note {
+            background: #2d5a44;
+            border-left: 8px solid #edd46c;
+            padding: 1rem;
+            border-radius: 1.2rem;
+            color: #fbffe2;
+            margin: 1rem 0;
+        }
+
+        .explain-footer {
+            margin-top: 1.8rem;
+            padding: 1rem 1.5rem;
+            border-radius: 30px;
+            background: #0f2133;
+            border-left: 8px solid;
+            font-size: 1.05rem;
+        }
+
+        .left-panel .explain-footer {
+            border-left-color: #cd7a6a;
+            background: #2d212b;
+        }
+
+        .right-panel .explain-footer {
+            border-left-color: #80d492;
+            background: #1a312a;
+        }
+
+        .footer-note {
+            margin-top: 3rem;
+            color: #9bbae8;
+            text-align: center;
+            border-top: 1px solid #3e5f88;
+            padding-top: 2rem;
+            font-size: 1rem;
+        }
+
+        .confusion-meter {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+            justify-content: center;
+        }
+    </style>
+</head>
+<body>
+<div class="jakob-card">
+    <!-- ENCABEZADO LEY DE JAKOB -->
+    <div class="header-jakob">
+        <h1>🔄 Ley de Jakob</h1>
+        <p>“Los usuarios prefieren aquellos sitios que funcionen igual que los que ya conocen.”</p>
+        <div class="sub-jakob">
+            <span>🎮 WASD, espacio, E</span>
+            <span>⚡ convenciones estándar</span>
+        </div>
+    </div>
+
+    <div class="row">
+        <!-- IZQUIERDA: NO respeta Jakob (controles atípicos) -->
+        <div class="panel left-panel">
+            <h2>🔻 CONTROLES ATÍPICOS <span class="badge">curva de aprendizaje</span></h2>
+            <div class="game-area">
+                <div class="viewport">
+                    🎯 nivel 1
+                </div>
+                <div class="controls-panel">
+                    <h3 style="color:#f0b090; margin-bottom:1rem;">⌨️ Controles (inusuales)</h3>
+                    <div class="control-row">
+                        <div class="key">R</div>
+                        <span class="action-desc">Mover adelante</span>
+                    </div>
+                    <div class="control-row">
+                        <div class="key">F</div>
+                        <span class="action-desc">Mover atrás</span>
+                    </div>
+                    <div class="control-row">
+                        <div class="key">C</div>
+                        <span class="action-desc">Mover izquierda</span>
+                    </div>
+                    <div class="control-row">
+                        <div class="key">V</div>
+                        <span class="action-desc">Mover derecha</span>
+                    </div>
+                    <div class="control-row">
+                        <div class="key">B</div>
+                        <span class="action-desc">Saltar</span>
+                    </div>
+                    <div class="control-row">
+                        <div class="key">N</div>
+                        <span class="action-desc">Interactuar</span>
+                    </div>
+                    <div class="control-row">
+                        <div class="key">P</div>
+                        <span class="action-desc">Correr</span>
+                    </div>
+                </div>
+                <div class="warning-note">
+                    ⚠️ El jugador debe aprender un esquema nuevo: R-F-C-V para mover, B para saltar, N para interactuar. Esto viola la Ley de Jakob y causa frustración.
+                </div>
+            </div>
+            <div class="explain-footer">
+                ❌ Jakob ignorado: el jugador no puede usar su conocimiento previo. Tiempo de adaptación alto y errores frecuentes.
+            </div>
+        </div>
+
+        <!-- DERECHA: RESPETA Jakob (estándares: WASD, espacio, E) -->
+        <div class="panel right-panel">
+            <h2>✅ CONVENCIONES ESTÁNDAR <span class="badge">WASD · Espacio · E</span></h2>
+            <div class="game-area">
+                <div class="viewport">
+                    🎮 nivel 1
+                </div>
+                <div class="controls-panel">
+                    <h3 style="color:#b0f0b0; margin-bottom:1rem;">⌨️ Controles estándar</h3>
+                    <div class="control-row">
+                        <div class="key">W</div>
+                        <span class="action-desc">Adelante</span>
+                    </div>
+                    <div class="control-row">
+                        <div class="key">S</div>
+                        <span class="action-desc">Atrás</span>
+                    </div>
+                    <div class="control-row">
+                        <div class="key">A</div>
+                        <span class="action-desc">Izquierda</span>
+                    </div>
+                    <div class="control-row">
+                        <div class="key">D</div>
+                        <span class="action-desc">Derecha</span>
+                    </div>
+                    <div class="control-row">
+                        <div class="key">␣</div>
+                        <span class="action-desc">Saltar</span>
+                    </div>
+                    <div class="control-row">
+                        <div class="key">E</div>
+                        <span class="action-desc">Interactuar</span>
+                    </div>
+                    <div class="control-row">
+                        <div class="key">Shift</div>
+                        <span class="action-desc">Correr</span>
+                    </div>
+                </div>
+                <div class="standard-note">
+                    ✅ Esquema familiar: WASD para mover, espacio para saltar, E para interactuar. El jugador puede aplicar su experiencia previa sin esfuerzo.
+                </div>
+            </div>
+            <div class="explain-footer">
+                ✨ Jakob aplicado: el jugador se siente como en casa. No necesita leer las instrucciones, los dedos ya saben qué hacer.
+            </div>
+        </div>
+    </div>
+
+    <!-- BLOQUE EXPLICATIVO: CONVENCIONES EN VIDEOJUEGOS -->
+    <div style="display: flex; flex-wrap: wrap; gap: 2rem; margin: 2.5rem 0 1rem; background: #112337; border-radius: 2.5rem; padding: 2rem 1.8rem; border: 1px solid #a0e0b080;">
+        <div style="flex:1; min-width:200px;">
+            <h3 style="color:#aad68a;">🎮 WASD (estándar)</h3>
+            <p style="color:#c9def5;">Desde los 90, los juegos de PC usan WASD para moverse. Cualquier cambio confunde al jugador.</p>
+        </div>
+        <div style="flex:1; min-width:200px;">
+            <h3 style="color:#b0e6c0;">␣ Espacio = saltar</h3>
+            <p style="color:#c9def5;">Plataformas y shooters: espacio es saltar. Es una convención universal.</p>
+        </div>
+        <div style="flex:1; min-width:200px; border-left: 2px solid #6f9ac0; padding-left:1.5rem;">
+            <h3 style="color:#f5e0a3;">⚡ E para interactuar</h3>
+            <p style="color:#c9def5;">Abrir cofres, hablar con NPCs, recoger objetos. La tecla E es casi un estándar.</p>
+        </div>
+    </div>
+
+    <!-- SIMULACIÓN DE REACCIÓN -->
+    <div style="background: #0e2d40; border-radius: 2rem; padding: 1.5rem; margin: 1.5rem 0; border: 2px solid #8ab0d0;">
+        <div style="display: flex; flex-wrap: wrap; gap: 2rem; align-items: center; justify-content: center; text-align: center;">
+            <div style="background:#2c405b; border-radius: 60px; padding:0.8rem 1.8rem; color:#dddddd;">
+                <span style="font-weight:bold;">⬅️ IZQUIERDA (R-F-C-V):</span> "¿Cómo salto? ¿B? ¿N?" 😫 (mira el teclado)
+            </div>
+            <div style="background:#4f7851; border-radius: 60px; padding:0.8rem 1.8rem; color:#fcf9cf;">
+                <span style="font-weight:bold;">➡️ DERECHA (WASD):</span> "WASD, espacio, E. Ya sé jugar." 😎 (inmersión total)
+            </div>
+        </div>
+    </div>
+
+    <!-- EJEMPLO DE CONVENCIONES EN DIFERENTES JUEGOS -->
+    <div style="display: flex; flex-wrap: wrap; gap: 1.5rem; margin: 1rem 0; justify-content: center;">
+        <span style="background:#2d5270; padding:0.5rem 1.2rem; border-radius:40px;">🎮 Call of Duty: WASD + espacio + E</span>
+        <span style="background:#1b6e48; padding:0.5rem 1.2rem; border-radius:40px;">⛏️ Minecraft: WASD + espacio + E</span>
+        <span style="background:#5d4f8a; padding:0.5rem 1.2rem; border-radius:40px;">🧝 The Witcher: WASD + espacio + E</span>
+    </div>
+
+    <!-- FOOTER -->
+    <div class="footer-note">
+        <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 2rem; margin-bottom: 0.8rem;">
+            <span style="background:#2d5270; padding:0.3rem 1.2rem; border-radius:40px;">⬅️ izquierda: R F C V B N (reinventa la rueda)</span>
+            <span style="background:#1b6e48; padding:0.3rem 1.2rem; border-radius:40px;">➡️ derecha: WASD espacio E (convenciones)</span>
+        </div>
+        <p style="margin-top: 1.2rem;">🎮 Ley de Jakob en videojuegos: usar estándares como WASD, espacio para saltar y E para interactuar permite que el jugador se concentre en la experiencia, no en los controles.</p>
+    </div>
+</div>
+</body>
+</html>

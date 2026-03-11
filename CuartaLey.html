@@ -1,0 +1,547 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ley de Proximidad · HUD en videojuegos</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #151e2c;
+            background: radial-gradient(circle at 80% 20%, #263b50, #0c131f);
+            font-family: 'Inter', 'Segoe UI', system-ui, sans-serif;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem 1rem;
+        }
+
+        .container {
+            max-width: 1300px;
+            width: 100%;
+            background: rgba(10, 18, 28, 0.85);
+            backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px);
+            border: 1px solid rgba(255, 215, 140, 0.15);
+            border-radius: 3rem;
+            padding: 2.5rem 2rem;
+            box-shadow: 0 40px 60px -20px #000, 0 0 0 1px rgba(200, 180, 100, 0.2) inset;
+        }
+
+        .header-prox {
+            text-align: center;
+            margin-bottom: 3.5rem;
+        }
+
+        .header-prox h1 {
+            font-size: 3.4rem;
+            font-weight: 700;
+            background: linear-gradient(145deg, #9fc5ff, #a8e6cf, #ffd966);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            letter-spacing: -0.02em;
+            margin-bottom: 0.75rem;
+        }
+
+        .header-prox p {
+            color: #ccddfa;
+            font-size: 1.4rem;
+            max-width: 850px;
+            margin: 0 auto;
+            background: #111d30b3;
+            padding: 0.8rem 2rem;
+            border-radius: 60px;
+            border: 1px solid #80a9e0;
+            line-height: 1.5;
+        }
+
+        .sub-prox {
+            margin-top: 1rem;
+            font-size: 1.25rem;
+            color: #cedbab;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.8rem;
+            flex-wrap: wrap;
+        }
+
+        .sub-prox span {
+            background: #253b54;
+            padding: 0.3rem 1.5rem;
+            border-radius: 40px;
+            border: 1px solid #c5d685;
+        }
+
+        .row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            justify-content: center;
+        }
+
+        .panel {
+            flex: 1 1 400px;
+            min-width: 340px;
+            background: #0f1c2d;
+            border-radius: 2.8rem;
+            padding: 2.2rem 1.8rem 2.4rem;
+            border: 1px solid rgba(255, 215, 140, 0.2);
+            transition: transform 0.2s, border-color 0.2s;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .panel:hover {
+            transform: translateY(-6px);
+            border-color: #ffcf8a;
+            box-shadow: 0 25px 40px -15px black;
+        }
+
+        .panel h2 {
+            font-size: 2.2rem;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            padding-bottom: 1.2rem;
+            margin-bottom: 2rem;
+            border-bottom: 3px solid;
+        }
+
+        .left-panel h2 {
+            color: #f5a97f;
+            border-image: linear-gradient(90deg, #dd7760, #4a4e6b) 1;
+        }
+
+        .right-panel h2 {
+            color: #b0f2b4;
+            border-image: linear-gradient(90deg, #69c97c, #1e5f49) 1;
+        }
+
+        .badge {
+            background: #1b1f30;
+            padding: 0.2rem 1rem;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            font-weight: 400;
+            border: 1px solid currentColor;
+            margin-left: 0.5rem;
+        }
+
+        /* área de pantalla de juego simulada */
+        .game-screen {
+            background: #172734;
+            border-radius: 2.2rem;
+            padding: 2rem 1.5rem;
+            border: 3px solid #3f566e;
+            box-shadow: inset 0 0 25px #020b14;
+            position: relative;
+            min-height: 380px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* viewport (simula la acción) */
+        .viewport {
+            flex: 1;
+            background: #1f3447;
+            border-radius: 2rem;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #7b98b5;
+            font-size: 2rem;
+            font-weight: bold;
+            border: 2px dashed #5e799b;
+            min-height: 180px;
+        }
+
+        /* ----- PANEL IZQUIERDO: ELEMENTOS DISPERSOS (NO PROXIMIDAD) ----- */
+        .left-panel .game-screen {
+            background: #1e2d3f;
+        }
+
+        .left-panel .hud-disperso {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* vida arriba izquierda */
+        .left-panel .health-top-left {
+            position: absolute;
+            top: 8px;
+            left: 8px;
+            background: #291e1e;
+            padding: 0.5rem 1rem;
+            border-radius: 30px;
+            border: 2px solid #c06666;
+            display: flex;
+            align-items: center;
+            gap: 0.3rem;
+            z-index: 10;
+        }
+
+        .left-panel .health-bar {
+            width: 100px;
+            height: 16px;
+            background: #471f1f;
+            border-radius: 20px;
+            overflow: hidden;
+        }
+
+        .left-panel .health-fill {
+            height: 100%;
+            width: 68%;
+            background: #e15555;
+        }
+
+        /* energía en la parte inferior derecha (separada) */
+        .left-panel .energy-bottom-right {
+            position: absolute;
+            bottom: 12px;
+            right: 12px;
+            background: #1c3245;
+            padding: 0.5rem 1.2rem;
+            border-radius: 30px;
+            border: 2px solid #5299c7;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            z-index: 10;
+        }
+
+        .left-panel .energy-bar {
+            width: 80px;
+            height: 16px;
+            background: #183755;
+            border-radius: 20px;
+        }
+
+        .left-panel .energy-fill {
+            height: 100%;
+            width: 42%;
+            background: #46b3ff;
+        }
+
+        /* minimap en la parte superior derecha */
+        .left-panel .minimap-top-right {
+            position: absolute;
+            top: 8px;
+            right: 8px;
+            background: #1f3828;
+            padding: 0.5rem;
+            border-radius: 20px;
+            border: 2px solid #7da06e;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            z-index: 10;
+        }
+
+        .left-panel .mini-square {
+            width: 70px;
+            height: 70px;
+            background: #26442e;
+            border-radius: 12px;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 4px;
+            padding: 4px;
+        }
+
+        .left-panel .pixel {
+            background: #4a9265;
+            border-radius: 4px;
+        }
+
+        .left-panel .pixel.red {
+            background: #c54f4f;
+        }
+
+        /* adicional: indicador de munición arriba centro (otro elemento aislado) */
+        .left-panel .ammo-top-center {
+            position: absolute;
+            top: 8px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #3e3b2b;
+            padding: 0.2rem 1.2rem;
+            border-radius: 40px;
+            border: 2px solid #c9a75a;
+            color: #ffd98c;
+            font-weight: bold;
+            z-index: 10;
+        }
+
+        /* mensaje de error visual */
+        .left-panel .dispersion-note {
+            background: #4f3131;
+            border-left: 8px solid #c86666;
+            padding: 0.8rem;
+            border-radius: 1.2rem;
+            margin-top: 1.5rem;
+            color: #f4cfcf;
+        }
+
+        /* ----- PANEL DERECHO: PROXIMIDAD (vida, energía y minimapa agrupados en la misma esquina) ----- */
+        .right-panel .game-screen {
+            background: #172b38;
+        }
+
+        .right-panel .hud-group {
+            position: relative;
+            width: 100%;
+            height: 100%;
+        }
+
+        /* grupo compacto en la esquina superior izquierda: todo junto por proximidad */
+        .right-panel .proximity-cluster {
+            position: absolute;
+            top: 12px;
+            left: 12px;
+            background: #0f212fe0;
+            backdrop-filter: blur(4px);
+            border: 2px solid #86b0a6;
+            border-radius: 32px;
+            padding: 0.8rem 1.2rem;
+            display: flex;
+            flex-direction: column;
+            gap: 0.8rem;
+            z-index: 10;
+            box-shadow: 0 8px 14px #00000060;
+        }
+
+        .right-panel .row-stat {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .right-panel .stat-icon {
+            font-size: 1.5rem;
+            width: 32px;
+            text-align: center;
+        }
+
+        .right-panel .bar-container {
+            width: 140px;
+            height: 18px;
+            background: #253b4a;
+            border-radius: 40px;
+            overflow: hidden;
+            border: 1px solid #6b8f9c;
+        }
+
+        .right-panel .health-fill-prox {
+            height: 100%;
+            width: 71%;
+            background: linear-gradient(90deg, #de6b6b, #ff9f9f);
+        }
+
+        .right-panel .energy-fill-prox {
+            height: 100%;
+            width: 58%;
+            background: linear-gradient(90deg, #5baae0, #99d2ff);
+        }
+
+        /* mini mapa integrado en el mismo cluster (abajo) */
+        .right-panel .minimap-prox {
+            margin-top: 0.3rem;
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            border-top: 2px solid #3c6870;
+            padding-top: 0.5rem;
+        }
+
+        .right-panel .minimap-box {
+            width: 80px;
+            height: 70px;
+            background: #1d3a41;
+            border-radius: 16px;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 3px;
+            padding: 4px;
+            border: 1px solid #6eaa8f;
+        }
+
+        .right-panel .minimap-pixel {
+            background: #3f8163;
+            border-radius: 4px;
+        }
+
+        .right-panel .minimap-pixel.player {
+            background: #f5d55c;
+        }
+
+        .right-panel .minimap-pixel.enemy {
+            background: #d44f4f;
+        }
+
+        .right-panel .prox-note {
+            background: #1b443c;
+            border-left: 8px solid #73c983;
+            padding: 0.8rem;
+            border-radius: 1.2rem;
+            margin-top: 1.5rem;
+            color: #daf5da;
+        }
+
+        .explain-footer {
+            margin-top: 2rem;
+            padding: 1rem 1.5rem;
+            background: #0f2033;
+            border-radius: 30px;
+            font-size: 1.05rem;
+            border-left: 8px solid;
+        }
+
+        .left-panel .explain-footer {
+            border-left-color: #ce7b6b;
+            background: #2f222b;
+        }
+
+        .right-panel .explain-footer {
+            border-left-color: #75c48b;
+            background: #1d312a;
+        }
+
+        .footer-note {
+            margin-top: 3rem;
+            color: #7a8fb0;
+            text-align: center;
+            border-top: 1px solid #314159;
+            padding-top: 2rem;
+            font-size: 1rem;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <!-- LEY DE PROXIMIDAD -->
+    <div class="header-prox">
+        <h1>🔗 Ley de Proximidad</h1>
+        <p>“Los objetos que están cerca o próximos entre sí tienden a agruparse.”</p>
+        <div class="sub-prox">
+            <span>🎮 vida, energía y minimapa</span>
+            <span>🗺️ agrupación en una esquina</span>
+        </div>
+    </div>
+
+    <div class="row">
+        <!-- IZQUIERDA: SIN PROXIMIDAD (elementos dispersos por toda la pantalla) -->
+        <div class="panel left-panel">
+            <h2>🔻 DISPERSIÓN <span class="badge">sin agrupar</span></h2>
+            <div class="game-screen">
+                <div class="hud-disperso">
+                    <!-- vida arriba izquierda -->
+                    <div class="health-top-left">
+                        <span>❤️</span>
+                        <div class="health-bar"><div class="health-fill"></div></div>
+                    </div>
+                    <!-- energía abajo derecha -->
+                    <div class="energy-bottom-right">
+                        <span>⚡</span>
+                        <div class="energy-bar"><div class="energy-fill"></div></div>
+                    </div>
+                    <!-- minimapa arriba derecha -->
+                    <div class="minimap-top-right">
+                        <div class="mini-square">
+                            <div class="pixel red"></div>
+                            <div class="pixel"></div>
+                            <div class="pixel"></div>
+                            <div class="pixel"></div>
+                        </div>
+                        <span style="font-size:0.65rem; color:#a4c2a4;">minimapa</span>
+                    </div>
+                    <!-- munición arriba centro (otro elemento flotante) -->
+                    <div class="ammo-top-center">
+                        🔫 24/30
+                    </div>
+                    <!-- zona de "juego" (fondo) -->
+                    <div class="viewport">
+                        ⚔️ acción
+                    </div>
+                </div>
+                <div class="dispersion-note">
+                    ⚠️ Vida, energía y minimapa están en tres esquinas distintas. El jugador debe mover la mirada continuamente para evaluar su estado.
+                </div>
+            </div>
+            <div class="explain-footer">
+                👀 Elementos separados violan la ley de proximidad: la información vital no se asocia, aumenta el esfuerzo cognitivo.
+            </div>
+        </div>
+
+        <!-- DERECHA: PROXIMIDAD (todo agrupado en la misma esquina) -->
+        <div class="panel right-panel">
+            <h2>✅ AGRUPACIÓN <span class="badge">proximidad</span></h2>
+            <div class="game-screen">
+                <div class="hud-group">
+                    <!-- CLUSTER ÚNICO: vida, energía y minimapa en la misma esquina -->
+                    <div class="proximity-cluster">
+                        <div class="row-stat">
+                            <span class="stat-icon">❤️</span>
+                            <div class="bar-container"><div class="health-fill-prox"></div></div>
+                            <span style="color:#fbb;">78%</span>
+                        </div>
+                        <div class="row-stat">
+                            <span class="stat-icon">⚡</span>
+                            <div class="bar-container"><div class="energy-fill-prox"></div></div>
+                            <span style="color:#aae;">58%</span>
+                        </div>
+                        <!-- minimapa integrado en el mismo grupo (proximidad) -->
+                        <div class="minimap-prox">
+                            <span class="stat-icon">🗺️</span>
+                            <div class="minimap-box">
+                                <div class="minimap-pixel"></div>
+                                <div class="minimap-pixel player"></div>
+                                <div class="minimap-pixel"></div>
+                                <div class="minimap-pixel"></div>
+                                <div class="minimap-pixel enemy"></div>
+                                <div class="minimap-pixel"></div>
+                                <div class="minimap-pixel"></div>
+                                <div class="minimap-pixel"></div>
+                                <div class="minimap-pixel"></div>
+                            </div>
+                            <span style="color:#c9e5a8;">zona</span>
+                        </div>
+                    </div>
+                    <!-- fondo de juego -->
+                    <div class="viewport">
+                        ⚔️ partida en curso
+                    </div>
+                </div>
+                <div class="prox-note">
+                    ✅ Vida, energía y minimapa están a menos de 50 píxeles de distancia. El cerebro los agrupa como un solo panel de estado: lectura instantánea.
+                </div>
+            </div>
+            <div class="explain-footer">
+                🧠 Proximidad aplicada: el jugador asocia rápidamente salud, recurso y posición. Menos movimientos oculares, decisión más rápida.
+            </div>
+        </div>
+    </div>
+
+    <!-- PIE DE PÁGINA EXPLICATIVO -->
+    <div class="footer-note">
+        <div style="display: flex; flex-wrap: wrap; gap: 2rem; justify-content: center; margin-bottom: 0.5rem;">
+            <span>🔸 izquierda: vida (arriba izq), energía (abajo der), minimapa (arriba der) → dispersión</span>
+            <span>🔸 derecha: vida, energía y minimapa agrupados en la misma esquina superior izquierda</span>
+        </div>
+        <p style="margin-top: 1rem;">🎮 Ley de Proximidad en HUD: cuando los elementos relacionados están cerca, se perciben como un conjunto funcional, facilitando la comprensión rápida del estado del personaje.</p>
+    </div>
+</div>
+</body>
+</html>
